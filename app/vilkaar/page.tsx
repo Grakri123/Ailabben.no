@@ -24,7 +24,7 @@ export default function VilkaarPage() {
             <h3 className="text-xl font-semibold mb-3">1.1 Hvem disse vilkårene gjelder for</h3>
             <p>
               Disse vilkårene regulerer forholdet mellom Granli Holding AS (org. nr. 931 211 404), 
-              heretter kalt "Ailabben", "vi" eller "oss", og våre kunder som kjøper AI-tjenester.
+              heretter kalt &quot;Ailabben&quot;, &quot;vi&quot; eller &quot;oss&quot;, og våre kunder som kjøper AI-tjenester.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">1.2 Aksept av vilkår</h3>
