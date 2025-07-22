@@ -167,8 +167,25 @@ export function ContactForm() {
       </Button>
 
       <p className="text-sm text-gray-500 text-center">
-        Ved å sende inn dette skjemaet godtar du at vi kontakter deg 
-        angående våre AI-tjenester.
+        Ved å sende inn dette skjemaet godtar du vår{" "}
+        <a 
+          href="/personvern" 
+          className="text-orange-600 hover:text-orange-700 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          personvernerklæring
+        </a>{" "}
+        og{" "}
+        <a 
+          href="/vilkaar" 
+          className="text-orange-600 hover:text-orange-700 underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          vilkår og betingelser
+        </a>
+        . Vi kontakter deg angående våre AI-tjenester.
       </p>
     </form>
   )

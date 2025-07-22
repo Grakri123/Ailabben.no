@@ -88,7 +88,7 @@ export function Footer() {
             <Link href="/personvern" className="hover:text-orange-600 transition-colors">
               Personvern
             </Link>
-            <Link href="/vilkar" className="hover:text-orange-600 transition-colors">
+            <Link href="/vilkaar" className="hover:text-orange-600 transition-colors">
               Vilkår
             </Link>
           </div>
