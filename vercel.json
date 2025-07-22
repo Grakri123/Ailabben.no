@@ -3,12 +3,7 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "rewrites": [
-    {
-      "source": "/blogg/(.*)",
-      "destination": "/blogg/$1"
-    }
-  ],
+
   "headers": [
     {
       "source": "/(.*)",

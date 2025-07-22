@@ -11,7 +11,7 @@ const navigation = [
   { name: "Hjem", href: "/" },
   { name: "Hva vi gjør", href: "/hva-vi-gjor" },
   { name: "Om oss", href: "/om-oss" },
-  { name: "Blogg", href: "https://blogg.ailabben.no" },
+  { name: "Blogg", href: "/blogg" },
   { name: "Kontakt", href: "/kontakt" },
 ]
 
@@ -53,10 +53,7 @@ export function Navbar() {
                   ? "text-orange-600"
                   : "text-foreground/80"
               )}
-              {...(item.href.startsWith('http') && { 
-                target: "_blank", 
-                rel: "noopener noreferrer" 
-              })}
+
             >
               {item.name}
             </Link>
@@ -95,10 +92,6 @@ export function Navbar() {
                     : "text-foreground/80"
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
-                {...(item.href.startsWith('http') && { 
-                  target: "_blank", 
-                  rel: "noopener noreferrer" 
-                })}
               >
                 {item.name}
               </Link>

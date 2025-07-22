@@ -57,14 +57,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a 
-                  href="https://blogg.ailabben.no" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-orange-600 transition-colors"
-                >
+                <Link href="/blogg" className="hover:text-orange-600 transition-colors">
                   Blogg
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/kontakt" className="hover:text-orange-600 transition-colors">
