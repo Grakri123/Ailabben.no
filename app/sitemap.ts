@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { supabase } from '@/lib/supabase'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ailabben.no'
@@ -38,18 +37,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Get blog posts from Supabase
-  const { data: posts } = await supabase
-    .from('blogginnlegg')
-    .select('slug, dato, created_at')
-    .eq('publisert', true)
+  // Try to get blog posts from Supabase, but handle gracefully if env vars are missing
+  let blogPages: MetadataRoute.Sitemap = []
+  
+  try {
+    // Only try to connect to Supabase if env vars are available
+    if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+      const { createClient } = await import('@supabase/supabase-js')
+      
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+      )
 
-  const blogPages = posts?.map(post => ({
-    url: `${baseUrl}/blogg/${post.slug}`,
-    lastModified: new Date(post.created_at),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  })) || []
+      const { data: posts } = await supabase
+        .from('blogginnlegg')
+        .select('slug, dato, created_at')
+        .eq('publisert', true)
+
+      blogPages = posts?.map(post => ({
+        url: `${baseUrl}/blogg/${post.slug}`,
+        lastModified: new Date(post.created_at),
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+      })) || []
+    }
+  } catch (error) {
+    console.warn('Could not fetch blog posts for sitemap:', error)
+    // Continue with empty blog pages array
+  }
 
   return [...staticPages, ...blogPages]
 } 
