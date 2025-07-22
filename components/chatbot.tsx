@@ -57,22 +57,23 @@ export function Chatbot() {
     resolver: zodResolver(leadSchema),
   })
 
-  // Auto-åpning etter 5 sekunder
+  // Auto-åpning etter 5 sekunder (DEAKTIVERT)
   useEffect(() => {
     if (!hasAutoOpened) {
-      const timer = setTimeout(() => {
-        setIsOpen(true)
-        setHasAutoOpened(true)
-        // Legg til velkomstmelding
-        const welcomeMessage: Message = {
-          role: 'assistant',
-          content: 'Hei! Er det rett av meg å anta at du er nysgjerrig på hvordan AI-agenter kan hjelpe deg med å spare tid eller øke ROI?',
-          timestamp: new Date()
-        }
-        setMessages([welcomeMessage])
-      }, 5000)
+      // Automatisk åpning deaktivert - brukeren må klikke på chatbot-knappen
+      // const timer = setTimeout(() => {
+      //   setIsOpen(true)
+      //   setHasAutoOpened(true)
+      //   // Legg til velkomstmelding
+      //   const welcomeMessage: Message = {
+      //     role: 'assistant',
+      //     content: 'Hei! Er det rett av meg å anta at du er nysgjerrig på hvordan AI-agenter kan hjelpe deg med å spare tid eller øke ROI?',
+      //     timestamp: new Date()
+      //   }
+      //   setMessages([welcomeMessage])
+      // }, 5000)
 
-      return () => clearTimeout(timer)
+      // return () => clearTimeout(timer)
     }
   }, [hasAutoOpened])
 
@@ -192,11 +193,25 @@ export function Chatbot() {
     }
   }
 
+  const handleOpenChat = () => {
+    setIsOpen(true)
+    // Legg til velkomstmelding ved første åpning
+    if (!hasAutoOpened && messages.length === 0) {
+      setHasAutoOpened(true)
+      const welcomeMessage: Message = {
+        role: 'assistant',
+        content: 'Hei! Er det rett av meg å anta at du er nysgjerrig på hvordan AI-agenter kan hjelpe deg med å spare tid eller øke ROI?',
+        timestamp: new Date()
+      }
+      setMessages([welcomeMessage])
+    }
+  }
+
   if (!isOpen) {
     return (
       <div className="fixed bottom-6 right-6 z-50">
         <Button
-          onClick={() => setIsOpen(true)}
+          onClick={handleOpenChat}
           className="rounded-full w-16 h-16 bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-200"
         >
           <MessageSquare size={24} className="text-white" />
