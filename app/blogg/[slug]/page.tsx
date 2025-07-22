@@ -7,6 +7,9 @@ import { supabase } from "@/lib/supabase"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
+// Revalidate individual blog posts every hour
+export const revalidate = 3600
+
 interface BlogPostPageProps {
   params: {
     slug: string

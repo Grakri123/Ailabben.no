@@ -1,5 +1,8 @@
 import { MetadataRoute } from 'next'
 
+// Revalidate sitemap every hour to include new blog posts
+export const revalidate = 3600
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ailabben.no'
 
