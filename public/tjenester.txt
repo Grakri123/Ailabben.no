@@ -1,0 +1,74 @@
+AILABBEN - AI-TJENESTER FOR NORSKE BEDRIFTER
+
+## Våre AI-løsninger:
+
+### 1. RESEPSJONIST-AGENT
+- Håndterer kundehenvendelser 24/7 via chat, telefon og e-post
+- Besvarer vanlige spørsmål om produkter, priser og tilgjengelighet  
+- Viderefører komplekse henvendelser til riktig person
+- Kan integreres med eksisterende systemer (CRM, booking-systemer)
+- Snakker flytende norsk og engelsk
+- Pris: Fra 2.500 kr/måned
+
+### 2. E-POSTGENERERING
+- Automatisk generering av personlige og effektive e-poster
+- Cold outreach-kampanjer med høy responsrate
+- Oppfølgings-sekvenser som konverterer leads til kunder
+- A/B-testing av e-post-innhold for optimale resultater
+- Integreres med Gmail, Outlook og andre e-postsystemer
+- Pris: Fra 1.800 kr/måned
+
+### 3. LEADS-INNSAMLING OG KVALIFISERING
+- Intelligent chatbot som kvalifiserer besøkende på nettsiden
+- Automatisk innsamling av kontaktinformasjon
+- Leadscoring basert på adferd og svar
+- Integration med CRM-systemer (HubSpot, Pipedrive, etc.)
+- Øker konverteringsraten med 30-50%
+- Pris: Fra 3.200 kr/måned
+
+### 4. COLD CALLING AGENT
+- AI som ringer potensielle kunder profesjonelt
+- Naturlig stemme på norsk
+- Kan håndtere innvendinger og spørsmål
+- Booker møter direkte i kalenderen din
+- Detaljert rapportering på alle samtaler
+- Pris: Fra 4.500 kr/måned
+
+### 5. SEO-AUTOMATISERING
+- Fullautomatisert SEO og innholdsstrategi
+- Generer artikler optimalisert for søkemotorer
+- Automatisk publisering til nettside og sosiale medier
+- Keyword-research og konkurranseanalyse
+- Øker organisk trafikk med 200-400%
+- Pris: Fra 5.800 kr/måned
+
+### 6. KUNDESERVICE-AUTOMATISERING
+- AI som håndterer support-henvendelser
+- Kan løse 80% av kundeproblemer automatisk
+- Integration med eksisterende helpdesk-systemer
+- Lærer kontinuerlig av nye henvendelser
+- Reduserer support-kostnader med 60%
+- Pris: Fra 3.500 kr/måned
+
+## VIKTIGE FORDELER:
+- Hostet trygt i EU med GDPR-compliance
+- Norsk support og oppfølging
+- Ingen langtidskontrakter
+- 14 dagers gratis prøveperiode
+- Rask implementering (1-2 uker)
+- 24/7 overvåkning og vedlikehold inkludert
+
+## MÅLGRUPPER:
+- SMB bedrifter (10-500 ansatte)
+- E-handelsbedrifter
+- Konsulent- og servicefirmaer  
+- SaaS-selskaper
+- Eiendomsmeglere
+- Tannleger og andre helsepraktikere
+
+## CASE STUDIES:
+- Eiendomsmegler økte leads med 340% med resepsjonist-agent
+- SaaS-selskap reduserte support-kostnader med 70%
+- Konsulentfirma genererte 2.4M kr i nye kontrakter med cold calling agent
+
+For mer informasjon: hei@ailabben.no eller ring 95 11 76 49 

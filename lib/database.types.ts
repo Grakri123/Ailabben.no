@@ -59,6 +59,32 @@ export interface Database {
           created_at?: string
         }
       }
+      chatbot_leads: {
+        Row: {
+          id: string
+          navn: string | null
+          bedrift: string | null
+          epost: string | null
+          samtale: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          navn?: string | null
+          bedrift?: string | null
+          epost?: string | null
+          samtale: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          navn?: string | null
+          bedrift?: string | null
+          epost?: string | null
+          samtale?: string
+          created_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
