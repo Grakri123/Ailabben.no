@@ -4,7 +4,7 @@ import "./globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Analytics } from "@vercel/analytics/react"
-import { Chatbot } from "@/components/chatbot"
+// import { Chatbot } from "@/components/chatbot" // Midlertidig deaktivert
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -70,7 +70,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
-        <Chatbot />
+        {/* <Chatbot /> Midlertidig deaktivert */}
         <Analytics />
       </body>
     </html>
