@@ -10,36 +10,27 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: {
-    default: "Skreddersydde AI-agenter for din bedrift | AI Labben",
-    template: "%s | AI Labben"
+    default: "Skreddersydde AI-agenter for din bedrift | Ailabben",
+    template: "%s | Ailabben"
   },
   description: "Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger dine AI-løsninger. Skreddersydd og hostet i EU.",
   keywords: ["AI-agenter", "kunstig intelligens", "automatisering", "chatbots", "Norge", "SMB", "bedrift"],
-  authors: [{ name: "AI Labben" }],
-  creator: "AI Labben",
-  publisher: "AI Labben",
+  authors: [{ name: "Ailabben" }],
+  creator: "Ailabben",
+  publisher: "Ailabben",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ailabben.no'),
   openGraph: {
     type: "website",
     locale: "nb_NO",
     url: "https://ailabben.no",
-    siteName: "AI Labben",
+    siteName: "Ailabben",
     title: "Skreddersydde AI-agenter for din bedrift",
     description: "Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger dine AI-løsninger",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "AI Labben - AI-løsninger for norske bedrifter",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Skreddersydde AI-agenter for din bedrift",
     description: "Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger dine AI-løsninger",
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

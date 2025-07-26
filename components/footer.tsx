@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Mail, Phone } from "lucide-react"
 
 export function Footer() {
@@ -9,7 +10,13 @@ export function Footer() {
           {/* Logo og beskrivelse */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <span className="text-2xl font-bold gradient-text">AI Labben</span>
+              <Image
+                src="/images/logos/AI Labben.svg"
+                alt="AI Labben logo"
+                width={140}
+                height={40}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
               Vi bygger skreddersydde AI-agenter for norske bedrifter. 
@@ -83,7 +90,7 @@ export function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-          <p>&copy; 2024 AI Labben. Alle rettigheter reservert.</p>
+          <p>&copy; 2024 Ailabben. Alle rettigheter reservert.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link href="/personvern" className="hover:text-orange-600 transition-colors">
               Personvern
