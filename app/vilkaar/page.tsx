@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Vilkår og betingelser - Ailabben",
-  description: "Vilkår og betingelser for Ailabbens AI-tjenester. Les om våre betingelser før du bestiller.",
+  title: "Vilkår og betingelser - AI Labben",
+  description: "Vilkår og betingelser for AI Labbens AI-tjenester. Les om våre betingelser før du bestiller.",
 }
 
 export default function VilkaarPage() {
@@ -24,7 +24,7 @@ export default function VilkaarPage() {
             <h3 className="text-xl font-semibold mb-3">1.1 Hvem disse vilkårene gjelder for</h3>
             <p>
               Disse vilkårene regulerer forholdet mellom Granli Holding AS (org. nr. 931 211 404), 
-              heretter kalt &quot;Ailabben&quot;, &quot;vi&quot; eller &quot;oss&quot;, og våre kunder som kjøper AI-tjenester.
+              heretter kalt &quot;AI Labben&quot;, &quot;vi&quot; eller &quot;oss&quot;, og våre kunder som kjøper AI-tjenester.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">1.2 Aksept av vilkår</h3>
@@ -44,7 +44,7 @@ export default function VilkaarPage() {
             <h2 className="text-2xl font-bold mb-4">2. Våre tjenester</h2>
             
             <h3 className="text-xl font-semibold mb-3">2.1 AI-tjenester</h3>
-            <p>Ailabben tilbyr følgende AI-løsninger til norske bedrifter:</p>
+            <p>AI Labben tilbyr følgende AI-løsninger til norske bedrifter:</p>
             <ul>
               <li>Resepsjonist-agenter (chat, telefon, e-post)</li>
               <li>E-postgenerering og markedsføring</li>
@@ -137,12 +137,12 @@ export default function VilkaarPage() {
             <h3 className="text-xl font-semibold mb-3">5.1 Dataeierskap</h3>
             <p>
               Alle data som kunden mater inn i AI-systemene tilhører kunden. 
-              Ailabben har kun behandlerrolle og eier ikke kundens forretningsdata.
+              AI Labben har kun behandlerrolle og eier ikke kundens forretningsdata.
             </p>
 
             <h3 className="text-xl font-semibold mb-3 mt-6">5.2 Samtaler og interaksjoner</h3>
             <p>
-              Samtaler og interaksjoner med AI-agentene eies av Ailabben og kan brukes til:
+              Samtaler og interaksjoner med AI-agentene eies av AI Labben og kan brukes til:
             </p>
             <ul>
               <li>Forbedring av AI-modeller og tjenester</li>
@@ -179,7 +179,7 @@ export default function VilkaarPage() {
             
             <h3 className="text-xl font-semibold mb-3">7.1 AI-systemenes begrensninger</h3>
             <p>
-              AI-teknologi er under utvikling og kan gjøre feil. Ailabben kan ikke holdes 
+              AI-teknologi er under utvikling og kan gjøre feil. AI Labben kan ikke holdes 
               ansvarlig for:
             </p>
             <ul>
@@ -228,9 +228,9 @@ export default function VilkaarPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">9. Immaterielle rettigheter</h2>
             
-            <h3 className="text-xl font-semibold mb-3">9.1 Ailabbens rettigheter</h3>
+            <h3 className="text-xl font-semibold mb-3">9.1 AI Labbens rettigheter</h3>
             <p>
-              All programvare, AI-modeller og teknisk løsninger utviklet av Ailabben 
+                              All programvare, AI-modeller og teknisk løsninger utviklet av AI Labben  
               forblir vår eiendom. Kunden får kun bruksrett til tjenestene.
             </p>
 

@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form"
 
 export const metadata: Metadata = {
   title: "Kontakt oss - Få en gratis demo av våre AI-løsninger",
-  description: "Kontakt Ailabben for en gratis demo av våre AI-agenter. Ring 95 11 76 49 eller send oss en melding.",
+  description: "Kontakt AI Labben for en gratis demo av våre AI-agenter. Ring 95 11 76 49 eller send oss en melding.",
 }
 
 export default function ContactPage() {

@@ -232,7 +232,7 @@ export function Chatbot() {
               <Bot size={16} className="text-white" />
             </div>
             <div className="text-white">
-              <div className="font-semibold text-sm">Ailabben Assistent</div>
+              <div className="font-semibold text-sm">AI Labben Assistent</div>
               <div className="text-xs opacity-90">AI-ekspert</div>
             </div>
           </div>

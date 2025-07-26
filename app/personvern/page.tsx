@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Personvernerklæring - Ailabben",
-  description: "Personvernerklæring for Ailabben. Les om hvordan vi behandler dine personopplysninger.",
+  title: "Personvernerklæring - AI Labben",
+  description: "Personvernerklæring for AI Labben. Les om hvordan vi behandler dine personopplysninger.",
 }
 
 export default function PersonvernPage() {

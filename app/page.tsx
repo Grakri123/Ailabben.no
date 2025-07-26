@@ -120,7 +120,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-                Hvorfor velge Ailabben?
+                Hvorfor velge AI Labben?
               </h2>
               <p className="text-lg text-gray-600 mb-8">
                 Vi er seriegründere som kjenner utfordringene i norske SMB-er. 

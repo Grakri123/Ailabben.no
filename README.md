@@ -1,6 +1,6 @@
-# Ailabben.no
+# AI Labben.no
 
-Profesjonell nettside for Ailabben - leverandør av skreddersydde AI-agenter for norske bedrifter.
+Profesjonell nettside for AI Labben - leverandør av skreddersydde AI-agenter for norske bedrifter.
 
 ## 🚀 Teknisk stack
 
@@ -23,7 +23,7 @@ Profesjonell nettside for Ailabben - leverandør av skreddersydde AI-agenter for
 1. **Klon prosjektet**
 ```bash
 git clone <repo-url>
-cd ailabben-no
+cd ai-labben-no
 ```
 
 2. **Installer dependencies**
@@ -88,7 +88,7 @@ Nettsiden er nå tilgjengelig på [http://localhost:3000](http://localhost:3000)
 ## 📁 Mappestruktur
 
 ```
-ailabben-no/
+ai-labben-no/
 ├── app/                    # Next.js App Router
 │   ├── blogg/             # Blogg funksjonalitet
 │   ├── kontakt/           # Kontaktside
@@ -178,4 +178,4 @@ For spørsmål eller problemer:
 
 ## 📄 Lisens
 
-Proprietær programvare - Ailabben © 2024 
+Proprietær programvare - AI Labben © 2024 

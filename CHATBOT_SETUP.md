@@ -1,4 +1,4 @@
-# 🤖 Ailabben Chatbot - Implementeringsguide
+# 🤖 AI Labben Chatbot - Implementeringsguide
 
 ## Oversikt
 AI-drevet salgsassistent som automatisk starter samtaler med besøkende og konverterer dem til leads.

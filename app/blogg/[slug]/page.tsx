@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.ingress,
       type: 'article',
       publishedTime: post.dato,
-      authors: ['Ailabben'],
+              authors: ['AI Labben'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -84,12 +84,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     dateModified: post.created_at,
     author: {
       '@type': 'Organization',
-      name: 'Ailabben',
+      name: 'AI Labben',
       url: 'https://ailabben.no'
     },
     publisher: {
       '@type': 'Organization',
-      name: 'Ailabben',
+      name: 'AI Labben',
       url: 'https://ailabben.no'
     }
   }

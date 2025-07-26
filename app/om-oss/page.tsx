@@ -78,7 +78,7 @@ export default function AboutPage() {
                   med teknologisk utvikling samtidig som man skal fokusere på kjernevirksomheten.
                 </p>
                 <p>
-                  Derfor startet vi Ailabben. Vi bygger AI-løsninger som er skreddersydd 
+                  Derfor startet vi AI Labben. Vi bygger AI-løsninger som er skreddersydd 
                   for norske bedrifter – ikke generiske verktøy som krever månedsvis 
                   med tilpasning, men løsninger som fungerer fra dag én.
                 </p>
