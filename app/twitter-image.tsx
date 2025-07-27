@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
  
 // Image metadata
-export const alt = 'Ailabben - Skreddersydde AI-agenter for norske bedrifter'
+export const alt = 'Ailabben - Skreddersydde AI-agenter for bedrifter'
 export const size = {
   width: 1200,
   height: 630,

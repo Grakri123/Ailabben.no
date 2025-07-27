@@ -6,7 +6,7 @@ import { Calendar, ArrowRight } from "lucide-react"
 import { supabase } from "@/lib/supabase"
 
 export const metadata: Metadata = {
-  title: "Blogg - AI-innsikter og tips for norske bedrifter",
+  title: "Blogg - AI-innsikter og tips for bedrifter",
   description: "Les våre artikler om AI, automatisering og hvordan teknologi kan hjelpe din bedrift.",
 }
 

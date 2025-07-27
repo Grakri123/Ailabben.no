@@ -11,15 +11,15 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Om oss - Seriegründere som bygger AI-løsninger for norske bedrifter",
-  description: "Vi kjenner utfordringene i norske SMB-er og bygger AI-løsninger som faktisk fungerer. Trygt hostet i EU med norsk support.",
+  title: "Om oss - Seriegründere som bygger AI-løsninger for bedrifter",
+  description: "Vi kjenner utfordringene i SMB-er og bygger AI-løsninger som faktisk fungerer. Trygt hostet i EU.",
 }
 
 const values = [
   {
     icon: Shield,
     title: "Trygghet først",
-    description: "Alle våre løsninger er hostet i EU med norsk support og følger GDPR-kravene til punkt og prikke.",
+    description: "Alle våre løsninger er hostet i EU og følger GDPR-kravene til punkt og prikke.",
   },
   {
     icon: Users,
@@ -34,7 +34,7 @@ const values = [
   {
     icon: Zap,
     title: "Rask implementering",
-    description: "Fra idé til produksjon på uker, ikke måneder. Vi forstår at norske bedrifter trenger raske løsninger.",
+    description: "Fra idé til produksjon på uker, ikke måneder. Vi forstår at bedrifter trenger raske løsninger.",
   },
 ]
 
@@ -50,7 +50,7 @@ export default function AboutPage() {
               <span className="gradient-text"> faktisk fungerer</span>
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
-              Vi er seriegründere som kjenner utfordringene i norske SMB-er. 
+              Vi er seriegründere som kjenner utfordringene i SMB-er. 
               Målet vårt er å hjelpe bedrifter inn i AI-revolusjonen på en trygg og praktisk måte.
             </p>
             <Button asChild size="lg" className="text-lg px-8 py-4">
@@ -74,17 +74,17 @@ export default function AboutPage() {
               <div className="space-y-6 text-lg text-gray-600">
                 <p>
                   Som seriegründere har vi selv kjent på utfordringene med å drive 
-                  norske SMB-er. Vi vet hvor vanskelig det kan være å holde tritt 
+                  SMB-er. Vi vet hvor vanskelig det kan være å holde tritt 
                   med teknologisk utvikling samtidig som man skal fokusere på kjernevirksomheten.
                 </p>
                 <p>
                   Derfor startet vi AI Labben. Vi bygger AI-løsninger som er skreddersydd 
-                  for norske bedrifter – ikke generiske verktøy som krever månedsvis 
+                  for bedrifter – ikke generiske verktøy som krever månedsvis 
                   med tilpasning, men løsninger som fungerer fra dag én.
                 </p>
                 <p>
                   Våre AI-agenter er bygget for å integreres sømløst i eksisterende 
-                  arbeidsflyter, og alle våre tjenester leveres med norsk support 
+                  arbeidsflyter, og alle våre tjenester leveres med kompetent support 
                   og personlig oppfølging.
                 </p>
               </div>
@@ -93,7 +93,7 @@ export default function AboutPage() {
               <div className="aspect-[4/3] bg-gradient-to-br from-orange-200 via-purple-200 to-orange-200 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
                   <Users size={100} className="text-orange-600 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Norske bedrifter</h3>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">SMB-er</h3>
                   <p className="text-gray-600 px-4">Bygget av gründere, for gründere</p>
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Ingen hype, bare nytte. Vi fokuserer på det som faktisk fungerer 
-              for norske bedrifter.
+                              for bedrifter.
             </p>
           </div>
 
@@ -142,17 +142,17 @@ export default function AboutPage() {
             </h2>
             <p className="text-lg text-gray-600 mb-12">
               Vi bygger ikke AI for å imponere investorer eller vise frem fancy teknologi. 
-              Vi bygger AI som løser reelle problemer for norske bedrifter.
+              Vi bygger AI som løser reelle problemer for bedrifter.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
               <div>
                 <h3 className="text-xl font-bold mb-4 text-gray-800">
-                  🇳🇴 Norsk kontekst
+                  🏢 Lokal kontekst
                 </h3>
                 <p className="text-gray-600">
-                  Vi forstår norsk forretningskultur, regelverk og kundeforventninger. 
-                  Våre løsninger er tilpasset norske forhold fra grunnen av.
+                  Vi forstår forretningskultur, regelverk og kundeforventninger. 
+                  Våre løsninger er tilpasset lokale forhold fra grunnen av.
                 </p>
               </div>
               

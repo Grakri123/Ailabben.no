@@ -20,7 +20,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Vi bygger skreddersydde AI-agenter for norske bedrifter. 
+              Vi bygger skreddersydde AI-agenter for bedrifter. 
               Fra resepsjonister til fullautomatisert SEO – trygt og enkelt.
             </p>
             <div className="flex flex-col space-y-2 text-sm text-muted-foreground">

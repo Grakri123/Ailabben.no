@@ -44,7 +44,7 @@ export default function VilkaarPage() {
             <h2 className="text-2xl font-bold mb-4">2. Våre tjenester</h2>
             
             <h3 className="text-xl font-semibold mb-3">2.1 AI-tjenester</h3>
-            <p>AI Labben tilbyr følgende AI-løsninger til norske bedrifter:</p>
+            <p>AI Labben tilbyr følgende AI-løsninger til bedrifter:</p>
             <ul>
               <li>Resepsjonist-agenter (chat, telefon, e-post)</li>
               <li>E-postgenerering og markedsføring</li>

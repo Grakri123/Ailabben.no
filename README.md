@@ -1,6 +1,6 @@
 # AI Labben.no
 
-Profesjonell nettside for AI Labben - leverandør av skreddersydde AI-agenter for norske bedrifter.
+Profesjonell nettside for AI Labben - leverandør av skreddersydde AI-agenter for bedrifter.
 
 ## 🚀 Teknisk stack
 

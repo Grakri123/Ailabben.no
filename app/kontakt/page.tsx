@@ -87,7 +87,7 @@ export default function ContactPage() {
                   <li>✅ Demo tilpasset din bransje og utfordringer</li>
                   <li>✅ Konkrete forslag til AI-implementering</li>
                   <li>✅ Transparent prising uten skjulte kostnader</li>
-                  <li>✅ Norsk support og oppfølging</li>
+                  <li>✅ Kompetent support og oppfølging</li>
                 </ul>
               </div>
             </div>

@@ -53,7 +53,7 @@ const services = [
 
 const benefits = [
   "Skreddersydde løsninger for din bedrift",
-  "Hostet trygt i EU med norsk support",
+      "Hostet trygt i EU",
   "Ingen langtidskontrakter eller skjulte kostnader",
   "Rask implementering og opplæring",
   "24/7 overvåkning og vedlikehold",
@@ -73,7 +73,7 @@ export default function HomePage() {
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
               Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger 
-              dine AI-løsninger. Trygt, enkelt og skreddersydd for norske bedrifter.
+              dine AI-løsninger. Trygt, enkelt og skreddersydd for din bedrift.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="text-lg px-8 py-4">
@@ -135,7 +135,7 @@ export default function HomePage() {
                 Hvorfor velge AI Labben?
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Vi er seriegründere som kjenner utfordringene i norske SMB-er. 
+                Vi er seriegründere som kjenner utfordringene i SMB-er. 
                 Våre AI-løsninger er bygget for å fungere – ikke bare imponere.
               </p>
               <ul className="space-y-4">

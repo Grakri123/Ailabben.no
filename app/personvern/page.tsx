@@ -22,7 +22,7 @@ export default function PersonvernPage() {
             <h2 className="text-2xl font-bold mb-4">1. Hvem vi er</h2>
             <p>
               Granli Holding AS (org. nr. 931 211 404) driver nettsiden ailabben.no og tilbyr 
-              AI-tjenester til norske bedrifter. Vi er behandlingsansvarlig for dine personopplysninger.
+              AI-tjenester til bedrifter. Vi er behandlingsansvarlig for dine personopplysninger.
             </p>
             <div className="bg-gray-50 p-4 rounded-lg mt-4">
               <strong>Kontaktinformasjon:</strong><br />

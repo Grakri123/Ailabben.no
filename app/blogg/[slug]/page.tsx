@@ -142,7 +142,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Klar for å implementere AI i din bedrift?
                 </h2>
                 <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                  Vi hjelper norske bedrifter med å ta i bruk AI-teknologi på en 
+                  Vi hjelper bedrifter med å ta i bruk AI-teknologi på en 
                   trygg og effektiv måte. Få en gratis konsultasjon i dag.
                 </p>
                 <Button asChild size="lg">

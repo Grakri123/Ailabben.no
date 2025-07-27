@@ -18,7 +18,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Hva vi gjør - AI-løsninger for norske bedrifter",
+  title: "Hva vi gjør - AI-løsninger for bedrifter",
   description: "Vi bygger skreddersydde AI-agenter: resepsjonister, e-postgenerering, leads-innsamling, cold calling og SEO automatisering.",
 }
 
@@ -131,7 +131,7 @@ const process = [
   {
     step: "4",
     title: "Oppfølging",
-    description: "Kontinuerlig optimalisering og norsk support for best mulig resultater.",
+          description: "Kontinuerlig optimalisering og kompetent support for best mulig resultater.",
     icon: Shield,
   },
 ]
@@ -149,7 +149,7 @@ export default function ServicesPage() {
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
               Vi bygger ikke AI for å imponere. Vi bygger AI som løser reelle problemer 
-              og gir målbare resultater for norske bedrifter.
+              og gir målbare resultater for bedrifter.
             </p>
             <Button asChild size="lg" className="text-lg px-8 py-4">
               <Link href="/kontakt">
