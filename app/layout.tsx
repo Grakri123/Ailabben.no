@@ -14,6 +14,16 @@ export const metadata: Metadata = {
     template: "%s | Ailabben"
   },
   description: "Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger dine AI-løsninger. Skreddersydd og hostet i EU.",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.svg',
+  },
   keywords: ["AI-agenter", "kunstig intelligens", "automatisering", "chatbots", "Norge", "SMB", "bedrift"],
   authors: [{ name: "Ailabben" }],
   creator: "Ailabben",
