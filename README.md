@@ -173,7 +173,7 @@ npm run build
 ## 📞 Support
 
 For spørsmål eller problemer:
-- E-post: hei@ailabben.no
+- E-post: kristian@ailabben.no
 - Telefon: 95 11 76 49
 
 ## 📄 Lisens

@@ -36,10 +36,10 @@ export function Footer() {
               <div className="flex items-center space-x-2">
                 <Mail size={16} />
                 <a 
-                  href="mailto:hei@ailabben.no"
+                  href="mailto:kristian@ailabben.no"
                   className="hover:text-orange-600 transition-colors"
                 >
-                  hei@ailabben.no
+                  kristian@ailabben.no
                 </a>
               </div>
             </div>

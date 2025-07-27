@@ -7,6 +7,8 @@ import {
   Users, 
   MessageSquare, 
   Search,
+  TrendingUp,
+  Settings,
   ArrowRight,
   CheckCircle
 } from "lucide-react"
@@ -36,6 +38,16 @@ const services = [
     icon: Search,
     title: "SEO automatisering",
     description: "Fullautomatisert SEO og innholdsstrategi for din bedrift",
+  },
+  {
+    icon: TrendingUp,
+    title: "Markedsførings-agent",
+    description: "AI-drevet markedsføring som optimaliserer kampanjer og konverteringer",
+  },
+  {
+    icon: Settings,
+    title: "Skreddersydde løsninger",
+    description: "Fullstendig tilpassede AI-systemer bygget spesielt for din bedrift",
   },
 ]
 
