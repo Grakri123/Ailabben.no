@@ -11,11 +11,12 @@ export function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <Image
-                src="/images/logos/AI Labben.svg"
+                src="/images/logos/AI Labben Logo.svg"
                 alt="AI Labben logo"
-                width={140}
-                height={40}
-                className="h-8 w-auto"
+                width={200}
+                height={50}
+                className="h-10 w-auto"
+                priority
               />
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
