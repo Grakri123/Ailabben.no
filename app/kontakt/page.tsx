@@ -57,10 +57,10 @@ export default function ContactPage() {
                         Vi svarer som regel innen 24 timer
                       </p>
                       <a 
-                        href="mailto:hei@ailabben.no"
+                        href="mailto:kristian@ailabben.no"
                         className="text-orange-600 font-medium hover:text-orange-700"
                       >
-                        hei@ailabben.no
+                        kristian@ailabben.no
                       </a>
                     </div>
                   </div>

@@ -8,6 +8,8 @@ import {
   Users, 
   MessageSquare, 
   Search,
+  TrendingUp,
+  Settings,
   ArrowRight,
   CheckCircle,
   Clock,
@@ -80,6 +82,30 @@ const services = [
       "Overvåker konkurrenter og tilpasser strategi",
     ],
     benefits: ["Høyere Google-rangeringer", "Mer organisk trafikk", "Lavere markedsføringskostnader"]
+  },
+  {
+    icon: TrendingUp,
+    title: "Markedsførings-agent",
+    description: "AI-drevet markedsføring som optimaliserer kampanjer",
+    details: [
+      "Analyserer markedsdata og kundeadferd",
+      "Optimaliserer annonse-budsjetter automatisk",
+      "Tilpasser kampanjer basert på ytelse",
+      "Genererer detaljerte markedsføringsrapporter",
+    ],
+    benefits: ["Bedre ROI på annonser", "Automatisk optimalisering", "Databaserte beslutninger"]
+  },
+  {
+    icon: Settings,
+    title: "Skreddersydde løsninger",
+    description: "Fullstendig tilpassede AI-systemer for din bedrift",
+    details: [
+      "Utvikling av unike AI-løsninger for dine behov",
+      "Integrering med eksisterende systemer",
+      "Omfattende testing og kvalitetssikring",
+      "Dedikert support og vedlikehold",
+    ],
+    benefits: ["Perfekt tilpasset din bedrift", "Kompetitiv fordel", "Langsiktig partnerskap"]
   },
 ]
 

@@ -263,7 +263,7 @@ export default function VilkaarPage() {
               <strong>Granli Holding AS</strong><br />
               Organisasjonsnummer: 931 211 404<br />
               Daglig leder: Kristian Granli<br />
-              E-post: hei@ailabben.no<br />
+              E-post: kristian@ailabben.no<br />
               Telefon: 95 11 76 49
             </div>
           </section>
@@ -271,7 +271,7 @@ export default function VilkaarPage() {
           <div className="border-t pt-8 mt-12 text-sm text-gray-600">
             <p>
               Har du spørsmål om disse vilkårene? 
-              Kontakt oss på <a href="mailto:hei@ailabben.no" className="text-orange-600 hover:text-orange-700">hei@ailabben.no</a> 
+              Kontakt oss på <a href="mailto:kristian@ailabben.no" className="text-orange-600 hover:text-orange-700">kristian@ailabben.no</a> 
               eller ring <a href="tel:+4795117649" className="text-orange-600 hover:text-orange-700">95 11 76 49</a>.
             </p>
           </div>

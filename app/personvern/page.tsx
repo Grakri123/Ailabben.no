@@ -28,7 +28,7 @@ export default function PersonvernPage() {
               <strong>Kontaktinformasjon:</strong><br />
               Granli Holding AS<br />
               Daglig leder og personvernansvarlig: Kristian Granli<br />
-              E-post: hei@ailabben.no<br />
+              E-post: kristian@ailabben.no<br />
               Telefon: 95 11 76 49
             </div>
           </section>
@@ -135,7 +135,7 @@ export default function PersonvernPage() {
             </ul>
 
             <p className="mt-4">
-              For å utøve dine rettigheter, kontakt oss på hei@ailabben.no eller ring 95 11 76 49.
+              For å utøve dine rettigheter, kontakt oss på kristian@ailabben.no eller ring 95 11 76 49.
             </p>
           </section>
 
@@ -188,7 +188,7 @@ export default function PersonvernPage() {
           <div className="border-t pt-8 mt-12 text-sm text-gray-600">
             <p>
               Har du spørsmål om denne personvernerklæringen? 
-              Kontakt oss på <a href="mailto:hei@ailabben.no" className="text-orange-600 hover:text-orange-700">hei@ailabben.no</a> 
+              Kontakt oss på <a href="mailto:kristian@ailabben.no" className="text-orange-600 hover:text-orange-700">kristian@ailabben.no</a> 
               eller ring <a href="tel:+4795117649" className="text-orange-600 hover:text-orange-700">95 11 76 49</a>.
             </p>
           </div>

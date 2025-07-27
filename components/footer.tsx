@@ -84,8 +84,10 @@ export function Footer() {
               <li>Resepsjonist-agent</li>
               <li>E-postgenerering</li>
               <li>Leads-innsamling</li>
+              <li>Cold calling</li>
               <li>SEO automatisering</li>
-              <li>Cold calling bots</li>
+              <li>Markedsførings-agent</li>
+              <li>Skreddersydde løsninger</li>
             </ul>
           </div>
         </div>
