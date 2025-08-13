@@ -28,6 +28,13 @@ interface WizardAnswer {
   questionText: string
 }
 
+interface WizardQuestion {
+  id: string
+  text: string
+  options: string[]
+  multiple?: boolean
+}
+
 interface WizardState {
   currentStep: number
   mainChoice: string
@@ -86,7 +93,7 @@ const MAIN_CHOICES = [
   }
 ]
 
-const QUESTIONS = {
+const QUESTIONS: Record<string, WizardQuestion[]> = {
   leads: [
     {
       id: 'leads-source',
