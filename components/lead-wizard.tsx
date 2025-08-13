@@ -563,8 +563,8 @@ export function LeadWizard() {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <Label htmlFor="navn">Navn *</Label>
+        <div className="text-left">
+          <Label htmlFor="navn" className="text-left">Navn *</Label>
           <Input
             id="navn"
             {...register('navn')}
@@ -572,12 +572,12 @@ export function LeadWizard() {
             placeholder="Ditt fulle navn"
           />
           {errors.navn && (
-            <p className="text-red-500 text-sm mt-1">{errors.navn.message}</p>
+            <p className="text-red-500 text-sm mt-1 text-left">{errors.navn.message}</p>
           )}
         </div>
 
-        <div>
-          <Label htmlFor="epost">E-post *</Label>
+        <div className="text-left">
+          <Label htmlFor="epost" className="text-left">E-post *</Label>
           <Input
             id="epost"
             type="email"
@@ -586,12 +586,12 @@ export function LeadWizard() {
             placeholder="din@epost.no"
           />
           {errors.epost && (
-            <p className="text-red-500 text-sm mt-1">{errors.epost.message}</p>
+            <p className="text-red-500 text-sm mt-1 text-left">{errors.epost.message}</p>
           )}
         </div>
 
-        <div>
-          <Label htmlFor="bedrift">Bedrift (valgfritt)</Label>
+        <div className="text-left">
+          <Label htmlFor="bedrift" className="text-left">Bedrift (valgfritt)</Label>
           <Input
             id="bedrift"
             {...register('bedrift')}
@@ -600,20 +600,22 @@ export function LeadWizard() {
           />
         </div>
 
-        <div className="flex items-start space-x-2 pt-4">
-          <input
-            type="checkbox"
-            id="samtykke"
-            {...register('samtykke')}
-            className="mt-1"
-          />
-          <Label htmlFor="samtykke" className="text-sm text-gray-600 leading-relaxed">
-            Jeg samtykker til at AI Labben kontakter meg angående mine behov og lagrer informasjonen i henhold til personvernreglene.
-          </Label>
+        <div className="pt-4">
+          <div className="flex items-start space-x-3">
+            <input
+              type="checkbox"
+              id="samtykke"
+              {...register('samtykke')}
+              className="mt-1 flex-shrink-0"
+            />
+            <Label htmlFor="samtykke" className="text-sm text-gray-600 leading-relaxed text-left">
+              Jeg samtykker til at AI Labben kontakter meg angående mine behov og lagrer informasjonen i henhold til personvernreglene.
+            </Label>
+          </div>
+          {errors.samtykke && (
+            <p className="text-red-500 text-sm mt-2 ml-6">{errors.samtykke.message}</p>
+          )}
         </div>
-        {errors.samtykke && (
-          <p className="text-red-500 text-sm">{errors.samtykke.message}</p>
-        )}
 
         <div className="flex justify-between pt-6">
           <Button
