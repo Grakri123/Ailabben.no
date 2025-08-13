@@ -429,32 +429,22 @@ export function LeadWizard() {
   const renderMainChoice = () => (
     <div className="space-y-6">
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-3">
+        <h2 className="text-xl font-bold text-gray-900 mb-3">
           Lurer du på hvordan vi kan hjelpe deg?
         </h2>
-        <p className="text-gray-600">
-          Velg det som passer best for din situasjon
-        </p>
       </div>
       
-      <div className="grid grid-cols-1 gap-4">
+      <div className="space-y-3">
         {MAIN_CHOICES.map((choice) => {
-          const Icon = choice.icon
           return (
             <button
               key={choice.id}
               onClick={() => handleMainChoice(choice.id)}
-              className={`p-6 rounded-xl border-2 border-transparent bg-gradient-to-r ${choice.color} text-white hover:scale-105 transition-all duration-300 text-left group`}
+              className="w-full p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-left transition-all duration-200"
             >
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-white/20 rounded-lg">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg">{choice.title}</h3>
-                  <p className="text-white/80 text-sm">{choice.description}</p>
-                </div>
-                <ChevronRight className="w-5 h-5 ml-auto group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-gray-900">{choice.title}</span>
+                <ChevronRight className="w-5 h-5 text-gray-400" />
               </div>
             </button>
           )
