@@ -270,7 +270,6 @@ const QUESTIONS: Record<string, WizardQuestion[]> = {
 }
 
 export function LeadWizard() {
-  const [isOpen, setIsOpen] = useState(false)
   const [wizardState, setWizardState] = useState<WizardState>({
     currentStep: 0,
     mainChoice: '',
@@ -424,7 +423,6 @@ export function LeadWizard() {
       showForm: false,
       showThanks: false
     })
-    setIsOpen(false)
   }
 
   // Render main choice step
@@ -686,59 +684,37 @@ export function LeadWizard() {
     )
   }
 
-  if (!isOpen) {
-    return (
-      <div className="text-center">
-        <Button
-          onClick={() => setIsOpen(true)}
-          size="lg"
-          className="text-lg px-8 py-4 bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700"
-        >
-          Finn din AI-løsning
-          <ArrowRight className="ml-2" size={20} />
-        </Button>
-      </div>
-    )
-  }
-
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">Finn din AI-løsning</h1>
-              {!wizardState.showForm && !wizardState.showThanks && (
-                <p className="text-sm text-gray-500">
-                  Steg {wizardState.currentStep + 1} av {getTotalSteps() + 1}
-                </p>
-              )}
+    <div className="w-full max-w-4xl mx-auto">
+      {/* Inline Wizard Container */}
+      <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden backdrop-blur-sm bg-white/95">
+        {/* Progress bar */}
+        {!wizardState.showForm && !wizardState.showThanks && wizardState.currentStep > 0 && (
+          <div className="px-8 pt-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm font-medium text-gray-600">
+                Steg {wizardState.currentStep} av {getTotalSteps()}
+              </span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={resetWizard}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="w-4 h-4" />
+              </Button>
             </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={resetWizard}
-            >
-              <X className="w-4 h-4" />
-            </Button>
+            <div className="w-full bg-gray-200 rounded-full h-1.5">
+              <div 
+                className="bg-gradient-to-r from-orange-500 to-purple-600 h-1.5 rounded-full transition-all duration-500 ease-out"
+                style={{ width: `${getProgressPercentage()}%` }}
+              />
+            </div>
           </div>
-          
-          {/* Progress bar */}
-          {!wizardState.showForm && !wizardState.showThanks && (
-            <div className="mt-4">
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-gradient-to-r from-orange-500 to-purple-600 h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${getProgressPercentage()}%` }}
-                />
-              </div>
-            </div>
-          )}
-        </div>
+        )}
 
         {/* Content */}
-        <div className="p-6">
+        <div className="p-8">
           {wizardState.showThanks && renderThanksScreen()}
           {wizardState.showForm && renderContactForm()}
           {!wizardState.showForm && !wizardState.showThanks && (
