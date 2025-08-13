@@ -85,6 +85,35 @@ export interface Database {
           created_at?: string
         }
       }
+      wizard_leads: {
+        Row: {
+          id: string
+          navn: string
+          bedrift: string | null
+          epost: string
+          melding: string
+          wizard_svar: any
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          navn: string
+          bedrift?: string | null
+          epost: string
+          melding: string
+          wizard_svar: any
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          navn?: string
+          bedrift?: string | null
+          epost?: string
+          melding?: string
+          wizard_svar?: any
+          created_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never
