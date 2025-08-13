@@ -319,7 +319,7 @@ export function LeadWizard() {
   }
 
   // Handle answer selection
-  const handleAnswer = (answer: string | string[]) => {
+  const handleAnswer = (answer: string | string[], autoProgress: boolean = true) => {
     const currentQuestion = getCurrentQuestion()
     if (!currentQuestion) return
 
@@ -333,6 +333,13 @@ export function LeadWizard() {
       ...prev,
       answers: [...prev.answers.filter(a => a.questionId !== currentQuestion.id), newAnswer]
     }))
+
+    // Auto-progress for single choice questions (not multiple choice)
+    if (autoProgress && !currentQuestion.multiple) {
+      setTimeout(() => {
+        goNext()
+      }, 300) // Small delay for better UX
+    }
   }
 
   // Navigation functions
@@ -483,9 +490,9 @@ export function LeadWizard() {
                     const newAnswers = currentAnswers.includes(option)
                       ? currentAnswers.filter(a => a !== option)
                       : [...currentAnswers, option]
-                    handleAnswer(newAnswers)
+                    handleAnswer(newAnswers, false) // No auto-progress for multiple choice
                   } else {
-                    handleAnswer(option)
+                    handleAnswer(option, true) // Auto-progress for single choice
                   }
                 }}
                 className={`w-full p-4 rounded-lg border-2 text-left transition-all duration-200 ${
@@ -523,14 +530,17 @@ export function LeadWizard() {
               Hopp over
             </Button>
             
-            <Button
-              onClick={goNext}
-              disabled={!currentAnswer}
-              className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700"
-            >
-              <span>Neste</span>
-              <ChevronRight className="w-4 h-4" />
-            </Button>
+            {/* Show Next button only for multiple choice questions */}
+            {question.multiple && (
+              <Button
+                onClick={goNext}
+                disabled={!currentAnswer}
+                className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700"
+              >
+                <span>Neste</span>
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            )}
           </div>
         </div>
       </div>
