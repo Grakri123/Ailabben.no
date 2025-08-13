@@ -76,21 +76,7 @@ export default function HomePage() {
               Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger 
               dine AI-løsninger. Trygt, enkelt og skreddersydd for din bedrift.
             </p>
-            <div className="space-y-6">
-              <LeadWizard />
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" asChild size="lg" className="text-lg px-8 py-4">
-                  <Link href="/hva-vi-gjor">
-                    Les mer om våre tjenester
-                  </Link>
-                </Button>
-                <Button variant="outline" asChild size="lg" className="text-lg px-8 py-4">
-                  <Link href="/kontakt">
-                    Tradisjonell kontakt
-                  </Link>
-                </Button>
-              </div>
-            </div>
+            <LeadWizard />
           </div>
         </div>
       </section>
