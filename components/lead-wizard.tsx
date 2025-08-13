@@ -302,7 +302,7 @@ export function LeadWizard() {
   }
 
   const getTotalSteps = () => {
-    return getCurrentQuestions().length + 1 // +1 for main choice
+    return getCurrentQuestions().length // Just the questions, not including main choice
   }
 
   const getProgressPercentage = () => {
@@ -344,17 +344,20 @@ export function LeadWizard() {
 
   // Navigation functions
   const goNext = () => {
-    const totalSteps = getTotalSteps()
-    if (wizardState.currentStep < totalSteps) {
-      setWizardState(prev => ({
-        ...prev,
-        currentStep: prev.currentStep + 1
-      }))
-    } else {
-      // Show form
+    const questions = getCurrentQuestions()
+    const totalQuestions = questions.length
+    
+    // If we're at the last question, show the contact form
+    if (wizardState.currentStep >= totalQuestions) {
       setWizardState(prev => ({
         ...prev,
         showForm: true
+      }))
+    } else {
+      // Otherwise, go to next question
+      setWizardState(prev => ({
+        ...prev,
+        currentStep: prev.currentStep + 1
       }))
     }
   }
@@ -616,7 +619,11 @@ export function LeadWizard() {
           <Button
             type="button"
             variant="outline"
-            onClick={() => setWizardState(prev => ({ ...prev, showForm: false }))}
+            onClick={() => setWizardState(prev => ({ 
+              ...prev, 
+              showForm: false,
+              currentStep: getCurrentQuestions().length // Go back to last question
+            }))}
             className="flex items-center space-x-2"
           >
             <ChevronLeft className="w-4 h-4" />
