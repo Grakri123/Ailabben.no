@@ -129,9 +129,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6 leading-tight">
                 {post.tittel}
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
-                {post.ingress}
-              </p>
             </header>
 
             {/* Article content */}
