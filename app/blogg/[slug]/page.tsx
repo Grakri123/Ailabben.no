@@ -7,8 +7,8 @@ import { supabase } from "@/lib/supabase"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-// Revalidate individual blog posts every hour
-export const revalidate = 3600
+// Revalidate individual blog posts every 10 minutes for better automation support
+export const revalidate = 600
 
 interface BlogPostPageProps {
   params: {
@@ -24,7 +24,13 @@ async function getBlogPost(slug: string) {
     .eq('publisert', true)
     .single()
 
-  if (error || !data) {
+  if (error) {
+    console.error('Blog post fetch error:', error)
+    return null
+  }
+
+  if (!data) {
+    console.log('No blog post found for slug:', slug)
     return null
   }
 
@@ -129,7 +135,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </header>
 
             {/* Article content */}
-            <div className="prose prose-lg max-w-none prose-headings:scroll-mt-20 prose-headings:font-bold prose-p:text-gray-700 prose-a:text-orange-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-orange-600 prose-code:bg-orange-50 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-pre:bg-gray-50 prose-blockquote:border-orange-500 prose-blockquote:bg-orange-50/50">
+            <div className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-orange-600">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {post.innhold_md}
               </ReactMarkdown>
