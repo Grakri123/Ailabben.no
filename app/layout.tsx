@@ -65,6 +65,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="nb" className="scroll-smooth">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/ofa8sxj.css" />
+      </head>
       <body className={inter.className}>
         <div className="flex min-h-screen flex-col">
           <Navbar />
