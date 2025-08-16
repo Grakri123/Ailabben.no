@@ -7,8 +7,8 @@ import { supabase } from "@/lib/supabase"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-// Revalidate individual blog posts every 10 minutes for better automation support
-export const revalidate = 600
+// Revalidate individual blog posts every 2 minutes for faster updates
+export const revalidate = 120
 
 interface BlogPostPageProps {
   params: {

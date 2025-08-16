@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   description: "Les våre artikler om AI, automatisering og hvordan teknologi kan hjelpe din bedrift.",
 }
 
-// Revalidate the page every hour (3600 seconds)
-export const revalidate = 3600
+// Revalidate the page every 2 minutes for faster blog updates
+export const revalidate = 120
 
 async function getBlogPosts() {
   const { data, error } = await supabase
