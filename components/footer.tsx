@@ -10,14 +10,9 @@ export function Footer() {
           {/* Logo og beskrivelse */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <Image
-                src="/images/logos/AI Labben Logo.svg"
-                alt="AI Labben logo"
-                width={200}
-                height={50}
-                className="h-10 w-auto"
-                priority
-              />
+              <span className="logo-text text-xl text-gray-800">
+                AI LABBEN
+              </span>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
               Vi bygger skreddersydde AI-agenter for bedrifter. 

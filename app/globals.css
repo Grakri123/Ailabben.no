@@ -68,4 +68,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "video", serif;
   font-weight: 400;
   font-style: normal;
+}
+
+/* Logo text font */
+.logo-text {
+  font-family: "video", serif;
+  font-weight: 500;
+  font-style: normal;
 } 

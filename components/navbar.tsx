@@ -39,14 +39,9 @@ export function Navbar() {
     )}>
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/images/logos/AI Labben Logo.svg"
-            alt="AI Labben logo"
-            width={240}
-            height={60}
-            className="h-12 w-auto"
-            priority
-          />
+          <span className="logo-text text-2xl text-gray-800">
+            AI LABBEN
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
