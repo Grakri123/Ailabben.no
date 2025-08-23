@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, ArrowRight } from "lucide-react"
@@ -16,7 +17,7 @@ export const revalidate = 120
 async function getBlogPosts() {
   const { data, error } = await supabase
     .from('blogginnlegg')
-    .select('id, slug, tittel, ingress, dato, created_at')
+    .select('id, slug, tittel, ingress, dato, created_at, featured_image')
     .eq('publisert', true)
     .order('dato', { ascending: false })
 
@@ -68,8 +69,21 @@ export default async function BlogPage() {
               {posts.map((post) => (
                 <Card 
                   key={post.id} 
-                  className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
                 >
+                  {/* Featured Image */}
+                  {post.featured_image && (
+                    <div className="relative w-full h-48 bg-gray-100">
+                      <Image
+                        src={post.featured_image}
+                        alt={post.tittel}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                  )}
+                  
                   <CardHeader>
                     <div className="flex items-center text-sm text-gray-500 mb-3">
                       <Calendar size={16} className="mr-2" />

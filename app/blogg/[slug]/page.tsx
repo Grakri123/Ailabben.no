@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Link from "next/link"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Calendar, ArrowLeft, ArrowRight } from "lucide-react"
@@ -54,12 +55,19 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.ingress,
       type: 'article',
       publishedTime: post.dato,
-              authors: ['AI Labben'],
+      authors: ['AI Labben'],
+      images: post.featured_image ? [{
+        url: post.featured_image,
+        width: 1200,
+        height: 630,
+        alt: post.tittel,
+      }] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.tittel,
       description: post.ingress,
+      images: post.featured_image ? [post.featured_image] : undefined,
     }
   }
 }
@@ -97,7 +105,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       '@type': 'Organization',
       name: 'AI Labben',
       url: 'https://ailabben.no'
-    }
+    },
+    ...(post.featured_image && {
+      image: {
+        '@type': 'ImageObject',
+        url: post.featured_image,
+        width: 1200,
+        height: 630
+      }
+    })
   }
 
   return (
@@ -119,6 +135,20 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </Link>
               </Button>
             </div>
+
+            {/* Featured Image */}
+            {post.featured_image && (
+              <div className="relative w-full h-64 sm:h-80 lg:h-96 mb-12 rounded-2xl overflow-hidden bg-gray-100">
+                <Image
+                  src={post.featured_image}
+                  alt={post.tittel}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                  priority
+                />
+              </div>
+            )}
 
             {/* Article header */}
             <header className="mb-12">

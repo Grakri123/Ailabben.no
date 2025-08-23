@@ -37,6 +37,10 @@ export interface Database {
           publisert: boolean
           dato: string
           created_at: string
+          'Post type': string | null
+          'Antall cluster posts': number | null
+          featured_image: string | null
+          image_gallery: string[] | null
         }
         Insert: {
           id?: string
@@ -47,6 +51,10 @@ export interface Database {
           publisert?: boolean
           dato: string
           created_at?: string
+          'Post type'?: string | null
+          'Antall cluster posts'?: number | null
+          featured_image?: string | null
+          image_gallery?: string[] | null
         }
         Update: {
           id?: string
@@ -57,6 +65,10 @@ export interface Database {
           publisert?: boolean
           dato?: string
           created_at?: string
+          'Post type'?: string | null
+          'Antall cluster posts'?: number | null
+          featured_image?: string | null
+          image_gallery?: string[] | null
         }
       }
       chatbot_leads: {

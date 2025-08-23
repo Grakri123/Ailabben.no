@@ -7,6 +7,14 @@ const nextConfig = {
   },
   images: {
     domains: ['via.placeholder.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/**',
+      },
+    ],
   },
   async rewrites() {
     return [
