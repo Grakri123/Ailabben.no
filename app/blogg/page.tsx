@@ -66,14 +66,14 @@ export default async function BlogPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {posts.map((post) => (
+              {posts.map((post, index) => (
                 <Card 
                   key={post.id} 
-                  className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                  className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden flex flex-col h-full"
                 >
-                  {/* Featured Image */}
-                  {post.featured_image && (
-                    <div className="relative w-full h-48 bg-gray-100">
+                  {/* Featured Image or Gradient Fallback */}
+                  <div className="relative w-full h-48">
+                    {post.featured_image ? (
                       <Image
                         src={post.featured_image}
                         alt={post.tittel}
@@ -81,10 +81,41 @@ export default async function BlogPage() {
                         className="object-cover"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
-                    </div>
-                  )}
+                    ) : (
+                      <div className={`w-full h-full ${
+                        index % 3 === 0 
+                          ? 'bg-gradient-to-br from-orange-100 to-orange-200' 
+                          : index % 3 === 1 
+                          ? 'bg-gradient-to-br from-purple-100 to-purple-200'
+                          : 'bg-gradient-to-br from-blue-100 to-blue-200'
+                      } flex items-center justify-center`}>
+                        <div className="text-center">
+                          <div className={`w-12 h-12 rounded-full mx-auto mb-2 flex items-center justify-center ${
+                            index % 3 === 0 
+                              ? 'bg-orange-200 text-orange-600' 
+                              : index % 3 === 1 
+                              ? 'bg-purple-200 text-purple-600'
+                              : 'bg-blue-200 text-blue-600'
+                          }`}>
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                            </svg>
+                          </div>
+                          <span className={`text-sm font-medium ${
+                            index % 3 === 0 
+                              ? 'text-orange-700' 
+                              : index % 3 === 1 
+                              ? 'text-purple-700'
+                              : 'text-blue-700'
+                          }`}>
+                            AI-innsikter
+                          </span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   
-                  <CardHeader>
+                  <CardHeader className="flex-grow">
                     <div className="flex items-center text-sm text-gray-500 mb-3">
                       <Calendar size={16} className="mr-2" />
                       {formatDate(post.dato)}
@@ -96,7 +127,7 @@ export default async function BlogPage() {
                       {post.ingress}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="pt-0">
                     <Button variant="link" asChild className="p-0 h-auto">
                       <Link href={`/blogg/${post.slug}`}>
                         Les mer
