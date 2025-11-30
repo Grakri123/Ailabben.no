@@ -93,7 +93,7 @@ export default function HomePage() {
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              <span className="gradient-text">Skreddersydde AI-agenter</span>
+              <span className="gradient-text">Skreddersydd Kunstig Intelligens</span>
               <br />
               for din bedrift
             </h1>
