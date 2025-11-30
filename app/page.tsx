@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -13,6 +14,30 @@ import {
   ArrowRight,
   CheckCircle
 } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Kunstig intelligens for bedrifter",
+  description: "AI for bedrifter som vil automatisere kundeservice, e-post, dokumentasjon og SEO. Skreddersydde AI-løsninger for SMB – levert og hostet i EU.",
+  keywords: [
+    "ai for bedrifter",
+    "ai løsninger bedrift",
+    "kunstig intelligens for bedrifter",
+    "ai agent",
+    "ai kundeservice",
+    "ai chatbot bedrift",
+    "automatisering bedrift",
+    "ai for småbedrifter",
+    "ai for norske bedrifter"
+  ],
+  openGraph: {
+    title: "Kunstig intelligens for bedrifter",
+    description: "AI for bedrifter som vil automatisere kundeservice, e-post, dokumentasjon og SEO. Skreddersydde AI-løsninger for SMB – levert og hostet i EU.",
+  },
+  twitter: {
+    title: "Kunstig intelligens for bedrifter",
+    description: "AI for bedrifter som vil automatisere kundeservice, e-post, dokumentasjon og SEO. Skreddersydde AI-løsninger for SMB – levert og hostet i EU.",
+  },
+}
 
 const services = [
   {
