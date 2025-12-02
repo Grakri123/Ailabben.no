@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
@@ -76,6 +77,13 @@ export default function RootLayout({
         </div>
         {/* <Chatbot /> Midlertidig deaktivert */}
         <Analytics />
+        <Script
+          src="https://chatailabben.ailabben.no/widget.js"
+          strategy="afterInteractive"
+        />
+        <Script id="ai-chatbot-init" strategy="afterInteractive">
+          {`AIChatbot.init();`}
+        </Script>
       </body>
     </html>
   )
