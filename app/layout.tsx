@@ -77,6 +77,37 @@ export default function RootLayout({
         </div>
         {/* <Chatbot /> Midlertidig deaktivert */}
         <Analytics />
+        
+        {/* Schema.org Organization markup */}
+        <Script 
+          id="schema-organization" 
+          type="application/ld+json"
+          strategy="beforeInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Ailabben",
+            "url": "https://ailabben.no",
+            "logo": "https://ailabben.no/images/logos/AI Labben ikon 64x64.svg",
+            "description": "Vi bygger skreddersydde AI-agenter for bedrifter. Fra resepsjonister og epostgenerering til fullautomatisert SEO – trygt og enkelt.",
+            "email": "kristian@ailabben.no",
+            "telephone": "+4795117649",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "NO"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+4795117649",
+              "email": "kristian@ailabben.no",
+              "contactType": "customer service",
+              "availableLanguage": ["nb", "no"]
+            },
+            "sameAs": []
+          })}
+        </Script>
+
         <Script
           src="https://chatailabben.ailabben.no/widget.js"
           strategy="afterInteractive"
