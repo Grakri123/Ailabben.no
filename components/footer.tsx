@@ -81,11 +81,14 @@ export function Footer() {
                   AI E-post Kundeservice
                 </Link>
               </li>
+              <li>
+                <Link href="/ai-chatbot-salgsassistent" className="hover:text-orange-600 transition-colors">
+                  AI Chatbot / Salgsassistent
+                </Link>
+              </li>
               <li>Resepsjonist-agent</li>
               <li>Leads-innsamling</li>
-              <li>Cold calling</li>
               <li>SEO automatisering</li>
-              <li>Markedsførings-agent</li>
               <li>Skreddersydde løsninger</li>
             </ul>
           </div>

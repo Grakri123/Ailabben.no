@@ -53,15 +53,15 @@ const services = [
     href: "/ai-epost-kundeservice",
   },
   {
+    icon: MessageSquare,
+    title: "AI Chatbot / Salgsassistent",
+    description: "Aktiv salgsassistent som øker konvertering og genererer leads",
+    href: "/ai-chatbot-salgsassistent",
+  },
+  {
     icon: Users,
     title: "Leads-innsamling",
     description: "Intelligent innsamling og kvalifisering av potensielle kunder",
-    href: null,
-  },
-  {
-    icon: MessageSquare,
-    title: "Cold calling",
-    description: "AI-agenter som håndterer kalde oppringninger profesjonelt",
     href: null,
   },
   {
