@@ -96,8 +96,21 @@ export function Footer() {
                   AI Blogg / SEO-Automatisering
                 </Link>
               </li>
-              <li>Resepsjonist-agent</li>
-              <li>Skreddersydde løsninger</li>
+              <li>
+                <Link href="/rag-database" className="hover:text-orange-600 transition-colors">
+                  RAG Database / Privat Bedrifts-AI
+                </Link>
+              </li>
+              <li>
+                <Link href="/ai-some" className="hover:text-orange-600 transition-colors">
+                  AI SoMe-posting
+                </Link>
+              </li>
+              <li>
+                <Link href="/skreddersydd-utvikling" className="hover:text-orange-600 transition-colors">
+                  Skreddersydd Utvikling
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

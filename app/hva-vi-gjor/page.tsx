@@ -14,7 +14,8 @@ import {
   CheckCircle,
   Clock,
   Shield,
-  Zap
+  Zap,
+  Database
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -102,6 +103,32 @@ const services = [
     href: "/ai-blogg"
   },
   {
+    icon: Database,
+    title: "RAG Database / Privat Bedrifts-AI",
+    description: "Din egen interne AI — trent på bedriftens dokumenter",
+    details: [
+      "Semantisk søk med naturlig språk",
+      "Vektor-database for kontekst og forståelse",
+      "Strengt avgrenset tilgang og full logging",
+      "Sikker EU-hosting og GDPR-kompatibel",
+    ],
+    benefits: ["Raskere beslutninger", "Færre feil", "Mer produktivitet"],
+    href: "/rag-database"
+  },
+  {
+    icon: MessageSquare,
+    title: "AI SoMe-posting",
+    description: "Automatisert SoMe-posting — hold profilen aktiv uten stress",
+    details: [
+      "Tema-plan og strategisk innhold",
+      "Tekst, bilder og hashtags genereres automatisk",
+      "Knyttes mot bloggmaskinen for gjenbruk",
+      "Automatisk publisering på faste intervaller",
+    ],
+    benefits: ["Aktiv profil", "Mer tillit", "Flere kunder"],
+    href: "/ai-some"
+  },
+  {
     icon: TrendingUp,
     title: "Markedsførings-agent",
     description: "AI-drevet markedsføring som optimaliserer kampanjer",
@@ -116,16 +143,16 @@ const services = [
   },
   {
     icon: Settings,
-    title: "Skreddersydde løsninger",
-    description: "Fullstendig tilpassede AI-systemer for din bedrift",
+    title: "Skreddersydd Utvikling",
+    description: "Skreddersydde AI- og automasjonsløsninger for SMB",
     details: [
-      "Utvikling av unike AI-løsninger for dine behov",
-      "Integrering med eksisterende systemer",
-      "Omfattende testing og kvalitetssikring",
-      "Dedikert support og vedlikehold",
+      "API-integrasjoner og interne dashboards",
+      "Automatisering og dokumentgenerering",
+      "RAG-systemer og salgsverktøy",
+      "Komplette applikasjoner med moderne teknologi",
     ],
-    benefits: ["Perfekt tilpasset din bedrift", "Kompetitiv fordel", "Langsiktig partnerskap"],
-    href: null
+    benefits: ["Effektiv drift", "Skalerbar vekst", "Moderne systemer"],
+    href: "/skreddersydd-utvikling"
   },
 ]
 

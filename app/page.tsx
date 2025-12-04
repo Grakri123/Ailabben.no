@@ -9,10 +9,11 @@ import {
   Users, 
   MessageSquare, 
   Search,
-  TrendingUp,
   Settings,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Database,
+  Instagram
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -71,16 +72,22 @@ const services = [
     href: "/ai-blogg",
   },
   {
-    icon: TrendingUp,
-    title: "Markedsførings-agent",
-    description: "AI-drevet markedsføring som optimaliserer kampanjer og konverteringer",
-    href: null,
+    icon: Database,
+    title: "RAG Database / Privat Bedrifts-AI",
+    description: "Intern AI trent på bedriftens dokumenter — rask tilgang til kunnskap",
+    href: "/rag-database",
+  },
+  {
+    icon: Instagram,
+    title: "AI SoMe-posting",
+    description: "Automatisk Instagram & Facebook-innlegg på autopilot",
+    href: "/ai-some",
   },
   {
     icon: Settings,
-    title: "Skreddersydde løsninger",
-    description: "Fullstendig tilpassede AI-systemer bygget spesielt for din bedrift",
-    href: null,
+    title: "Skreddersydd Utvikling",
+    description: "API-integrasjoner, dashboards og komplette AI-løsninger",
+    href: "/skreddersydd-utvikling",
   },
 ]
 
