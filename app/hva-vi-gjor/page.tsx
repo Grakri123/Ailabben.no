@@ -64,16 +64,16 @@ const services = [
   },
   {
     icon: Users,
-    title: "Leads-innsamling",
-    description: "Finn og kvalifiser potensielle kunder",
+    title: "B2B Leads Generator",
+    description: "Automatisert leadsgenerering — GDPR-vennlig og effektiv",
     details: [
-      "Automatisk prospektering på LinkedIn og andre plattformer",
-      "Kvalifiserer leads basert på dine kriterier",
-      "Bygger lister med kontaktinformasjon",
-      "Scorer leads etter sannsynlighet for konvertering",
+      "Skraper Brønnøysund, nettsider og bedriftsdata",
+      "Analyserer kontekst og identifiserer produkt-fit",
+      "Lager svært relevante og personlige e-poster",
+      "Holder seg innenfor norsk markedsføringslov",
     ],
-    benefits: ["Flere kvalifiserte leads", "Lavere kostnader per lead", "Skalerbar prosess"],
-    href: null
+    benefits: ["Mer kvalifiserte leads", "Mindre manuelt arbeid", "GDPR-kompatibel"],
+    href: "/b2b-leads-generator"
   },
   {
     icon: MessageSquare,

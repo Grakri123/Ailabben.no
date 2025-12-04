@@ -86,8 +86,12 @@ export function Footer() {
                   AI Chatbot / Salgsassistent
                 </Link>
               </li>
+              <li>
+                <Link href="/b2b-leads-generator" className="hover:text-orange-600 transition-colors">
+                  B2B Leads Generator
+                </Link>
+              </li>
               <li>Resepsjonist-agent</li>
-              <li>Leads-innsamling</li>
               <li>SEO automatisering</li>
               <li>Skreddersydde løsninger</li>
             </ul>

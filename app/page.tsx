@@ -60,9 +60,9 @@ const services = [
   },
   {
     icon: Users,
-    title: "Leads-innsamling",
-    description: "Intelligent innsamling og kvalifisering av potensielle kunder",
-    href: null,
+    title: "B2B Leads Generator",
+    description: "Automatisert leadsgenerering med AI — GDPR-vennlig og effektiv",
+    href: "/b2b-leads-generator",
   },
   {
     icon: Search,
