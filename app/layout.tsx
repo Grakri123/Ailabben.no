@@ -78,6 +78,20 @@ export default function RootLayout({
         {/* <Chatbot /> Midlertidig deaktivert */}
         <Analytics />
         
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-5S7YET0WYS"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-5S7YET0WYS');
+          `}
+        </Script>
+        
         {/* Schema.org Organization markup */}
         <Script 
           id="schema-organization" 
