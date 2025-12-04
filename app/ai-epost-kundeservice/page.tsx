@@ -339,67 +339,6 @@ export default function AIEpostKundeservicePage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container">
-          <div className="mx-auto max-w-3xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Pris og oppsett
-              </h2>
-              <p className="text-lg text-gray-600">
-                Transparent prising uten skjulte kostnader
-              </p>
-            </div>
-
-            <Card className="border-2 border-orange-200 shadow-xl overflow-hidden">
-              <div className="bg-gradient-to-r from-orange-500 to-purple-600 p-6 text-white text-center">
-                <h3 className="text-2xl font-bold mb-2">AI E-post Kundeservice</h3>
-                <p className="opacity-90">Full automatisering av innboksen din</p>
-              </div>
-              
-              <CardContent className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                  <div className="text-center p-6 bg-orange-50 rounded-2xl">
-                    <p className="text-sm text-gray-600 mb-2">Månedlig</p>
-                    <p className="text-4xl font-bold text-gray-900">1 500 kr</p>
-                    <p className="text-gray-600">/mnd</p>
-                  </div>
-                  <div className="text-center p-6 bg-purple-50 rounded-2xl">
-                    <p className="text-sm text-gray-600 mb-2">Oppsett (engangs)</p>
-                    <p className="text-4xl font-bold text-gray-900">7 500 kr</p>
-                    <p className="text-gray-600">engangskostnad</p>
-                  </div>
-                </div>
-
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Full integrasjon med Gmail eller Outlook",
-                    "Automatisk sortering og klassifisering",
-                    "Intelligente svarutkast",
-                    "Egen logg-webapp",
-                    "Support og vedlikehold inkludert",
-                    "EU-hosting (GDPR-kompatibel)"
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                      <span className="text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Button asChild size="lg" className="w-full text-lg py-6 bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700">
-                  <Link href="/kontakt">
-                    Bestill demo
-                    <ArrowRight className="ml-2" size={20} />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-orange-500 to-purple-600">
         <div className="container text-center">
