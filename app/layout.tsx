@@ -95,6 +95,9 @@ export default function RootLayout({
             "telephone": "+4795117649",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "Disenåvegen 35",
+              "addressLocality": "Skarnes",
+              "postalCode": "2100",
               "addressCountry": "NO"
             },
             "contactPoint": {
