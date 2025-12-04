@@ -295,7 +295,7 @@ export default function RAGDatabasePage() {
                   <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
                     <example.icon className="w-5 h-5 text-indigo-600" />
                   </div>
-                  <p className="text-gray-700 font-medium italic">"{example.question}"</p>
+                  <p className="text-gray-700 font-medium italic">&ldquo;{example.question}&rdquo;</p>
                 </div>
               ))}
             </div>
