@@ -13,7 +13,8 @@ import {
   Clock,
   Shield,
   Zap,
-  Database
+  Database,
+  Sparkles
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -126,7 +127,7 @@ const process = [
     step: "2", 
     title: "Skreddersøm",
     description: "Vi designer og bygger AI-løsningen som passer perfekt til din bedrift.",
-    icon: Bot,
+    icon: Sparkles,
   },
   {
     step: "3",
