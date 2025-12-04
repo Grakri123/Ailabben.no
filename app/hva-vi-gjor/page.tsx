@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { 
   Mail, 
   Users, 
@@ -146,6 +147,7 @@ const process = [
 export default function ServicesPage() {
   return (
     <div className="flex flex-col">
+      <Breadcrumbs />
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-purple-50 to-orange-50 py-20 sm:py-32">
         <div className="container">

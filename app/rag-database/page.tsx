@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { 
   Database, 
   Search, 
@@ -167,6 +168,7 @@ const steps = [
 export default function RAGDatabasePage() {
   return (
     <div className="flex flex-col">
+      <Breadcrumbs />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-indigo-50 via-purple-50 to-white py-20 sm:py-32 overflow-hidden">
         {/* Decorative elements */}

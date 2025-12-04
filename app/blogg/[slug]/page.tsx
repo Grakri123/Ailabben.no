@@ -7,6 +7,7 @@ import { Calendar, ArrowLeft, ArrowRight } from "lucide-react"
 import { supabase } from "@/lib/supabase"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 // Revalidate individual blog posts every 2 minutes for faster updates
 export const revalidate = 120
@@ -118,6 +119,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
+      <Breadcrumbs customTitle={post.tittel} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

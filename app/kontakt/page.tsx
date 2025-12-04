@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Mail, Phone, MapPin } from "lucide-react"
 import { ContactForm } from "@/components/contact-form"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export const metadata: Metadata = {
   title: "Kontakt oss - Få en gratis demo av våre AI-løsninger",
@@ -9,8 +10,10 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="py-20">
-      <div className="container">
+    <>
+      <Breadcrumbs />
+      <div className="py-20">
+        <div className="container">
         <div className="mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">
@@ -100,6 +103,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 } 

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Breadcrumbs } from "@/components/breadcrumbs"
 import { 
   FileText, 
   Search, 
@@ -146,6 +147,7 @@ const steps = [
 export default function AIBloggPage() {
   return (
     <div className="flex flex-col">
+      <Breadcrumbs />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-green-50 via-blue-50 to-white py-20 sm:py-32 overflow-hidden">
         {/* Decorative elements */}
