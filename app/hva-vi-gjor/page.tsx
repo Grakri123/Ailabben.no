@@ -33,19 +33,21 @@ const services = [
       "Videresender komplekse saker til riktig person",
       "Lærer av hver samtale for bedre service",
     ],
-    benefits: ["Redusert responstid", "Lavere kostnader", "Bedre kundeopplevelse"]
+    benefits: ["Redusert responstid", "Lavere kostnader", "Bedre kundeopplevelse"],
+    href: null
   },
   {
     icon: Mail,
-    title: "E-postgenerering",
-    description: "Personlige e-poster som konverterer",
+    title: "AI E-post Kundeservice",
+    description: "Automatiser innboksen — svar raskere, sorter smartere",
     details: [
-      "Genererer personlige oppfølgings-e-poster",
-      "Tilpasser tone og stil til din bedrift",
-      "A/B-tester automatisk for beste resultater",
-      "Integreres med eksisterende CRM-systemer",
+      "Sorterer nyhetsbrev, spam og irrelevante meldinger",
+      "Klassifiserer avsender (kunde, leverandør, lead)",
+      "Lager utkast til svar direkte i kladd-mappen",
+      "Logger alt i din egen private webapp",
     ],
-    benefits: ["Høyere åpningsrater", "Bedre konvertering", "Mer tid til strategi"]
+    benefits: ["Mer tid til viktig arbeid", "Raskere responstid", "Full kontroll"],
+    href: "/ai-epost-kundeservice"
   },
   {
     icon: Users,
@@ -57,7 +59,8 @@ const services = [
       "Bygger lister med kontaktinformasjon",
       "Scorer leads etter sannsynlighet for konvertering",
     ],
-    benefits: ["Flere kvalifiserte leads", "Lavere kostnader per lead", "Skalerbar prosess"]
+    benefits: ["Flere kvalifiserte leads", "Lavere kostnader per lead", "Skalerbar prosess"],
+    href: null
   },
   {
     icon: MessageSquare,
@@ -69,7 +72,8 @@ const services = [
       "Avtaler møter og demos automatisk",
       "Detaljerte rapporter om hver samtale",
     ],
-    benefits: ["Konsekvent kvalitet", "Ingen dårlige dager", "Skalerbar salg"]
+    benefits: ["Konsekvent kvalitet", "Ingen dårlige dager", "Skalerbar salg"],
+    href: null
   },
   {
     icon: Search,
@@ -81,7 +85,8 @@ const services = [
       "Bygger backlinks naturlig og trygt",
       "Overvåker konkurrenter og tilpasser strategi",
     ],
-    benefits: ["Høyere Google-rangeringer", "Mer organisk trafikk", "Lavere markedsføringskostnader"]
+    benefits: ["Høyere Google-rangeringer", "Mer organisk trafikk", "Lavere markedsføringskostnader"],
+    href: null
   },
   {
     icon: TrendingUp,
@@ -93,7 +98,8 @@ const services = [
       "Tilpasser kampanjer basert på ytelse",
       "Genererer detaljerte markedsføringsrapporter",
     ],
-    benefits: ["Bedre ROI på annonser", "Automatisk optimalisering", "Databaserte beslutninger"]
+    benefits: ["Bedre ROI på annonser", "Automatisk optimalisering", "Databaserte beslutninger"],
+    href: null
   },
   {
     icon: Settings,
@@ -105,7 +111,8 @@ const services = [
       "Omfattende testing og kvalitetssikring",
       "Dedikert support og vedlikehold",
     ],
-    benefits: ["Perfekt tilpasset din bedrift", "Kompetitiv fordel", "Langsiktig partnerskap"]
+    benefits: ["Perfekt tilpasset din bedrift", "Kompetitiv fordel", "Langsiktig partnerskap"],
+    href: null
   },
 ]
 
@@ -213,6 +220,16 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                   </div>
+                  {service.href && (
+                    <div className="mt-6 pt-6 border-t">
+                      <Button asChild>
+                        <Link href={service.href}>
+                          Les mer om {service.title}
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
+                      </Button>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}

@@ -76,8 +76,12 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Tjenester</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>
+                <Link href="/ai-epost-kundeservice" className="hover:text-orange-600 transition-colors">
+                  AI E-post Kundeservice
+                </Link>
+              </li>
               <li>Resepsjonist-agent</li>
-              <li>E-postgenerering</li>
               <li>Leads-innsamling</li>
               <li>Cold calling</li>
               <li>SEO automatisering</li>

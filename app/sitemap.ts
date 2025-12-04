@@ -38,6 +38,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
+    // Tjenestesider
+    {
+      url: `${baseUrl}/ai-epost-kundeservice`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
   ]
 
   // Try to get blog posts from Supabase, but handle gracefully if env vars are missing
