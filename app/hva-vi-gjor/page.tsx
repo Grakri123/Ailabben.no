@@ -3,12 +3,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
-  Bot, 
   Mail, 
   Users, 
   MessageSquare, 
   Search,
-  TrendingUp,
   Settings,
   ArrowRight,
   CheckCircle,
@@ -24,19 +22,6 @@ export const metadata: Metadata = {
 }
 
 const services = [
-  {
-    icon: Bot,
-    title: "AI-resepsjonist",
-    description: "24/7 kundeservice som aldri sover",
-    details: [
-      "Besvarer kundehenvendelser øyeblikkelig",
-      "Håndterer bookinger og avtaler",
-      "Videresender komplekse saker til riktig person",
-      "Lærer av hver samtale for bedre service",
-    ],
-    benefits: ["Redusert responstid", "Lavere kostnader", "Bedre kundeopplevelse"],
-    href: null
-  },
   {
     icon: Mail,
     title: "AI E-post Kundeservice",
@@ -77,19 +62,6 @@ const services = [
     href: "/b2b-leads-generator"
   },
   {
-    icon: MessageSquare,
-    title: "Cold calling AI",
-    description: "Profesjonelle oppringninger som fungerer",
-    details: [
-      "Naturlig stemme som låter menneskelig",
-      "Tilpassede samtaler for hver prospect",
-      "Avtaler møter og demos automatisk",
-      "Detaljerte rapporter om hver samtale",
-    ],
-    benefits: ["Konsekvent kvalitet", "Ingen dårlige dager", "Skalerbar salg"],
-    href: null
-  },
-  {
     icon: Search,
     title: "AI Blogg / SEO-Automatisering",
     description: "Automatisk SEO-blogg som bygger autoritet og rangerer høyt",
@@ -127,19 +99,6 @@ const services = [
     ],
     benefits: ["Aktiv profil", "Mer tillit", "Flere kunder"],
     href: "/ai-some"
-  },
-  {
-    icon: TrendingUp,
-    title: "Markedsførings-agent",
-    description: "AI-drevet markedsføring som optimaliserer kampanjer",
-    details: [
-      "Analyserer markedsdata og kundeadferd",
-      "Optimaliserer annonse-budsjetter automatisk",
-      "Tilpasser kampanjer basert på ytelse",
-      "Genererer detaljerte markedsføringsrapporter",
-    ],
-    benefits: ["Bedre ROI på annonser", "Automatisk optimalisering", "Databaserte beslutninger"],
-    href: null
   },
   {
     icon: Settings,

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { LeadWizard } from "@/components/lead-wizard"
 import { 
-  Bot, 
   Mail, 
   Users, 
   MessageSquare, 
@@ -41,12 +40,6 @@ export const metadata: Metadata = {
 }
 
 const services = [
-  {
-    icon: Bot,
-    title: "Resepsjonist-agent",
-    description: "AI-drevet resepsjonist som håndterer kundehenvendelser 24/7",
-    href: null,
-  },
   {
     icon: Mail,
     title: "AI E-post Kundeservice",
