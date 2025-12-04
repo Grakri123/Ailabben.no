@@ -90,16 +90,16 @@ const services = [
   },
   {
     icon: Search,
-    title: "SEO automatisering",
-    description: "Fullautomatisert innholdsstrategi",
+    title: "AI Blogg / SEO-Automatisering",
+    description: "Automatisk SEO-blogg som bygger autoritet og rangerer høyt",
     details: [
-      "Automatisk keyword-research og innholdsplanlegging",
-      "Genererer SEO-optimalisert innhold",
-      "Bygger backlinks naturlig og trygt",
-      "Overvåker konkurrenter og tilpasser strategi",
+      "Keyword-research og topic clusters",
+      "Pilar- og cluster-artikler med internlinking",
+      "Automatisk publisering til CMS",
+      "Rapportering i egen portal",
     ],
-    benefits: ["Høyere Google-rangeringer", "Mer organisk trafikk", "Lavere markedsføringskostnader"],
-    href: null
+    benefits: ["Organisk trafikk på autopilot", "Konsistent innholdsproduksjon", "Høyere Google-rangeringer"],
+    href: "/ai-blogg"
   },
   {
     icon: TrendingUp,

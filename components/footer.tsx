@@ -91,8 +91,12 @@ export function Footer() {
                   B2B Leads Generator
                 </Link>
               </li>
+              <li>
+                <Link href="/ai-blogg" className="hover:text-orange-600 transition-colors">
+                  AI Blogg / SEO-Automatisering
+                </Link>
+              </li>
               <li>Resepsjonist-agent</li>
-              <li>SEO automatisering</li>
               <li>Skreddersydde løsninger</li>
             </ul>
           </div>

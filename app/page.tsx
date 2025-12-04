@@ -66,9 +66,9 @@ const services = [
   },
   {
     icon: Search,
-    title: "SEO automatisering",
-    description: "Fullautomatisert SEO og innholdsstrategi for din bedrift",
-    href: null,
+    title: "AI Blogg / SEO-Automatisering",
+    description: "Automatisk SEO-blogg med pilar- og cluster-artikler på autopilot",
+    href: "/ai-blogg",
   },
   {
     icon: TrendingUp,
