@@ -128,30 +128,35 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => {
-              const CardWrapper = service.href ? Link : 'div'
-              const cardProps = service.href ? { href: service.href } : {}
+              const cardContent = (
+                <Card 
+                  className={`hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full ${service.href ? 'cursor-pointer hover:border-orange-200' : ''}`}
+                >
+                  <CardHeader>
+                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                      <service.icon className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <CardDescription className="text-base">
+                      {service.description}
+                    </CardDescription>
+                    {service.href && (
+                      <span className="text-orange-600 text-sm font-medium mt-2 inline-flex items-center">
+                        Les mer <ArrowRight className="ml-1 w-4 h-4" />
+                      </span>
+                    )}
+                  </CardHeader>
+                </Card>
+              )
               
-              return (
-                <CardWrapper key={index} {...cardProps} className={service.href ? 'block' : ''}>
-                  <Card 
-                    className={`hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full ${service.href ? 'cursor-pointer hover:border-orange-200' : ''}`}
-                  >
-                    <CardHeader>
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                        <service.icon className="w-6 h-6 text-orange-600" />
-                      </div>
-                      <CardTitle className="text-xl">{service.title}</CardTitle>
-                      <CardDescription className="text-base">
-                        {service.description}
-                      </CardDescription>
-                      {service.href && (
-                        <span className="text-orange-600 text-sm font-medium mt-2 inline-flex items-center">
-                          Les mer <ArrowRight className="ml-1 w-4 h-4" />
-                        </span>
-                      )}
-                    </CardHeader>
-                  </Card>
-                </CardWrapper>
+              return service.href ? (
+                <Link key={index} href={service.href} className="block">
+                  {cardContent}
+                </Link>
+              ) : (
+                <div key={index}>
+                  {cardContent}
+                </div>
               )
             })}
           </div>
