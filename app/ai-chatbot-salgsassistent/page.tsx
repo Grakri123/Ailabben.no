@@ -26,23 +26,19 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "AI Chatbot & Salgsassistent – Øk konverteringen | AI Labben",
-  description: "AI-salgsassistent som jobber 24/7. Gir produktanbefalinger, genererer kvalifiserte leads og øker konverteringen på nettsiden din. EU-hostet og GDPR-kompatibel.",
+  title: "AI chatbot / salgsassistent | Aktiv selger 24/7",
+  description: "AI-chatboten gir produktforslag, kvalifiserer leads og samler kontaktinfo. Jobber 24/7 for økt konvertering og bedre kundereise.",
   keywords: [
-    "ai chatbot",
-    "salgsassistent ai",
-    "chatbot nettside",
-    "ai salg",
-    "konvertering nettside",
-    "lead generering chatbot",
-    "ai kundeservice",
-    "chatbot wordpress",
-    "chatbot shopify",
-    "salgsbot"
+    "AI chatbot salgsassistent",
+    "AI salgsassistent 24/7",
+    "AI chatbot for nettside",
+    "AI produktanbefalinger",
+    "automatisert salgsassistent",
+    "SMB AI chatbot"
   ],
   openGraph: {
-    title: "AI Chatbot & Salgsassistent – Øk konverteringen",
-    description: "AI-salgsassistent som jobber 24/7. Gir produktanbefalinger, genererer kvalifiserte leads og øker konverteringen på nettsiden din.",
+    title: "AI chatbot / salgsassistent | Aktiv selger 24/7",
+    description: "AI-chatboten gir produktforslag, kvalifiserer leads og samler kontaktinfo. Jobber 24/7 for økt konvertering og bedre kundereise.",
   },
 }
 

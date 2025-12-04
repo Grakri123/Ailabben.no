@@ -24,23 +24,20 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "AI E-post Kundeservice – Automatiser innboksen | AI Labben",
-  description: "Automatiser e-postkundeservice med AI. Sorter, klassifiser og svar på e-poster automatisk. Sikker EU-hosting, integrasjon med Gmail og Outlook 365.",
+  title: "AI e-post kundeservice | Automatiser innboksen",
+  description: "Automatiser e-postkundeservice: sorter spam, svar raskere, utkast i kladd og logg alt i egen portal. Sikker AI-løsning for SMB.",
   keywords: [
-    "ai e-post",
-    "automatisk e-postsvar",
-    "e-post kundeservice",
-    "ai innboks",
-    "e-post automatisering",
-    "gmail automatisering",
-    "outlook ai",
-    "kundeservice automatisering",
-    "ai for e-post",
-    "e-post sortering ai"
+    "AI e-post kundeservice",
+    "AI kundeservice epost",
+    "automatisert e-posthåndtering",
+    "sortering nyhetsbrev",
+    "gmail AI kundeservice",
+    "outlook AI epost",
+    "SMB epost AI"
   ],
   openGraph: {
-    title: "AI E-post Kundeservice – Automatiser innboksen",
-    description: "Automatiser e-postkundeservice med AI. Sorter, klassifiser og svar på e-poster automatisk. Sikker EU-hosting.",
+    title: "AI e-post kundeservice | Automatiser innboksen",
+    description: "Automatiser e-postkundeservice: sorter spam, svar raskere, utkast i kladd og logg alt i egen portal. Sikker AI-løsning for SMB.",
   },
 }
 

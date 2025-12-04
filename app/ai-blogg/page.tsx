@@ -27,23 +27,19 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "AI Blogg & SEO-Automatisering – Organisk trafikk på autopilot | AI Labben",
-  description: "Automatisk SEO-blogg med AI. Pilar- og cluster-blogging med nøkkelord-analyse og faste intervaller. Organisk trafikk uten manuelt arbeid. EU-hostet.",
+  title: "AI blogg / SEO-automatisering | Automatisert SEO-innhold",
+  description: "Få en AI-basert blogg som gjør keyword-research, skriver pilar- og cluster-artikler, publiserer og rapporterer. Øk organisk trafikk automatisk.",
   keywords: [
-    "ai blogg",
-    "seo automatisering",
-    "automatisk blogg",
-    "pilar blogging",
-    "cluster blogging",
-    "keyword research ai",
-    "innholdsproduksjon ai",
-    "seo innhold",
-    "blogg wordpress",
-    "organisk trafikk"
+    "AI blogg",
+    "SEO automasjon",
+    "AI generert blogginnhold",
+    "pilar cluster artikler",
+    "keyword research AI",
+    "automatisk publisering SEO"
   ],
   openGraph: {
-    title: "AI Blogg & SEO-Automatisering – Organisk trafikk på autopilot",
-    description: "Automatisk SEO-blogg med AI. Pilar- og cluster-blogging med nøkkelord-analyse og faste intervaller. Organisk trafikk uten manuelt arbeid.",
+    title: "AI blogg / SEO-automatisering | Automatisert SEO-innhold",
+    description: "Få en AI-basert blogg som gjør keyword-research, skriver pilar- og cluster-artikler, publiserer og rapporterer. Øk organisk trafikk automatisk.",
   },
 }
 

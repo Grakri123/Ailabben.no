@@ -29,23 +29,19 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "RAG Database & Privat Bedrifts-AI – Intern AI for dokumenter | AI Labben",
-  description: "Din egen interne AI trent på bedriftens dokumenter. Hybrid RAG-system med semantisk søk. Rask tilgang til regler, priser og prosedyrer. EU-hostet og sikker.",
+  title: "RAG database | Privat AI for bedriften din",
+  description: "Semantisk søk i egne dokumenter med hybrid vektor-database. Egen AI trent på bedriftens info — EU-hostet og GDPR-kompatibel.",
   keywords: [
-    "rag database",
-    "privat ai",
-    "bedrifts ai",
-    "intern ai",
-    "vektor database",
+    "RAG database",
+    "privat AI bedrift",
+    "hybrid vektor database",
     "semantisk søk",
-    "dokument søk ai",
-    "bedriftsdokumenter ai",
-    "enterprise ai",
-    "privat chatgpt"
+    "internt oppslagsverk AI",
+    "RAG system"
   ],
   openGraph: {
-    title: "RAG Database & Privat Bedrifts-AI – Intern AI for dokumenter",
-    description: "Din egen interne AI trent på bedriftens dokumenter. Hybrid RAG-system med semantisk søk. Rask tilgang til regler, priser og prosedyrer.",
+    title: "RAG database | Privat AI for bedriften din",
+    description: "Semantisk søk i egne dokumenter med hybrid vektor-database. Egen AI trent på bedriftens info — EU-hostet og GDPR-kompatibel.",
   },
 }
 

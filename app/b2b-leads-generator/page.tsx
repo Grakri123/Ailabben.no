@@ -27,23 +27,19 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "B2B Leads Generator – Automatisert leadsgenerering | AI Labben",
-  description: "Automatisert B2B leadsgenerering med AI. Skraper Brønnøysund, nettsider og data for å finne potensielle kunder. GDPR-vennlig og effektiv.",
+  title: "B2B leads generator | Automatisert prospektering",
+  description: "AI skraper Brønnøysund og nettsider, analyserer produkt-fit og sender personlige e-poster. GDPR-kompatibel leads-motor for SMB.",
   keywords: [
-    "b2b leads",
-    "leadsgenerering",
-    "b2b salg",
-    "automatisk prospektering",
-    "brønnøysund scraping",
-    "cold email",
-    "b2b markedsføring",
-    "salgsautomatisering",
-    "lead generering ai",
-    "prospektering ai"
+    "B2B leads generator AI",
+    "automatisert prospektering",
+    "AI generering leads",
+    "GDPR vennlig leads",
+    "Brønnøysund scraping",
+    "personlige salgs e-poster"
   ],
   openGraph: {
-    title: "B2B Leads Generator – Automatisert leadsgenerering",
-    description: "Automatisert B2B leadsgenerering med AI. Skraper Brønnøysund, nettsider og data for å finne potensielle kunder. GDPR-vennlig og effektiv.",
+    title: "B2B leads generator | Automatisert prospektering",
+    description: "AI skraper Brønnøysund og nettsider, analyserer produkt-fit og sender personlige e-poster. GDPR-kompatibel leads-motor for SMB.",
   },
 }
 

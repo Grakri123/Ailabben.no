@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Legg til riktig verifikasjonskode
+    google: 'google-site-verification=rJxRYTOoLlEzrwwSHrKJiqxiKsznFzvo0veIWKYELoc', // Legg til riktig verifikasjonskode
   },
 }
 

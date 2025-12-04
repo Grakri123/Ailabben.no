@@ -26,23 +26,19 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "AI SoMe-posting – Automatisk Instagram & Facebook | AI Labben",
-  description: "Automatisert SoMe-posting med AI. Hold profilen aktiv uten stress. AI genererer og publiserer innlegg på faste intervaller. GDPR-vennlig og EU-hostet.",
+  title: "AI SoMe-posting | Automatiser Instagram & Facebook",
+  description: "Automatisert tema-plan, tekst, bilder og hashtags. AI publiserer innlegg på faste intervaller og integreres med bloggmaskinen din.",
   keywords: [
-    "ai instagram",
-    "ai facebook",
-    "automatisk posting",
-    "some automatisering",
-    "instagram innlegg ai",
-    "facebook posting ai",
-    "sosiale medier ai",
-    "innhold instagram",
-    "markedsføring automatisering",
-    "some strategi"
+    "AI SoMe posting",
+    "AI instagram posting",
+    "automatisert SoMe innhold",
+    "facebook AI posting",
+    "SoMe autoposting",
+    "tema-plan AI SoMe"
   ],
   openGraph: {
-    title: "AI SoMe-posting – Automatisk Instagram & Facebook",
-    description: "Automatisert SoMe-posting med AI. Hold profilen aktiv uten stress. AI genererer og publiserer innlegg på faste intervaller.",
+    title: "AI SoMe-posting | Automatiser Instagram & Facebook",
+    description: "Automatisert tema-plan, tekst, bilder og hashtags. AI publiserer innlegg på faste intervaller og integreres med bloggmaskinen din.",
   },
 }
 

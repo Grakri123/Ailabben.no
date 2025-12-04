@@ -30,23 +30,19 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Skreddersydd Utvikling – AI & Automatisering for SMB | AI Labben",
-  description: "Skreddersydde AI- og automasjonsløsninger for SMB. API-integrasjoner, dashboards, RAG-systemer og komplette applikasjoner. EU-hostet og moderne teknologi.",
+  title: "Skreddersydd AI-utvikling | Tilpassede automasjonsløsninger",
+  description: "Få skreddersydde AI- og automasjonsløsninger: API-integrasjoner, dashboards, RAG-systemer, dokumentgenerering og salgsverktøy.",
   keywords: [
-    "skreddersydd utvikling",
-    "custom utvikling",
-    "api integrasjon",
-    "automatisering",
-    "dashboard utvikling",
-    "ai infrastruktur",
-    "systemintegrasjon",
-    "software utvikling smb",
-    "tripletex integrasjon",
-    "utviklingsteam"
+    "skreddersydd AI utvikling",
+    "AI automasjonsløsninger",
+    "API integrasjoner AI",
+    "AI system for SMB",
+    "tilpassede AI løsninger",
+    "RAG system utvikling"
   ],
   openGraph: {
-    title: "Skreddersydd Utvikling – AI & Automatisering for SMB",
-    description: "Skreddersydde AI- og automasjonsløsninger for SMB. API-integrasjoner, dashboards, RAG-systemer og komplette applikasjoner.",
+    title: "Skreddersydd AI-utvikling | Tilpassede automasjonsløsninger",
+    description: "Få skreddersydde AI- og automasjonsløsninger: API-integrasjoner, dashboards, RAG-systemer, dokumentgenerering og salgsverktøy.",
   },
 }
 
