@@ -12,7 +12,8 @@ import {
   ArrowRight,
   CheckCircle,
   Database,
-  Instagram
+  Instagram,
+  Sparkles
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -187,7 +188,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-orange-200 to-purple-200 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
-                  <Bot size={80} className="text-orange-600 mx-auto mb-4" />
+                  <Sparkles size={80} className="text-orange-600 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">AI-agenter</h3>
                   <p className="text-gray-600">Bygget i Norge, for Norge</p>
                 </div>
