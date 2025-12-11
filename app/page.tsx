@@ -12,7 +12,6 @@ import {
   ArrowRight,
   CheckCircle,
   Database,
-  Instagram,
   Sparkles
 } from "lucide-react"
 
@@ -70,12 +69,6 @@ const services = [
     title: "RAG Database / Privat Bedrifts-AI",
     description: "Intern AI trent på bedriftens dokumenter — rask tilgang til kunnskap",
     href: "/rag-database",
-  },
-  {
-    icon: Instagram,
-    title: "AI SoMe-posting",
-    description: "Automatisk Instagram & Facebook-innlegg på autopilot",
-    href: "/ai-some",
   },
   {
     icon: Settings,

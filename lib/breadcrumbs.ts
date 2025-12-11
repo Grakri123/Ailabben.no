@@ -17,7 +17,6 @@ export const breadcrumbMap: Record<string, string[]> = {
   "/b2b-leads-generator": ["Hjem", "Tjenester", "B2B Leads Generator"],
   "/ai-blogg": ["Hjem", "Tjenester", "AI Blogg / SEO-Automatisering"],
   "/rag-database": ["Hjem", "Tjenester", "RAG Database / Privat Bedrifts-AI"],
-  "/ai-some": ["Hjem", "Tjenester", "AI SoMe-posting"],
   "/skreddersydd-utvikling": ["Hjem", "Tjenester", "Skreddersydd Utvikling"],
 }
 
@@ -37,7 +36,6 @@ export const breadcrumbPathMap: Record<string, string> = {
   "B2B Leads Generator": "/b2b-leads-generator",
   "AI Blogg / SEO-Automatisering": "/ai-blogg",
   "RAG Database / Privat Bedrifts-AI": "/rag-database",
-  "AI SoMe-posting": "/ai-some",
   "Skreddersydd Utvikling": "/skreddersydd-utvikling",
 }
 

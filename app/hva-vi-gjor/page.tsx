@@ -90,19 +90,6 @@ const services = [
     href: "/rag-database"
   },
   {
-    icon: MessageSquare,
-    title: "AI SoMe-posting",
-    description: "Automatisert SoMe-posting — hold profilen aktiv uten stress",
-    details: [
-      "Tema-plan og strategisk innhold",
-      "Tekst, bilder og hashtags genereres automatisk",
-      "Knyttes mot bloggmaskinen for gjenbruk",
-      "Automatisk publisering på faste intervaller",
-    ],
-    benefits: ["Aktiv profil", "Mer tillit", "Flere kunder"],
-    href: "/ai-some"
-  },
-  {
     icon: Settings,
     title: "Skreddersydd Utvikling",
     description: "Skreddersydde AI- og automasjonsløsninger for SMB",

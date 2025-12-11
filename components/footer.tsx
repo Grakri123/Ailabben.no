@@ -102,11 +102,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/ai-some" className="hover:text-orange-600 transition-colors">
-                  AI SoMe-posting
-                </Link>
-              </li>
-              <li>
                 <Link href="/skreddersydd-utvikling" className="hover:text-orange-600 transition-colors">
                   Skreddersydd Utvikling
                 </Link>
