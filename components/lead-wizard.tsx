@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { supabase } from '@/lib/supabase'
+import { trackMetaEvent } from '@/lib/metaTrack'
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -40,58 +41,6 @@ function splitFullName(fullName: string): { first_name: string; last_name: strin
   const first_name = parts[0] || ''
   const last_name = parts.slice(1).join(' ') || ''
   return { first_name, last_name }
-}
-
-/**
- * Track Meta Pixel + CAPI event
- */
-async function trackMetaEvent(eventName: string, eventId: string, userData: {
-  email: string
-  first_name: string
-  last_name: string
-  external_id?: string
-}) {
-  try {
-    // Track Meta Pixel event (client-side)
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', eventName, {}, { eventID: eventId })
-    }
-
-    // Send to CAPI (server-side)
-    const eventSourceUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.ailabben.no/'
-    
-    const capiResponse = await fetch('/api/meta-capi', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        event_name: eventName,
-        event_id: eventId,
-        event_source_url: eventSourceUrl,
-        user: userData,
-      }),
-    })
-
-    if (!capiResponse.ok) {
-      const errorData = await capiResponse.json().catch(() => ({}))
-      
-      // Log different error levels based on status
-      if (capiResponse.status === 503) {
-        // Configuration missing - just warn, don't treat as error
-        console.warn('[Meta CAPI] Configuration missing:', errorData.message || 'Meta Pixel not configured')
-      } else {
-        // Actual error - log as error
-        console.error('[Meta CAPI] Error:', errorData)
-      }
-    }
-  } catch (error) {
-    // Don't block form submission if Meta tracking fails
-    // Only log if it's not a network error (which is expected if CAPI is not configured)
-    if (error instanceof Error && !error.message.includes('Failed to fetch')) {
-      console.warn('[Meta Tracking] Error:', error)
-    }
-  }
 }
 
 // Types
@@ -353,6 +302,7 @@ export function LeadWizard() {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const inFlightRef = useRef(false)
 
   const {
     register,
@@ -450,10 +400,20 @@ export function LeadWizard() {
 
   // Form submission
   const onSubmit = async (data: ContactFormData) => {
+    // Re-entry guard: prevent double submission
+    if (inFlightRef.current) {
+      console.warn('[Lead Wizard] Submit already in progress, ignoring duplicate call')
+      return
+    }
+
+    inFlightRef.current = true
     setIsSubmitting(true)
 
-    // Generate unique event ID for deduplication
+    // Generate unique event ID for deduplication (once per submission)
     const eventId = generateUUID()
+    
+    // Debug log: eventId generated for this submission
+    console.log('[Lead Wizard] Submitting with eventId:', eventId)
 
     try {
       // Create summary message
@@ -491,11 +451,16 @@ export function LeadWizard() {
 
       // Track Meta Pixel + CAPI event (non-blocking)
       // Use CompleteRegistration for wizard completion
-      trackMetaEvent('CompleteRegistration', eventId, {
-        email: data.epost,
-        first_name,
-        last_name,
-        external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+      // Uses same eventId for both Pixel and CAPI to ensure deduplication
+      trackMetaEvent({
+        eventName: 'CompleteRegistration',
+        eventId,
+        userData: {
+          email: data.epost,
+          first_name,
+          last_name,
+          external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+        },
       }).catch((error) => {
         // Already logged in trackMetaEvent, just catch to prevent blocking
         console.error('[Meta Tracking] Failed:', error)
@@ -514,6 +479,7 @@ export function LeadWizard() {
       // Handle error - could add toast notification
     } finally {
       setIsSubmitting(false)
+      inFlightRef.current = false
     }
   }
 

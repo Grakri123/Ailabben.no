@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabase"
+import { trackMetaEvent } from "@/lib/metaTrack"
 import { Send, CheckCircle, AlertCircle } from "lucide-react"
 
 /**
@@ -32,58 +33,6 @@ function splitFullName(fullName: string): { first_name: string; last_name: strin
   return { first_name, last_name }
 }
 
-/**
- * Track Meta Pixel + CAPI event
- */
-async function trackMetaEvent(eventName: string, eventId: string, userData: {
-  email: string
-  first_name: string
-  last_name: string
-  external_id?: string
-}) {
-  try {
-    // Track Meta Pixel event (client-side)
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', eventName, {}, { eventID: eventId })
-    }
-
-    // Send to CAPI (server-side)
-    const eventSourceUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.ailabben.no/'
-    
-    const capiResponse = await fetch('/api/meta-capi', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        event_name: eventName,
-        event_id: eventId,
-        event_source_url: eventSourceUrl,
-        user: userData,
-      }),
-    })
-
-    if (!capiResponse.ok) {
-      const errorData = await capiResponse.json().catch(() => ({}))
-      
-      // Log different error levels based on status
-      if (capiResponse.status === 503) {
-        // Configuration missing - just warn, don't treat as error
-        console.warn('[Meta CAPI] Configuration missing:', errorData.message || 'Meta Pixel not configured')
-      } else {
-        // Actual error - log as error
-        console.error('[Meta CAPI] Error:', errorData)
-      }
-    }
-  } catch (error) {
-    // Don't block form submission if Meta tracking fails
-    // Only log if it's not a network error (which is expected if CAPI is not configured)
-    if (error instanceof Error && !error.message.includes('Failed to fetch')) {
-      console.warn('[Meta Tracking] Error:', error)
-    }
-  }
-}
-
 const contactSchema = z.object({
   navn: z.string().min(2, "Navn må være minst 2 tegn"),
   bedrift: z.string().optional(),
@@ -96,6 +45,7 @@ type ContactFormData = z.infer<typeof contactSchema>
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const inFlightRef = useRef(false)
 
   const {
     register,
@@ -107,11 +57,21 @@ export function ContactForm() {
   })
 
   const onSubmit = async (data: ContactFormData) => {
+    // Re-entry guard: prevent double submission
+    if (inFlightRef.current) {
+      console.warn('[Contact Form] Submit already in progress, ignoring duplicate call')
+      return
+    }
+
+    inFlightRef.current = true
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    // Generate unique event ID for deduplication
+    // Generate unique event ID for deduplication (once per submission)
     const eventId = generateUUID()
+    
+    // Debug log: eventId generated for this submission
+    console.log('[Contact Form] Submitting with eventId:', eventId)
 
     try {
       // Save to Supabase
@@ -136,11 +96,16 @@ export function ContactForm() {
       const { first_name, last_name } = splitFullName(data.navn)
 
       // Track Meta Pixel + CAPI event (non-blocking)
-      trackMetaEvent('Contact', eventId, {
-        email: data.epost,
-        first_name,
-        last_name,
-        external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+      // Uses same eventId for both Pixel and CAPI to ensure deduplication
+      trackMetaEvent({
+        eventName: 'Contact',
+        eventId,
+        userData: {
+          email: data.epost,
+          first_name,
+          last_name,
+          external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+        },
       }).catch((error) => {
         // Already logged in trackMetaEvent, just catch to prevent blocking
         console.error('[Meta Tracking] Failed:', error)
@@ -153,6 +118,7 @@ export function ContactForm() {
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
+      inFlightRef.current = false
     }
   }
 

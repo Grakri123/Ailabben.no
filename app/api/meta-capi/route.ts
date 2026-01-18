@@ -65,6 +65,13 @@ export async function POST(request: NextRequest) {
     // Validate required fields
     const { event_name, event_id, event_source_url, user } = body
 
+    // Debug log: event_id received from frontend
+    console.log('[Meta CAPI] Received event request:', {
+      event_name,
+      event_id,
+      event_source_url,
+    })
+
     if (!event_name || !event_id || !event_source_url || !user) {
       return NextResponse.json(
         { error: 'Missing required fields: event_name, event_id, event_source_url, user' },
