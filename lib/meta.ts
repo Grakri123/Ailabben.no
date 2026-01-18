@@ -104,6 +104,7 @@ export interface HashedUserData {
   fn?: string[]
   ln?: string[]
   external_id?: string[]
+  client_user_agent?: string
 }
 
 export function prepareUserData(user: UserDataInput): HashedUserData {
@@ -152,7 +153,6 @@ export interface MetaCAPIEvent {
   event_time: number // Unix timestamp
   action_source: 'website' | 'email' | 'app' | 'phone_call' | 'chat' | 'physical_store' | 'system_generated' | 'other'
   user_data: HashedUserData
-  client_user_agent?: string
   custom_data?: Record<string, unknown>
 }
 

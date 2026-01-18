@@ -74,12 +74,23 @@ async function trackMetaEvent(eventName: string, eventId: string, userData: {
     })
 
     if (!capiResponse.ok) {
-      const errorData = await capiResponse.json()
-      console.error('[Meta CAPI] Error:', errorData)
+      const errorData = await capiResponse.json().catch(() => ({}))
+      
+      // Log different error levels based on status
+      if (capiResponse.status === 503) {
+        // Configuration missing - just warn, don't treat as error
+        console.warn('[Meta CAPI] Configuration missing:', errorData.message || 'Meta Pixel not configured')
+      } else {
+        // Actual error - log as error
+        console.error('[Meta CAPI] Error:', errorData)
+      }
     }
   } catch (error) {
     // Don't block form submission if Meta tracking fails
-    console.error('[Meta Tracking] Error:', error)
+    // Only log if it's not a network error (which is expected if CAPI is not configured)
+    if (error instanceof Error && !error.message.includes('Failed to fetch')) {
+      console.warn('[Meta Tracking] Error:', error)
+    }
   }
 }
 

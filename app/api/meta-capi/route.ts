@@ -33,10 +33,20 @@ export async function POST(request: NextRequest) {
   try {
     // Validate environment variables
     if (!META_PIXEL_ID || !META_CAPI_TOKEN) {
-      console.error('[Meta CAPI] Missing environment variables')
+      const missingVars = []
+      if (!META_PIXEL_ID) missingVars.push('META_PIXEL_ID')
+      if (!META_CAPI_TOKEN) missingVars.push('META_CAPI_TOKEN')
+      
+      console.warn('[Meta CAPI] Missing environment variables:', missingVars.join(', '))
+      
+      // Return 503 Service Unavailable instead of 500 - this is a configuration issue, not a server error
       return NextResponse.json(
-        { error: 'Meta Pixel configuration missing' },
-        { status: 500 }
+        { 
+          error: 'Meta Pixel configuration missing',
+          message: `Missing environment variables: ${missingVars.join(', ')}. Please configure META_PIXEL_ID and META_CAPI_TOKEN in your environment.`,
+          configured: false
+        },
+        { status: 503 }
       )
     }
 
@@ -101,6 +111,11 @@ export async function POST(request: NextRequest) {
 
     const hashedUserData = prepareUserData(userDataInput)
 
+    // Add client_user_agent to user_data (required by Meta)
+    if (clientUserAgent) {
+      hashedUserData.client_user_agent = clientUserAgent
+    }
+
     // Get current timestamp
     const eventTime = Math.floor(Date.now() / 1000)
 
@@ -114,7 +129,6 @@ export async function POST(request: NextRequest) {
           action_source: 'website',
           event_source_url: event_source_url,
           user_data: hashedUserData,
-          client_user_agent: clientUserAgent,
         },
       ],
     }
