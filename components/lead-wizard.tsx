@@ -21,6 +21,68 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
+/**
+ * Generate UUID v4
+ */
+function generateUUID(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = (Math.random() * 16) | 0
+    const v = c === 'x' ? r : (r & 0x3) | 0x8
+    return v.toString(16)
+  })
+}
+
+/**
+ * Split full name into first and last name
+ */
+function splitFullName(fullName: string): { first_name: string; last_name: string } {
+  const parts = fullName.trim().split(/\s+/)
+  const first_name = parts[0] || ''
+  const last_name = parts.slice(1).join(' ') || ''
+  return { first_name, last_name }
+}
+
+/**
+ * Track Meta Pixel + CAPI event
+ */
+async function trackMetaEvent(eventName: string, eventId: string, userData: {
+  email: string
+  first_name: string
+  last_name: string
+  external_id?: string
+}) {
+  try {
+    // Track Meta Pixel event (client-side)
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', eventName, {}, { eventID: eventId })
+    }
+
+    // Send to CAPI (server-side)
+    const eventSourceUrl = typeof window !== 'undefined' ? window.location.href : 'https://www.ailabben.no/'
+    
+    const capiResponse = await fetch('/api/meta-capi', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        event_name: eventName,
+        event_id: eventId,
+        event_source_url: eventSourceUrl,
+        user: userData,
+      }),
+    })
+
+    if (!capiResponse.ok) {
+      const errorData = await capiResponse.json()
+      console.error('[Meta CAPI] Error:', errorData)
+    }
+  } catch (error) {
+    // Don't block form submission if Meta tracking fails
+    console.error('[Meta Tracking] Error:', error)
+  }
+}
+
 // Types
 interface WizardAnswer {
   questionId: string
@@ -379,6 +441,9 @@ export function LeadWizard() {
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
 
+    // Generate unique event ID for deduplication
+    const eventId = generateUUID()
+
     try {
       // Create summary message
       const mainChoiceData = MAIN_CHOICES.find(c => c.id === wizardState.mainChoice)
@@ -394,7 +459,7 @@ export function LeadWizard() {
       }
 
       // Save to Supabase
-      const { error } = await supabase
+      const { data: insertedData, error } = await supabase
         .from('wizard_leads')
         .insert([
           {
@@ -405,8 +470,25 @@ export function LeadWizard() {
             wizard_svar: wizardData
           }
         ])
+        .select()
+        .single()
 
       if (error) throw error
+
+      // Split name for Meta tracking
+      const { first_name, last_name } = splitFullName(data.navn)
+
+      // Track Meta Pixel + CAPI event (non-blocking)
+      // Use CompleteRegistration for wizard completion
+      trackMetaEvent('CompleteRegistration', eventId, {
+        email: data.epost,
+        first_name,
+        last_name,
+        external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+      }).catch((error) => {
+        // Already logged in trackMetaEvent, just catch to prevent blocking
+        console.error('[Meta Tracking] Failed:', error)
+      })
 
       // Show thanks screen
       setWizardState(prev => ({
