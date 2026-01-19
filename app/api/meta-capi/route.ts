@@ -62,19 +62,36 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Validate required fields
+    // Validate required fields - CRITICAL: Must use snake_case 'event_id' (not 'eventId')
+    // IMPORTANT: Server must NEVER generate event_id - it must ONLY use the one from frontend
     const { event_name, event_id, event_source_url, user } = body
 
-    // Debug log: event_id received from frontend
-    console.log('[Meta CAPI] Received event request:', {
-      event_name,
-      event_id,
-      event_source_url,
-    })
-
-    if (!event_name || !event_id || !event_source_url || !user) {
+    // CRITICAL VALIDATION: Fail fast if event_id is missing (deduplication will break)
+    if (!event_id) {
+      console.error('❌ [Meta CAPI] Missing event_id from client. Dedupe will break.')
+      console.error('[Meta CAPI] Received body keys:', Object.keys(body))
+      console.error('[Meta CAPI] Received body:', JSON.stringify(body, null, 2))
+      // Check if client sent eventId (camelCase) instead of event_id (snake_case)
+      if (body.eventId) {
+        console.error('❌ [Meta CAPI] Client sent eventId (camelCase) instead of event_id (snake_case)!')
+      }
       return NextResponse.json(
-        { error: 'Missing required fields: event_name, event_id, event_source_url, user' },
+        { 
+          error: 'Missing event_id',
+          message: 'event_id is required for deduplication. Frontend must send event_id (snake_case), not eventId (camelCase).',
+          received_keys: Object.keys(body),
+          hint: body.eventId ? 'Found eventId (camelCase) - use event_id (snake_case) instead' : undefined
+        },
+        { status: 400 }
+      )
+    }
+
+    // Debug log: event_id received from frontend (CRITICAL for deduplication verification)
+    console.log('[Meta Tracking] Received event_id:', event_id)
+
+    if (!event_name || !event_source_url || !user) {
+      return NextResponse.json(
+        { error: 'Missing required fields: event_name, event_source_url, user' },
         { status: 400 }
       )
     }

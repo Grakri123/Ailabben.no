@@ -49,6 +49,9 @@ export async function trackMetaEvent({
     // Send to CAPI (server-side) with same event_id
     const sourceUrl = eventSourceUrl || (typeof window !== 'undefined' ? window.location.href : 'https://www.ailabben.no/')
     
+    // Debug log: Using event_id (CRITICAL for deduplication)
+    console.log('[Meta Tracking] Using event_id:', eventId)
+    
     const capiResponse = await fetch('/api/meta-capi', {
       method: 'POST',
       headers: {
@@ -56,7 +59,7 @@ export async function trackMetaEvent({
       },
       body: JSON.stringify({
         event_name: eventName, // Must be identical to Pixel eventName
-        event_id: eventId, // Must be identical to Pixel eventID
+        event_id: eventId, // CRITICAL: Must be snake_case 'event_id' (not 'eventId') for backend to receive it
         event_source_url: sourceUrl,
         user: userData,
       }),
