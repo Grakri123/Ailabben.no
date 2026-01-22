@@ -40,18 +40,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     // Tjenestesider
     {
-      url: `${baseUrl}/ai-epost-kundeservice`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/ai-chatbot-salgsassistent`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/b2b-leads-generator`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,

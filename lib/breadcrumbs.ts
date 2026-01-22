@@ -12,8 +12,6 @@ export const breadcrumbMap: Record<string, string[]> = {
   "/personvern": ["Hjem", "Personvern"],
   "/vilkaar": ["Hjem", "Vilkår og betingelser"],
   // Tjenestesider
-  "/ai-epost-kundeservice": ["Hjem", "Tjenester", "AI E-post Kundeservice"],
-  "/ai-chatbot-salgsassistent": ["Hjem", "Tjenester", "AI Chatbot / Salgsassistent"],
   "/b2b-leads-generator": ["Hjem", "Tjenester", "B2B Leads Generator"],
   "/ai-blogg": ["Hjem", "Tjenester", "AI Blogg / SEO-Automatisering"],
   "/rag-database": ["Hjem", "Tjenester", "RAG Database / Privat Bedrifts-AI"],
@@ -31,8 +29,6 @@ export const breadcrumbPathMap: Record<string, string> = {
   "Personvern": "/personvern",
   "Vilkår og betingelser": "/vilkaar",
   // Tjenester
-  "AI E-post Kundeservice": "/ai-epost-kundeservice",
-  "AI Chatbot / Salgsassistent": "/ai-chatbot-salgsassistent",
   "B2B Leads Generator": "/b2b-leads-generator",
   "AI Blogg / SEO-Automatisering": "/ai-blogg",
   "RAG Database / Privat Bedrifts-AI": "/rag-database",

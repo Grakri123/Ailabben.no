@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     }
 
     // System prompt for chatbotten
-    const systemPrompt = `Du er en profesjonell salgsassistent for AI Labben, et norsk AI-selskap. Din oppgave er å hjelpe potensielle kunder med å finne riktige AI-løsninger for deres bedrift.
+    const systemPrompt = `Du er en profesjonell kundeservicemedarbeider for AI Labben, et norsk AI-selskap. Din oppgave er å hjelpe potensielle kunder med å finne riktige AI-løsninger for deres bedrift.
 
 VIKTIGE RETNINGSLINJER:
 - Vær vennlig, profesjonell og hjelpsom

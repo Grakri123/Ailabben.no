@@ -4,9 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { 
-  Mail, 
   Users, 
-  MessageSquare, 
   Search,
   Settings,
   ArrowRight,
@@ -24,32 +22,6 @@ export const metadata: Metadata = {
 }
 
 const services = [
-  {
-    icon: Mail,
-    title: "AI E-post Kundeservice",
-    description: "Automatiser innboksen — svar raskere, sorter smartere",
-    details: [
-      "Sorterer nyhetsbrev, spam og irrelevante meldinger",
-      "Klassifiserer avsender (kunde, leverandør, lead)",
-      "Lager utkast til svar direkte i kladd-mappen",
-      "Logger alt i din egen private webapp",
-    ],
-    benefits: ["Mer tid til viktig arbeid", "Raskere responstid", "Full kontroll"],
-    href: "/ai-epost-kundeservice"
-  },
-  {
-    icon: MessageSquare,
-    title: "AI Chatbot / Salgsassistent",
-    description: "En aktiv salgsassistent som jobber for deg 24/7",
-    details: [
-      "Gir produktanbefalinger basert på kundens behov",
-      "Stiller kvalifiserte spørsmål for å forstå kunden",
-      "Genererer leads med relevant informasjon",
-      "Ber om kontaktinfo på riktig tidspunkt",
-    ],
-    benefits: ["Flere kvalifiserte leads", "Høyere konvertering", "Fornøyde kunder"],
-    href: "/ai-chatbot-salgsassistent"
-  },
   {
     icon: Users,
     title: "B2B Leads Generator",

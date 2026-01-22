@@ -4,9 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { LeadWizard } from "@/components/lead-wizard"
 import { 
-  Mail, 
   Users, 
-  MessageSquare, 
   Search,
   Settings,
   ArrowRight,
@@ -24,7 +22,6 @@ export const metadata: Metadata = {
     "kunstig intelligens for bedrifter",
     "ai agent",
     "ai kundeservice",
-    "ai chatbot bedrift",
     "automatisering bedrift",
     "ai for småbedrifter",
     "ai for norske bedrifter"
@@ -40,18 +37,6 @@ export const metadata: Metadata = {
 }
 
 const services = [
-  {
-    icon: Mail,
-    title: "AI E-post Kundeservice",
-    description: "Automatiser innboksen — svar raskere, sorter smartere og spar tid",
-    href: "/ai-epost-kundeservice",
-  },
-  {
-    icon: MessageSquare,
-    title: "AI Chatbot / Salgsassistent",
-    description: "Aktiv salgsassistent som øker konvertering og genererer leads",
-    href: "/ai-chatbot-salgsassistent",
-  },
   {
     icon: Users,
     title: "B2B Leads Generator",
