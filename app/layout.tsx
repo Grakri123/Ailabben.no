@@ -154,13 +154,14 @@ export default function RootLayout({
           })}
         </Script>
 
-        <Script
+        {/* Midlertidig deaktivert - ekstern chatbot */}
+        {/* <Script
           src="https://chatailabben.ailabben.no/widget.js"
           strategy="afterInteractive"
         />
         <Script id="ai-chatbot-init" strategy="afterInteractive">
           {`AIChatbot.init();`}
-        </Script>
+        </Script> */}
       </body>
     </html>
   )
