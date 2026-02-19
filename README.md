@@ -1,4 +1,4 @@
-# AI Labben.no
+¨# AI Labben.no
 
 Profesjonell nettside for AI Labben - leverandør av skreddersydde AI-agenter for bedrifter.
 
