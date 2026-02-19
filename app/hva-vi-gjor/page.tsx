@@ -9,7 +9,6 @@ import {
   Settings,
   ArrowRight,
   CheckCircle,
-  Clock,
   Shield,
   Zap,
   Database,
@@ -17,88 +16,89 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Hva vi gjør - AI-løsninger for bedrifter",
-  description: "Vi bygger skreddersydde AI-agenter: resepsjonister, e-postgenerering, leads-innsamling, cold calling og SEO automatisering.",
+  title: "Våre produkter og tjenester – AI Labben",
+  description: "AI Labben bygger og drifter egne AI-drevne produkter som Auto SEO og Lead Generator, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
 }
 
-const services = [
+const ownProducts = [
+  {
+    icon: Search,
+    title: "Auto SEO",
+    description: "Fullautomatisert SEO-innhold som bygger organisk trafikk over tid",
+    details: [
+      "Keyword-research og topic clusters",
+      "Pilar- og cluster-artikler med automatisk internlinking",
+      "Automatisk publisering til ditt CMS",
+      "Rapportering og rangeringsoppfølging i egen portal",
+    ],
+    benefits: ["Organisk trafikk på autopilot", "Konsistent innholdsproduksjon", "Høyere Google-rangeringer"],
+    href: "/ai-blogg"
+  },
   {
     icon: Users,
-    title: "B2B Leads Generator",
-    description: "Automatisert leadsgenerering — GDPR-vennlig og effektiv",
+    title: "Lead Generator",
+    description: "Automatisert B2B-leadsgenerering — GDPR-vennlig og tilpasset norsk lov",
     details: [
       "Skraper Brønnøysund, nettsider og bedriftsdata",
       "Analyserer kontekst og identifiserer produkt-fit",
-      "Lager svært relevante og personlige e-poster",
+      "Genererer svært relevante og personlige e-poster",
       "Holder seg innenfor norsk markedsføringslov",
     ],
     benefits: ["Mer kvalifiserte leads", "Mindre manuelt arbeid", "GDPR-kompatibel"],
     href: "/b2b-leads-generator"
   },
   {
-    icon: Search,
-    title: "AI Blogg / SEO-Automatisering",
-    description: "Automatisk SEO-blogg som bygger autoritet og rangerer høyt",
-    details: [
-      "Keyword-research og topic clusters",
-      "Pilar- og cluster-artikler med internlinking",
-      "Automatisk publisering til CMS",
-      "Rapportering i egen portal",
-    ],
-    benefits: ["Organisk trafikk på autopilot", "Konsistent innholdsproduksjon", "Høyere Google-rangeringer"],
-    href: "/ai-blogg"
-  },
-  {
     icon: Database,
-    title: "RAG Database / Privat Bedrifts-AI",
-    description: "Din egen interne AI — trent på bedriftens dokumenter",
+    title: "Privat Bedrifts-AI",
+    description: "Din egen interne AI trent på bedriftens dokumenter og kunnskap",
     details: [
       "Semantisk søk med naturlig språk",
-      "Vektor-database for kontekst og forståelse",
+      "Vektordatabase for kontekst og dybdeforståelse",
       "Strengt avgrenset tilgang og full logging",
       "Sikker EU-hosting og GDPR-kompatibel",
     ],
     benefits: ["Raskere beslutninger", "Færre feil", "Mer produktivitet"],
     href: "/rag-database"
   },
-  {
-    icon: Settings,
-    title: "Skreddersydd Utvikling",
-    description: "Skreddersydde AI- og automasjonsløsninger for SMB",
-    details: [
-      "API-integrasjoner og interne dashboards",
-      "Automatisering og dokumentgenerering",
-      "RAG-systemer og salgsverktøy",
-      "Komplette applikasjoner med moderne teknologi",
-    ],
-    benefits: ["Effektiv drift", "Skalerbar vekst", "Moderne systemer"],
-    href: "/skreddersydd-utvikling"
-  },
 ]
+
+const customProduct = {
+  icon: Settings,
+  title: "Skreddersydde løsninger",
+  description: "Vi bygger spesialtilpassede AI-drevne produkter for din bedrift – fra idé og krav til lansering og drift",
+  details: [
+    "API-integrasjoner og interne dashboards",
+    "Automatisering og dokumentgenerering",
+    "RAG-systemer og salgsverktøy",
+    "Komplette applikasjoner med moderne teknologi",
+  ],
+  benefits: ["Effektiv drift", "Skalerbar vekst", "Produkter som faktisk løser problemet"],
+  href: "/skreddersydd-utvikling"
+}
 
 const process = [
   {
     step: "1",
-    title: "Behovsanalyse",
-    description: "Vi kartlegger dine utfordringer og muligheter gjennom en grundig samtale.",
+    title: "Idé og krav",
+    description: "Vi kartlegger behov og muligheter – og definerer hva produktet skal løse.",
     icon: Users,
   },
   {
-    step: "2", 
-    title: "Skreddersøm",
-    description: "Vi designer og bygger AI-løsningen som passer perfekt til din bedrift.",
+    step: "2",
+    title: "Design og prototype",
+    description: "Vi designer brukeropplevelsen og bygger en prototype for tidlig validering.",
     icon: Sparkles,
   },
   {
     step: "3",
-    title: "Implementering",
-    description: "Smidig utrulling med minimal forstyrrelse av din daglige drift.",
+    title: "Utvikling og lansering",
+    description: "Vi bygger og lanserer produktet – smidig, trygt og med fokus på kvalitet.",
     icon: Zap,
   },
   {
     step: "4",
-    title: "Oppfølging",
-          description: "Kontinuerlig optimalisering og kompetent support for best mulig resultater.",
+    title: "Drift og videreutvikling",
+    description: "Kontinuerlig overvåkning, optimalisering og videreutvikling etter lansering.",
     icon: Shield,
   },
 ]
@@ -111,17 +111,20 @@ export default function ServicesPage() {
       <section className="bg-gradient-to-b from-purple-50 to-orange-50 py-20 sm:py-32">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
+            <p className="text-sm font-semibold text-orange-600 uppercase tracking-widest mb-4">
+              Produktstudio
+            </p>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              AI-løsninger som 
-              <span className="gradient-text"> faktisk fungerer</span>
+              Våre produkter
+              <span className="gradient-text"> og tjenester</span>
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
-              Vi bygger ikke AI for å imponere. Vi bygger AI som løser reelle problemer 
-              og gir målbare resultater for bedrifter.
+              Vi bygger og drifter egne AI-drevne verktøy, og utvikler skreddersydde 
+              løsninger for bedrifter som ønsker sitt eget AI-drevne produkt.
             </p>
             <Button asChild size="lg" className="text-lg px-8 py-4">
               <Link href="/kontakt">
-                Se hva vi kan gjøre for deg
+                La oss bygge noe sammen
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>
@@ -129,39 +132,44 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Own Products Section */}
       <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Våre tjenester
+              Egne produkter
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Fra kundeservice til salg og markedsføring – vi automatiserer prosessene 
-              som tar mest tid i din bedrift.
+              Verktøy vi har bygget fra grunnen av – AI i kjernen, brukerfokusert design 
+              og profesjonell drift hostet i EU.
             </p>
           </div>
 
           <div className="space-y-12">
-            {services.map((service, index) => (
+            {ownProducts.map((product, index) => (
               <Card key={index} className="overflow-hidden">
                 <CardHeader className="bg-gradient-to-r from-orange-50 to-purple-50">
                   <div className="flex items-center space-x-4">
                     <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                      <service.icon className="w-8 h-8 text-orange-600" />
+                      <product.icon className="w-8 h-8 text-orange-600" />
                     </div>
-                    <div>
-                      <CardTitle className="text-2xl">{service.title}</CardTitle>
-                      <p className="text-gray-600 text-lg">{service.description}</p>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-1">
+                        <CardTitle className="text-2xl">{product.title}</CardTitle>
+                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-orange-700">
+                          Eget produkt
+                        </span>
+                      </div>
+                      <p className="text-gray-600 text-lg">{product.description}</p>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="p-8">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div>
-                      <h4 className="font-semibold mb-4 text-gray-900">Hva løsningen gjør:</h4>
+                      <h4 className="font-semibold mb-4 text-gray-900">Hva produktet gjør:</h4>
                       <ul className="space-y-2">
-                        {service.details.map((detail, idx) => (
+                        {product.details.map((detail, idx) => (
                           <li key={idx} className="flex items-start">
                             <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
                             <span className="text-gray-700">{detail}</span>
@@ -172,7 +180,7 @@ export default function ServicesPage() {
                     <div>
                       <h4 className="font-semibold mb-4 text-gray-900">Fordeler for din bedrift:</h4>
                       <ul className="space-y-2">
-                        {service.benefits.map((benefit, idx) => (
+                        {product.benefits.map((benefit, idx) => (
                           <li key={idx} className="flex items-start">
                             <ArrowRight className="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
                             <span className="text-gray-700">{benefit}</span>
@@ -181,16 +189,14 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                   </div>
-                  {service.href && (
-                    <div className="mt-6 pt-6 border-t">
-                      <Button asChild>
-                        <Link href={service.href}>
-                          Les mer om {service.title}
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
-                      </Button>
-                    </div>
-                  )}
+                  <div className="mt-6 pt-6 border-t">
+                    <Button asChild>
+                      <Link href={product.href}>
+                        Les mer om {product.title}
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -198,16 +204,84 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Custom Solutions Section */}
       <section className="py-20 bg-gray-50">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+              Skreddersydde løsninger
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              For bedrifter som ønsker et AI-drevet produkt spesialbygd for sine behov. 
+              Vi tar deg fra idé til ferdig produkt i produksjon.
+            </p>
+          </div>
+
+          <Card className="overflow-hidden max-w-4xl mx-auto">
+            <CardHeader className="bg-gradient-to-r from-orange-50 to-purple-50">
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
+                  <customProduct.icon className="w-8 h-8 text-orange-600" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-1">
+                    <CardTitle className="text-2xl">{customProduct.title}</CardTitle>
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-purple-100 text-purple-700">
+                      På bestilling
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-lg">{customProduct.description}</p>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="p-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="font-semibold mb-4 text-gray-900">Hva vi kan bygge:</h4>
+                  <ul className="space-y-2">
+                    {customProduct.details.map((detail, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-4 text-gray-900">Hva du får:</h4>
+                  <ul className="space-y-2">
+                    {customProduct.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <ArrowRight className="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700">{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-6 pt-6 border-t">
+                <Button asChild>
+                  <Link href={customProduct.href}>
+                    Les mer om skreddersydde løsninger
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
               Slik jobber vi
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Fra første samtale til ferdig løsning – en strukturert prosess 
-              som sikrer resultater.
+              Fra idé og krav til ferdig produkt i produksjon – en strukturert prosess 
+              som sikrer kvalitet og resultater.
             </p>
           </div>
 
@@ -234,11 +308,11 @@ export default function ServicesPage() {
         <div className="container text-center">
           <div className="mx-auto max-w-3xl text-white">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Klar for å automatisere din bedrift?
+              Klar for å ta i bruk et av produktene?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              La oss vise deg konkrete eksempler på hvordan AI kan spare tid 
-              og penger i din bedrift. Gratis demo, ingen forpliktelser.
+              Enten du vil prøve Auto SEO, Lead Generator eller ønsker å snakke om 
+              et skreddersydd prosjekt – vi er klare for en samtale.
             </p>
             <Button 
               asChild 
@@ -247,7 +321,7 @@ export default function ServicesPage() {
               className="text-lg px-8 py-4"
             >
               <Link href="/kontakt">
-                Bestill gratis demo
+                Kontakt oss for å lære mer
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>

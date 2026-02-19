@@ -4,8 +4,8 @@ import { ContactForm } from "@/components/contact-form"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export const metadata: Metadata = {
-  title: "Kontakt oss - Få en gratis demo av våre AI-løsninger",
-  description: "Kontakt AI Labben for en gratis demo av våre AI-agenter. Ring 95 11 76 49 eller send oss en melding.",
+  title: "Kontakt AI Labben – Produktstudioet bak Auto SEO og Lead Generator",
+  description: "Kontakt AI Labben for å lære mer om våre produkter eller for å diskutere et skreddersydd AI-prosjekt. Ring 95 11 76 49 eller send oss en melding.",
 }
 
 export default function ContactPage() {
@@ -20,8 +20,8 @@ export default function ContactPage() {
               La oss <span className="gradient-text">snakke sammen</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi tilbyr gratis demo og konsultasjon for å finne den AI-løsningen 
-              som passer best for din bedrift.
+              Enten du vil vite mer om Auto SEO, Lead Generator eller ønsker å 
+              diskutere et skreddersydd AI-prosjekt – vi vil gjerne høre fra deg.
             </p>
           </div>
 
@@ -39,7 +39,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold mb-1">Ring oss</h3>
                       <p className="text-gray-600 mb-2">
-                        Snakk direkte med en av våre AI-eksperter
+                        Snakk direkte med oss om produktene eller prosjektet ditt
                       </p>
                       <a 
                         href="tel:+4795117649"
@@ -86,11 +86,11 @@ export default function ContactPage() {
               <div className="bg-gradient-to-r from-orange-50 to-purple-50 p-6 rounded-lg">
                 <h3 className="font-semibold mb-3">Hva du kan forvente:</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
-                  <li>✅ Gratis konsultasjon og behovsanalyse</li>
-                  <li>✅ Demo tilpasset din bransje og utfordringer</li>
-                  <li>✅ Konkrete forslag til AI-implementering</li>
+                  <li>✅ Gratis samtale om ditt behov eller produktidé</li>
+                  <li>✅ Demo av Auto SEO eller Lead Generator tilpasset din bransje</li>
+                  <li>✅ Konkrete innspill til et skreddersydd AI-prosjekt</li>
                   <li>✅ Transparent prising uten skjulte kostnader</li>
-                  <li>✅ Kompetent support og oppfølging</li>
+                  <li>✅ Profesjonell oppfølging gjennom hele prosessen</li>
                 </ul>
               </div>
             </div>

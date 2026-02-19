@@ -14,61 +14,66 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Kunstig intelligens for bedrifter",
-  description: "AI for bedrifter som vil automatisere kundeservice, e-post, dokumentasjon og SEO. Skreddersydde AI-løsninger for SMB – levert og hostet i EU.",
+  title: "AI-drevne produkter og skreddersydde løsninger for bedrifter",
+  description: "AI Labben er produktstudioet bak Auto SEO, Lead Generator og flere AI-drevne verktøy. Vi bygger egne produkter og skreddersydde løsninger – hostet sikkert i EU.",
   keywords: [
-    "ai for bedrifter",
-    "ai løsninger bedrift",
+    "AI Labben",
+    "produktstudio",
+    "AI-verktøy",
+    "Auto SEO",
+    "Lead Generator",
     "kunstig intelligens for bedrifter",
-    "ai agent",
-    "ai kundeservice",
-    "automatisering bedrift",
-    "ai for småbedrifter",
-    "ai for norske bedrifter"
+    "AI-drevne produkter",
+    "skreddersydde AI-løsninger",
+    "automatisering bedrift"
   ],
   openGraph: {
-    title: "Kunstig intelligens for bedrifter",
-    description: "AI for bedrifter som vil automatisere kundeservice, e-post, dokumentasjon og SEO. Skreddersydde AI-løsninger for SMB – levert og hostet i EU.",
+    title: "AI Labben – Produktstudio for AI-drevne verktøy",
+    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger for bedrifter.",
   },
   twitter: {
-    title: "Kunstig intelligens for bedrifter",
-    description: "AI for bedrifter som vil automatisere kundeservice, e-post, dokumentasjon og SEO. Skreddersydde AI-løsninger for SMB – levert og hostet i EU.",
+    title: "AI Labben – Produktstudio for AI-drevne verktøy",
+    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger for bedrifter.",
   },
 }
 
-const services = [
-  {
-    icon: Users,
-    title: "B2B Leads Generator",
-    description: "Automatisert leadsgenerering med AI — GDPR-vennlig og effektiv",
-    href: "/b2b-leads-generator",
-  },
+const products = [
   {
     icon: Search,
-    title: "AI Blogg / SEO-Automatisering",
-    description: "Automatisk SEO-blogg med pilar- og cluster-artikler på autopilot",
+    title: "Auto SEO",
+    description: "Fullautomatisert SEO-blogg som bygger organisk trafikk – pilar- og cluster-artikler på autopilot",
     href: "/ai-blogg",
+    badge: "Eget produkt",
+  },
+  {
+    icon: Users,
+    title: "Lead Generator",
+    description: "Automatisert B2B-leadsgenerering med AI — GDPR-vennlig og tilpasset norsk markedsføringslov",
+    href: "/b2b-leads-generator",
+    badge: "Eget produkt",
   },
   {
     icon: Database,
-    title: "RAG Database / Privat Bedrifts-AI",
-    description: "Intern AI trent på bedriftens dokumenter — rask tilgang til kunnskap",
+    title: "Privat Bedrifts-AI",
+    description: "Din egen interne AI trent på bedriftens dokumenter — semantisk søk og sikker EU-hosting",
     href: "/rag-database",
+    badge: "Eget produkt",
   },
   {
     icon: Settings,
-    title: "Skreddersydd Utvikling",
-    description: "API-integrasjoner, dashboards og komplette AI-løsninger",
+    title: "Skreddersydde løsninger",
+    description: "Vi bygger spesialtilpassede AI-drevne produkter for din bedrift – fra idé til lansering og drift",
     href: "/skreddersydd-utvikling",
+    badge: "På bestilling",
   },
 ]
 
 const benefits = [
-  "Skreddersydde løsninger for din bedrift",
-      "Hostet trygt i EU",
+  "Profesjonelt utviklede produkter med AI i kjernen",
+  "Hostet sikkert i EU – fullt GDPR-kompatibelt",
   "Ingen langtidskontrakter eller skjulte kostnader",
-  "Rask implementering og opplæring",
-  "24/7 overvåkning og vedlikehold",
+  "Rask implementering og tett oppfølging",
+  "24/7 overvåkning og kontinuerlig videreutvikling",
 ]
 
 export default function HomePage() {
@@ -78,48 +83,63 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-orange-50 to-purple-50 py-20 sm:py-32">
         <div className="container">
           <div className="mx-auto max-w-4xl text-center">
+            <p className="text-sm font-semibold text-orange-600 uppercase tracking-widest mb-4">
+              Produktstudio
+            </p>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              <span className="gradient-text">Skreddersydd Kunstig Intelligens</span>
+              Vi bygger{" "}
+              <span className="gradient-text">AI-drevne verktøy</span>
               <br />
-              for din bedrift
+              som former fremtiden for arbeid
             </h1>
-            <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
-              Fra resepsjonister og epostgenerering til fullautomatisert SEO – vi bygger 
-              dine AI-løsninger. Trygt, enkelt og skreddersydd for din bedrift.
+            <p className="text-lg leading-8 text-gray-600 mb-4 max-w-3xl mx-auto">
+              Vi utvikler og lanserer digitale produkter med kunstig intelligens – 
+              våre egne og dine. Fra Auto SEO og Lead Generator til skreddersydde 
+              løsninger for din bedrift.
+            </p>
+            <p className="text-sm text-gray-500 mb-8">
+              Utviklet av oss: <strong>Auto SEO</strong>, <strong>Lead Generator</strong> og flere i emning
             </p>
             <LeadWizard />
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20" id="tjenester">
+      {/* Products Section */}
+      <section className="py-20" id="produkter">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Våre AI-løsninger
+              Våre produkter og tjenester
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi bygger intelligente agenter som automatiserer dine daglige oppgaver 
-              og forbedrer kundeopplevelsen.
+              Gjennomtenkte AI-verktøy vi har bygget fra grunnen av – og skreddersydde 
+              løsninger for bedrifter som ønsker sitt eget AI-drevne produkt.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, index) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            {products.map((product, index) => {
               const cardContent = (
                 <Card 
-                  className={`hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full ${service.href ? 'cursor-pointer hover:border-orange-200' : ''}`}
+                  className={`hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full ${product.href ? 'cursor-pointer hover:border-orange-200' : ''}`}
                 >
                   <CardHeader>
-                    <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
-                      <service.icon className="w-6 h-6 text-orange-600" />
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <product.icon className="w-6 h-6 text-orange-600" />
+                      </div>
+                      {product.badge && (
+                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-orange-700">
+                          {product.badge}
+                        </span>
+                      )}
                     </div>
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <CardTitle className="text-xl">{product.title}</CardTitle>
                     <CardDescription className="text-base">
-                      {service.description}
+                      {product.description}
                     </CardDescription>
-                    {service.href && (
+                    {product.href && (
                       <span className="text-orange-600 text-sm font-medium mt-2 inline-flex items-center">
                         Les mer <ArrowRight className="ml-1 w-4 h-4" />
                       </span>
@@ -128,8 +148,8 @@ export default function HomePage() {
                 </Card>
               )
               
-              return service.href ? (
-                <Link key={index} href={service.href} className="block">
+              return product.href ? (
+                <Link key={index} href={product.href} className="block">
                   {cardContent}
                 </Link>
               ) : (
@@ -151,8 +171,9 @@ export default function HomePage() {
                 Hvorfor velge AI Labben?
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Vi er seriegründere som kjenner utfordringene i SMB-er. 
-                Våre AI-løsninger er bygget for å fungere – ikke bare imponere.
+                Vi er seriegründere som har bygget produkter fra idé til lansering og drift. 
+                Vår erfaring med hele produktreisen gjør at vi vet hva som trengs for at et 
+                AI-drevet verktøy faktisk skaper verdi.
               </p>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
@@ -167,8 +188,8 @@ export default function HomePage() {
               <div className="aspect-square bg-gradient-to-br from-orange-200 to-purple-200 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
                   <Sparkles size={80} className="text-orange-600 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">AI-agenter</h3>
-                  <p className="text-gray-600">Bygget i Norge, for Norge</p>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Produktstudio</h3>
+                  <p className="text-gray-600">Bygget i Norge, for verden</p>
                 </div>
               </div>
             </div>
@@ -181,11 +202,11 @@ export default function HomePage() {
         <div className="container text-center">
           <div className="mx-auto max-w-3xl text-white">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Klar for å komme i gang?
+              La oss bygge noe sammen
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              La oss vise deg hvordan AI kan transformere din bedrift. 
-              Få en gratis demo tilpasset dine behov.
+              Enten du vil ta i bruk ett av våre produkter eller ønsker et 
+              skreddersydd AI-drevet verktøy – vi vil gjerne høre om prosjektet ditt.
             </p>
             <Button 
               asChild 
@@ -194,7 +215,7 @@ export default function HomePage() {
               className="text-lg px-8 py-4"
             >
               <Link href="/kontakt">
-                Bestill demo nå
+                Kontakt oss for å lære mer
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>
