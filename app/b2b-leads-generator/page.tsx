@@ -27,19 +27,20 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "B2B leads generator | Automatisert prospektering",
-  description: "AI skraper Brønnøysund og nettsider, analyserer produkt-fit og sender personlige e-poster. GDPR-kompatibel leads-motor for SMB.",
+  title: "Lead Generator | Under produksjon – AI Labben",
+  description: "Lead Generator er under produksjon. Vi bygger et verktøy for automatisiert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
   keywords: [
+    "Lead Generator",
     "B2B leads generator AI",
     "automatisert prospektering",
     "AI generering leads",
     "GDPR vennlig leads",
     "Brønnøysund scraping",
-    "personlige salgs e-poster"
+    "under produksjon"
   ],
   openGraph: {
-    title: "B2B leads generator | Automatisert prospektering",
-    description: "AI skraper Brønnøysund og nettsider, analyserer produkt-fit og sender personlige e-poster. GDPR-kompatibel leads-motor for SMB.",
+    title: "Lead Generator | Under produksjon – AI Labben",
+    description: "Vi bygger Lead Generator – automatisiert B2B-leadsgenerering. Kontakt oss for å høre mer om hva som kommer.",
   },
 }
 
@@ -152,26 +153,27 @@ export default function B2BLeadsGeneratorPage() {
         
         <div className="container relative">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
-              <Users className="w-4 h-4" />
-              B2B Leadsgenerering
+            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
+              <Clock className="w-4 h-4" />
+              Under produksjon
             </div>
             
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6 animate-fade-in">
-              <span className="gradient-text">Automatisert B2B leadsgenerering</span>
+              <span className="gradient-text">Lead Generator</span>
               <br />
-              <span className="text-gray-900">— GDPR-vennlig og effektiv</span>
+              <span className="text-gray-900">— kommer snart</span>
             </h1>
             
             <p className="text-lg sm:text-xl leading-8 text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up">
-              Skraper Brønnøysund, nettsider og data for å finne potensielle kunder. 
-              Sender personaliserte e-poster som åpner dører uten å bryte markedsføringsloven.
+              Vi jobber med et verktøy for automatisiert B2B-leadsgenerering: skraper Brønnøysund og nettsider, 
+              analyserer produkt-fit og sender personlige e-poster – GDPR-vennlig og tilpasset norsk markedsføringslov. 
+              Kontakt oss for å høre mer om hva som kommer.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
               <Button asChild size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
                 <Link href="/kontakt">
-                  Bestill demo
+                  Kontakt oss – få beskjed om lansering
                   <ArrowRight className="ml-2" size={20} />
                 </Link>
               </Button>
@@ -376,10 +378,10 @@ export default function B2BLeadsGeneratorPage() {
           <div className="mx-auto max-w-3xl text-white">
             <Users className="w-16 h-16 mx-auto mb-6 opacity-90" />
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Klar for å fylle salgspipelinen?
+              Vil du høre mer om Lead Generator?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Opplev hvordan AI bygger salgsrørledningen for deg.
+              Vi jobber med lansering. Kontakt oss for å få beskjed om hva som kommer og når det er klart.
             </p>
             <Button 
               asChild 
@@ -388,7 +390,7 @@ export default function B2BLeadsGeneratorPage() {
               className="text-lg px-8 py-6"
             >
               <Link href="/kontakt">
-                Bestill demo nå
+                Kontakt oss
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>

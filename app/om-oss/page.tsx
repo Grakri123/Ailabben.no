@@ -13,7 +13,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Om oss – Produktstudioet bak Auto SEO og Lead Generator",
+  title: "Om oss – Produktstudioet bak AutoSEO og Lead Generator",
   description: "AI Labben er et produktstudio grunnlagt av seriegründere. Vi bygger og lanserer AI-drevne verktøy og skreddersydde løsninger – med kvalitet, brukerfokus og EU-hosting.",
 }
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
               <span className="gradient-text"> AI med brukerfokusert design</span>
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
-              AI Labben er produktstudioet bak Auto SEO, Lead Generator og fremtidige 
+              AI Labben er produktstudioet bak AutoSEO (autoseo.no), Lead Generator og fremtidige 
               AI-drevne verktøy. Vi eksperimenterer, validerer og lanserer produkter 
               som gjør arbeidshverdagen bedre.
             </p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                   selv, men et middel for å bygge bedre produkter.
                 </p>
                 <p>
-                  Vi tilbyr to spor: egne produkter som Auto SEO og Lead Generator som 
+                  Vi tilbyr to spor: egne produkter som AutoSEO og Lead Generator som 
                   du kan ta i bruk i dag, og skreddersydde løsninger for bedrifter som 
                   ønsker et spesialbygd AI-drevet produkt.
                 </p>
@@ -203,7 +203,7 @@ export default function AboutPage() {
               Nysgjerrig på hva vi kan bygge sammen?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Kontakt AI Labben – produktstudioet bak Auto SEO, Lead Generator 
+              Kontakt AI Labben – produktstudioet bak AutoSEO, Lead Generator 
               og dine fremtidige verktøy.
             </p>
             <Button 

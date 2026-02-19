@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "AI Labben – Produktstudio for AI-drevne verktøy",
     template: "%s | AI Labben"
   },
-  description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger. Hostet sikkert i EU.",
+  description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som AutoSEO (autoseo.no) og Lead Generator, samt skreddersydde løsninger. Hostet sikkert i EU.",
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.svg',
   },
-  keywords: ["AI Labben", "produktstudio", "AI-verktøy", "Auto SEO", "Lead Generator", "kunstig intelligens", "automatisering", "Norge", "bedrift"],
+  keywords: ["AI Labben", "produktstudio", "AI-verktøy", "AutoSEO", "autoseo.no", "Lead Generator", "kunstig intelligens", "automatisering", "Norge", "bedrift"],
   authors: [{ name: "AI Labben" }],
   creator: "AI Labben",
   publisher: "AI Labben",
@@ -36,12 +36,12 @@ export const metadata: Metadata = {
     url: "https://ailabben.no",
     siteName: "AI Labben",
     title: "AI Labben – Produktstudio for AI-drevne verktøy",
-    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger.",
+    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som AutoSEO (autoseo.no) og Lead Generator, samt skreddersydde løsninger.",
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Labben – Produktstudio for AI-drevne verktøy",
-    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger.",
+    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som AutoSEO (autoseo.no) og Lead Generator, samt skreddersydde løsninger.",
   },
   robots: {
     index: true,
@@ -133,7 +133,7 @@ export default function RootLayout({
             "name": "Ailabben",
             "url": "https://ailabben.no",
             "logo": "https://ailabben.no/images/logos/AI Labben ikon 64x64.svg",
-            "description": "AI Labben er et produktstudio som bygger og lanserer AI-drevne digitale verktøy. Vi skaper egne produkter som Auto SEO og Lead Generator, og utvikler skreddersydde løsninger – alt hostet sikkert i EU.",
+            "description": "AI Labben er et produktstudio som bygger og lanserer AI-drevne digitale verktøy. Vi skaper egne produkter som AutoSEO (autoseo.no) og Lead Generator, og utvikler skreddersydde løsninger – alt hostet sikkert i EU.",
             "email": "kristian@ailabben.no",
             "telephone": "+4795117649",
             "address": {

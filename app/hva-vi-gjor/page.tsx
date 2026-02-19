@@ -11,20 +11,19 @@ import {
   CheckCircle,
   Shield,
   Zap,
-  Database,
   Sparkles
 } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Våre produkter og tjenester – AI Labben",
-  description: "AI Labben bygger og drifter egne AI-drevne produkter som Auto SEO og Lead Generator, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
+  description: "AI Labben bygger og drifter egne AI-drevne produkter som AutoSEO (autoseo.no) og Lead Generator, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
 }
 
 const ownProducts = [
   {
     icon: Search,
-    title: "Auto SEO",
-    description: "Fullautomatisert SEO-innhold som bygger organisk trafikk over tid",
+    title: "AutoSEO",
+    description: "Fullautomatisert SEO-innhold som bygger organisk trafikk over tid. Lanseret av AI Labben – les mer på www.autoseo.no.",
     details: [
       "Keyword-research og topic clusters",
       "Pilar- og cluster-artikler med automatisk internlinking",
@@ -32,33 +31,21 @@ const ownProducts = [
       "Rapportering og rangeringsoppfølging i egen portal",
     ],
     benefits: ["Organisk trafikk på autopilot", "Konsistent innholdsproduksjon", "Høyere Google-rangeringer"],
-    href: "/ai-blogg"
+    href: "https://www.autoseo.no",
+    external: true,
   },
   {
     icon: Users,
     title: "Lead Generator",
-    description: "Automatisert B2B-leadsgenerering — GDPR-vennlig og tilpasset norsk lov",
+    description: "Under produksjon. Vi jobber med et verktøy for automatisiert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
     details: [
       "Skraper Brønnøysund, nettsider og bedriftsdata",
       "Analyserer kontekst og identifiserer produkt-fit",
-      "Genererer svært relevante og personlige e-poster",
+      "Genererer relevante og personlige e-poster",
       "Holder seg innenfor norsk markedsføringslov",
     ],
-    benefits: ["Mer kvalifiserte leads", "Mindre manuelt arbeid", "GDPR-kompatibel"],
-    href: "/b2b-leads-generator"
-  },
-  {
-    icon: Database,
-    title: "Privat Bedrifts-AI",
-    description: "Din egen interne AI trent på bedriftens dokumenter og kunnskap",
-    details: [
-      "Semantisk søk med naturlig språk",
-      "Vektordatabase for kontekst og dybdeforståelse",
-      "Strengt avgrenset tilgang og full logging",
-      "Sikker EU-hosting og GDPR-kompatibel",
-    ],
-    benefits: ["Raskere beslutninger", "Færre feil", "Mer produktivitet"],
-    href: "/rag-database"
+    benefits: ["Mer kvalifiserte leads", "Mindre manuelt arbeid", "Kommer snart"],
+    href: "/b2b-leads-generator",
   },
 ]
 
@@ -153,11 +140,11 @@ export default function ServicesPage() {
                     <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
                       <product.icon className="w-8 h-8 text-orange-600" />
                     </div>
-                    <div className="flex-1">
+                      <div className="flex-1">
                       <div className="flex items-center gap-3 mb-1">
                         <CardTitle className="text-2xl">{product.title}</CardTitle>
                         <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-orange-700">
-                          Eget produkt
+                          {product.title === "Lead Generator" ? "Kommer snart" : "Eget produkt"}
                         </span>
                       </div>
                       <p className="text-gray-600 text-lg">{product.description}</p>
@@ -190,12 +177,21 @@ export default function ServicesPage() {
                     </div>
                   </div>
                   <div className="mt-6 pt-6 border-t">
-                    <Button asChild>
-                      <Link href={product.href}>
-                        Les mer om {product.title}
-                        <ArrowRight className="ml-2 w-4 h-4" />
-                      </Link>
-                    </Button>
+                    {product.external ? (
+                      <Button asChild>
+                        <a href={product.href} target="_blank" rel="noopener noreferrer">
+                          Gå til autoseo.no
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button asChild>
+                        <Link href={product.href}>
+                          Les mer om {product.title}
+                          <ArrowRight className="ml-2 w-4 h-4" />
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -311,7 +307,7 @@ export default function ServicesPage() {
               Klar for å ta i bruk et av produktene?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Enten du vil prøve Auto SEO, Lead Generator eller ønsker å snakke om 
+              Enten du vil prøve AutoSEO på autoseo.no, høre om Lead Generator som kommer, eller snakke om 
               et skreddersydd prosjekt – vi er klare for en samtale.
             </p>
             <Button 

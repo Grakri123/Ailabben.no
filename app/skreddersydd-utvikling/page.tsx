@@ -187,7 +187,7 @@ export default function SkreddersyddUtviklingPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
               <Button asChild size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700">
                 <Link href="/kontakt">
-                  Bestill demo
+                  Kontakt oss
                   <ArrowRight className="ml-2" size={20} />
                 </Link>
               </Button>
@@ -452,7 +452,7 @@ export default function SkreddersyddUtviklingPage() {
               className="text-lg px-8 py-6"
             >
               <Link href="/kontakt">
-                Bestill demo nå
+                Kontakt oss
                 <ArrowRight className="ml-2" size={20} />
               </Link>
             </Button>

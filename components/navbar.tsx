@@ -65,7 +65,7 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center space-x-4">
           <Button asChild>
-            <Link href="/kontakt">Få en demo</Link>
+            <Link href="/kontakt">Kontakt oss</Link>
           </Button>
         </div>
 
@@ -101,7 +101,7 @@ export function Navbar() {
             ))}
             <div className="pt-3">
               <Button asChild className="w-full">
-                <Link href="/kontakt">Få en demo</Link>
+                <Link href="/kontakt">Kontakt oss</Link>
               </Button>
             </div>
           </nav>

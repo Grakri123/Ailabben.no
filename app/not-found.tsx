@@ -90,7 +90,7 @@ export default function NotFound() {
                       Kontakt oss
                     </div>
                     <div className="text-sm text-gray-600">
-                      Få en demo
+                      Kontakt oss
                     </div>
                   </div>
                 </Link>

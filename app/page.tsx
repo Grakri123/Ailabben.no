@@ -9,18 +9,18 @@ import {
   Settings,
   ArrowRight,
   CheckCircle,
-  Database,
   Sparkles
 } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "AI-drevne produkter og skreddersydde løsninger for bedrifter",
-  description: "AI Labben er produktstudioet bak Auto SEO, Lead Generator og flere AI-drevne verktøy. Vi bygger egne produkter og skreddersydde løsninger – hostet sikkert i EU.",
+  description: "AI Labben er produktstudioet bak AutoSEO (autoseo.no), Lead Generator og skreddersydde løsninger. Vi bygger egne AI-drevne verktøy – hostet sikkert i EU.",
   keywords: [
     "AI Labben",
     "produktstudio",
     "AI-verktøy",
-    "Auto SEO",
+    "AutoSEO",
+    "autoseo.no",
     "Lead Generator",
     "kunstig intelligens for bedrifter",
     "AI-drevne produkter",
@@ -29,35 +29,29 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "AI Labben – Produktstudio for AI-drevne verktøy",
-    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger for bedrifter.",
+    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som AutoSEO (autoseo.no) og Lead Generator, samt skreddersydde løsninger for bedrifter.",
   },
   twitter: {
     title: "AI Labben – Produktstudio for AI-drevne verktøy",
-    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som Auto SEO og Lead Generator, samt skreddersydde løsninger for bedrifter.",
+    description: "Vi bygger og lanserer AI-drevne digitale produkter – egne verktøy som AutoSEO (autoseo.no) og Lead Generator, samt skreddersydde løsninger for bedrifter.",
   },
 }
 
 const products = [
   {
     icon: Search,
-    title: "Auto SEO",
-    description: "Fullautomatisert SEO-blogg som bygger organisk trafikk – pilar- og cluster-artikler på autopilot",
-    href: "/ai-blogg",
+    title: "AutoSEO",
+    description: "Fullautomatisert SEO-blogg som bygger organisk trafikk – pilar- og cluster-artikler på autopilot. Lanseret av AI Labben.",
+    href: "https://www.autoseo.no",
+    external: true,
     badge: "Eget produkt",
   },
   {
     icon: Users,
     title: "Lead Generator",
-    description: "Automatisert B2B-leadsgenerering med AI — GDPR-vennlig og tilpasset norsk markedsføringslov",
+    description: "Automatisert B2B-leadsgenerering med AI – under produksjon. Vi jobber med lansering; kontakt oss for å høre mer om hva som kommer.",
     href: "/b2b-leads-generator",
-    badge: "Eget produkt",
-  },
-  {
-    icon: Database,
-    title: "Privat Bedrifts-AI",
-    description: "Din egen interne AI trent på bedriftens dokumenter — semantisk søk og sikker EU-hosting",
-    href: "/rag-database",
-    badge: "Eget produkt",
+    badge: "Kommer snart",
   },
   {
     icon: Settings,
@@ -94,11 +88,11 @@ export default function HomePage() {
             </h1>
             <p className="text-lg leading-8 text-gray-600 mb-4 max-w-3xl mx-auto">
               Vi utvikler og lanserer digitale produkter med kunstig intelligens – 
-              våre egne og dine. Fra Auto SEO og Lead Generator til skreddersydde 
+              våre egne og dine. Fra AutoSEO på <a href="https://www.autoseo.no" className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">autoseo.no</a> og Lead Generator (under produksjon) til skreddersydde 
               løsninger for din bedrift.
             </p>
             <p className="text-sm text-gray-500 mb-8">
-              Utviklet av oss: <strong>Auto SEO</strong>, <strong>Lead Generator</strong> og flere i emning
+              Utviklet av oss: <strong><a href="https://www.autoseo.no" className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">AutoSEO</a></strong>, <strong>Lead Generator</strong> (kommer snart) og flere i emning
             </p>
             <LeadWizard />
           </div>
@@ -149,13 +143,17 @@ export default function HomePage() {
               )
               
               return product.href ? (
-                <Link key={index} href={product.href} className="block">
-                  {cardContent}
-                </Link>
+                product.external ? (
+                  <a key={index} href={product.href} target="_blank" rel="noopener noreferrer" className="block">
+                    {cardContent}
+                  </a>
+                ) : (
+                  <Link key={index} href={product.href} className="block">
+                    {cardContent}
+                  </Link>
+                )
               ) : (
-                <div key={index}>
-                  {cardContent}
-                </div>
+                <div key={index}>{cardContent}</div>
               )
             })}
           </div>

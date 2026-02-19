@@ -155,7 +155,7 @@ export default async function BlogPage() {
               </p>
               <Button asChild size="lg">
                 <Link href="/kontakt">
-                  Få en gratis demo
+                  Kontakt oss
                   <ArrowRight className="ml-2" size={18} />
                 </Link>
               </Button>

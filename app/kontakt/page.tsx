@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 
 export const metadata: Metadata = {
-  title: "Kontakt AI Labben – Produktstudioet bak Auto SEO og Lead Generator",
+  title: "Kontakt AI Labben – Produktstudioet bak AutoSEO og Lead Generator",
   description: "Kontakt AI Labben for å lære mer om våre produkter eller for å diskutere et skreddersydd AI-prosjekt. Ring 95 11 76 49 eller send oss en melding.",
 }
 
@@ -20,7 +20,7 @@ export default function ContactPage() {
               La oss <span className="gradient-text">snakke sammen</span>
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Enten du vil vite mer om Auto SEO, Lead Generator eller ønsker å 
+              Enten du vil vite mer om AutoSEO på autoseo.no, Lead Generator som kommer, eller ønsker å 
               diskutere et skreddersydd AI-prosjekt – vi vil gjerne høre fra deg.
             </p>
           </div>
@@ -87,7 +87,7 @@ export default function ContactPage() {
                 <h3 className="font-semibold mb-3">Hva du kan forvente:</h3>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>✅ Gratis samtale om ditt behov eller produktidé</li>
-                  <li>✅ Demo av Auto SEO eller Lead Generator tilpasset din bransje</li>
+                  <li>✅ Presentasjon av AutoSEO eller innblikk i hva som kommer med Lead Generator</li>
                   <li>✅ Konkrete innspill til et skreddersydd AI-prosjekt</li>
                   <li>✅ Transparent prising uten skjulte kostnader</li>
                   <li>✅ Profesjonell oppfølging gjennom hele prosessen</li>

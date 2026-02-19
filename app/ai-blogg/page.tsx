@@ -27,9 +27,11 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "AI blogg / SEO-automatisering | Automatisert SEO-innhold",
-  description: "Få en AI-basert blogg som gjør keyword-research, skriver pilar- og cluster-artikler, publiserer og rapporterer. Øk organisk trafikk automatisk.",
+  title: "AutoSEO – Automatisert SEO-blogg fra AI Labben | autoseo.no",
+  description: "AutoSEO er AI Labbens verktøy for fullautomatisert SEO-blogg: keyword-research, pilar- og cluster-artikler, publisering og rapportering. Les mer på www.autoseo.no.",
   keywords: [
+    "AutoSEO",
+    "autoseo.no",
     "AI blogg",
     "SEO automasjon",
     "AI generert blogginnhold",
@@ -38,8 +40,8 @@ export const metadata: Metadata = {
     "automatisk publisering SEO"
   ],
   openGraph: {
-    title: "AI blogg / SEO-automatisering | Automatisert SEO-innhold",
-    description: "Få en AI-basert blogg som gjør keyword-research, skriver pilar- og cluster-artikler, publiserer og rapporterer. Øk organisk trafikk automatisk.",
+    title: "AutoSEO – Automatisert SEO-blogg fra AI Labben | autoseo.no",
+    description: "AutoSEO er AI Labbens verktøy for fullautomatisert SEO-blogg. Les mer på www.autoseo.no.",
   },
 }
 
@@ -154,25 +156,31 @@ export default function AIBloggPage() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
               <FileText className="w-4 h-4" />
-              AI-drevet SEO-blogg
+              Bygget av AI Labben
             </div>
             
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6 animate-fade-in">
-              <span className="gradient-text">Automatisk SEO-blogg</span>
+              <span className="gradient-text">AutoSEO</span>
               <br />
-              <span className="text-gray-900">som bygger autoritet og rangerer høyt</span>
+              <span className="text-gray-900">– automatisk SEO-blogg som bygger autoritet og rangerer høyt</span>
             </h1>
             
             <p className="text-lg sm:text-xl leading-8 text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up">
-              AI-drevet pilar- og cluster-blogging med nøkkelord-analyse og faste intervaller. 
-              Gir deg organisk trafikk uten manuelt arbeid.
+              AutoSEO er vårt AI-drevne verktøy for pilar- og cluster-blogging med nøkkelord-analyse og faste intervaller. 
+              Gir deg organisk trafikk uten manuelt arbeid. Les mer på{" "}
+              <a href="https://www.autoseo.no" className="text-orange-600 font-medium hover:underline" target="_blank" rel="noopener noreferrer">www.autoseo.no</a>.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
               <Button asChild size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700">
-                <Link href="/kontakt">
-                  Bestill demo
+                <a href="https://www.autoseo.no" target="_blank" rel="noopener noreferrer">
+                  Gå til autoseo.no
                   <ArrowRight className="ml-2" size={20} />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">
+                <Link href="/kontakt">
+                  Kontakt oss
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">
@@ -359,19 +367,22 @@ export default function AIBloggPage() {
               Klar for organisk trafikk på autopilot?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Få en blogg som skaper trafikk automatisk.
+              AutoSEO gir deg en blogg som skaper trafikk automatisk. Les mer på{" "}
+              <a href="https://www.autoseo.no" className="underline font-medium hover:opacity-90" target="_blank" rel="noopener noreferrer">autoseo.no</a>.
             </p>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary"
-              className="text-lg px-8 py-6"
-            >
-              <Link href="/kontakt">
-                Bestill demo nå
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6">
+                <a href="https://www.autoseo.no" target="_blank" rel="noopener noreferrer">
+                  Gå til autoseo.no
+                  <ArrowRight className="ml-2" size={20} />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-white text-white hover:bg-white/10">
+                <Link href="/kontakt">
+                  Kontakt oss
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

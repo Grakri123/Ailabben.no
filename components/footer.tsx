@@ -15,8 +15,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Vi bygger skreddersydde AI-agenter for bedrifter. 
-              Fra resepsjonister til fullautomatisert SEO – trygt og enkelt.
+              AI Labben er et produktstudio som bygger og lanserer AI-drevne verktøy – 
+              blant annet AutoSEO på autoseo.no – og skreddersydde løsninger for bedrifter.
             </p>
             <div className="flex flex-col space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
@@ -72,23 +72,18 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Tjenester */}
+          {/* Produkter */}
           <div>
-            <h3 className="font-semibold mb-4">Tjenester</h3>
+            <h3 className="font-semibold mb-4">Produkter</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
+                <a href="https://www.autoseo.no" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">
+                  AutoSEO (autoseo.no)
+                </a>
+              </li>
+              <li>
                 <Link href="/b2b-leads-generator" className="hover:text-orange-600 transition-colors">
-                  B2B Leads Generator
-                </Link>
-              </li>
-              <li>
-                <Link href="/ai-blogg" className="hover:text-orange-600 transition-colors">
-                  AI Blogg / SEO-Automatisering
-                </Link>
-              </li>
-              <li>
-                <Link href="/rag-database" className="hover:text-orange-600 transition-colors">
-                  RAG Database / Privat Bedrifts-AI
+                  Lead Generator (kommer snart)
                 </Link>
               </li>
               <li>
