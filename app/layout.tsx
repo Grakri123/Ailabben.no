@@ -67,6 +67,7 @@ export default function RootLayout({
   return (
     <html lang="nb" className="scroll-smooth">
       <head>
+        <meta name="msvalidate.01" content="E7042FBE451AEE1FB30467A8B5C1E804" />
         <link rel="stylesheet" href="https://use.typekit.net/ofa8sxj.css" />
       </head>
       <body className={inter.className}>
