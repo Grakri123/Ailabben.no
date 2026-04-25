@@ -7,11 +7,11 @@ import { Spotlight } from "@/components/spotlight"
 import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Lead Generator | Under produksjon – AI Labben",
+  title: "LeadFORGE | Under produksjon – AI Labben",
   description:
-    "Lead Generator er under produksjon. Vi bygger et verktøy for automatisert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
+    "LeadFORGE er under produksjon. Vi bygger et verktøy for automatisert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
   keywords: [
-    "Lead Generator",
+    "LeadFORGE",
     "B2B leads generator AI",
     "automatisert prospektering",
     "AI generering leads",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     "under produksjon"
   ],
   openGraph: {
-    title: "Lead Generator | Under produksjon – AI Labben",
-    description: "Vi bygger Lead Generator – automatisert B2B-leadsgenerering. Kontakt oss for å høre mer om hva som kommer.",
+    title: "LeadFORGE | Under produksjon – AI Labben",
+    description: "Vi bygger LeadFORGE – automatisert B2B-leadsgenerering. Kontakt oss for å høre mer om hva som kommer.",
   },
 }
 
@@ -52,7 +52,7 @@ const steps = [
   { number: "05", title: "Leads kommer i innboksen", description: "Motta svar og følg opp kvalifiserte leads." },
 ]
 
-export default function B2BLeadsGeneratorPage() {
+export default function LeadForgePage() {
   return (
     <>
       <Breadcrumbs />
@@ -69,7 +69,7 @@ export default function B2BLeadsGeneratorPage() {
               Under produksjon
             </p>
             <h1 className="font-display text-display-xl text-paper-0 leading-[0.95] tracking-[-0.04em] max-w-5xl">
-              Lead Generator
+              LeadFORGE
               <br />
               <span className="shimmer-text">— kommer snart.</span>
             </h1>

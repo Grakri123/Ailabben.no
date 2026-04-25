@@ -11,32 +11,28 @@ export const breadcrumbMap: Record<string, string[]> = {
   "/blogg": ["Hjem", "Blogg"],
   "/personvern": ["Hjem", "Personvern"],
   "/vilkaar": ["Hjem", "Vilkår og betingelser"],
-  // Tjenestesider
-  "/b2b-leads-generator": ["Hjem", "Tjenester", "B2B Leads Generator"],
-  "/ai-blogg": ["Hjem", "Tjenester", "AI Blogg / SEO-Automatisering"],
-  "/rag-database": ["Hjem", "Tjenester", "RAG Database / Privat Bedrifts-AI"],
-  "/skreddersydd-utvikling": ["Hjem", "Tjenester", "Skreddersydd Utvikling"],
+  // Produkter
+  "/autoseo": ["Hjem", "Produkter", "AutoSEO"],
+  "/leadforge": ["Hjem", "Produkter", "LeadFORGE"],
+  "/skreddersydd-utvikling": ["Hjem", "Produkter", "Skreddersydd Utvikling"],
 }
 
-// Mapper breadcrumb navn til paths
 export const breadcrumbPathMap: Record<string, string> = {
   "Hjem": "/",
-  "Tjenester": "/hva-vi-gjor",
+  "Produkter": "/hva-vi-gjor",
   "Hva vi gjør": "/hva-vi-gjor",
   "Om oss": "/om-oss",
   "Kontakt": "/kontakt",
   "Blogg": "/blogg",
   "Personvern": "/personvern",
   "Vilkår og betingelser": "/vilkaar",
-  // Tjenester
-  "B2B Leads Generator": "/b2b-leads-generator",
-  "AI Blogg / SEO-Automatisering": "/ai-blogg",
-  "RAG Database / Privat Bedrifts-AI": "/rag-database",
+  // Produkter
+  "AutoSEO": "/autoseo",
+  "LeadFORGE": "/leadforge",
   "Skreddersydd Utvikling": "/skreddersydd-utvikling",
 }
 
 export function getBreadcrumbs(pathname: string, customTitle?: string): BreadcrumbItem[] {
-  // For blogginnlegg med custom title
   if (pathname.startsWith('/blogg/') && customTitle) {
     return [
       { name: "Hjem", path: "/" },
@@ -46,14 +42,11 @@ export function getBreadcrumbs(pathname: string, customTitle?: string): Breadcru
   }
 
   const breadcrumbNames = breadcrumbMap[pathname] || ["Hjem"]
-  
+
   return breadcrumbNames.map((name, index) => {
-    // Siste item får current path
     if (index === breadcrumbNames.length - 1) {
       return { name, path: pathname }
     }
-    
-    // Andre items får path fra mapping
     const path = breadcrumbPathMap[name] || "/"
     return { name, path }
   })
@@ -71,4 +64,3 @@ export function generateBreadcrumbSchema(breadcrumbs: BreadcrumbItem[], baseUrl:
     }))
   }
 }
-

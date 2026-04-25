@@ -11,7 +11,6 @@ import {
   Mail,
   Phone,
   ArrowUpRight,
-  Database,
   Code,
   TrendingUp,
 } from 'lucide-react'
@@ -37,11 +36,10 @@ const ITEMS: CommandItem[] = [
   { id: 'contact', label: 'Kontakt', group: 'Naviger', icon: Mail, href: '/kontakt', keywords: 'kontakt skjema melding' },
 
   // Produkter
-  { id: 'autoseo', label: 'AutoSEO', group: 'Produkter', icon: TrendingUp, href: 'https://www.autoseo.no', external: true, keywords: 'seo blogg innhold' },
-  { id: 'leadgen', label: 'Lead Generator', group: 'Produkter', icon: Users, href: '/b2b-leads-generator', keywords: 'b2b leads prospektering' },
-  { id: 'rag', label: 'RAG-database', group: 'Produkter', icon: Database, href: '/rag-database', keywords: 'kunnskap dokumenter ai' },
+  { id: 'autoseo-site', label: 'AutoSEO – autoseo.no', group: 'Produkter', icon: TrendingUp, href: 'https://www.autoseo.no', external: true, keywords: 'seo blogg innhold ekstern' },
+  { id: 'autoseo', label: 'AutoSEO – produktside', group: 'Produkter', icon: FileText, href: '/autoseo', keywords: 'seo blogg innhold les mer' },
+  { id: 'leadforge', label: 'LeadFORGE', group: 'Produkter', icon: Users, href: '/leadforge', keywords: 'b2b leads prospektering generator' },
   { id: 'custom', label: 'Skreddersydd utvikling', group: 'Produkter', icon: Code, href: '/skreddersydd-utvikling', keywords: 'tilpasset bygg' },
-  { id: 'aiblog', label: 'AI-blogg', group: 'Produkter', icon: FileText, href: '/ai-blogg', keywords: 'ai blogg automatisk' },
 
   // Direkte handlinger
   { id: 'call', label: 'Ring oss – 95 11 76 49', group: 'Handlinger', icon: Phone, href: 'tel:+4795117649', external: true },

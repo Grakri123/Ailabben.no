@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal"
 import { Spotlight } from "@/components/spotlight"
 
 export const metadata: Metadata = {
-  title: "Kontakt AI Labben – Produktstudioet bak AutoSEO og Lead Generator",
+  title: "Kontakt AI Labben – Produktstudioet bak AutoSEO og LeadFORGE",
   description:
     "Kontakt AI Labben for å lære mer om våre produkter eller for å diskutere et skreddersydd AI-prosjekt. Ring 95 11 76 49 eller send oss en melding.",
 }
@@ -30,7 +30,7 @@ export default function ContactPage() {
               <span className="shimmer-text">snakke sammen.</span>
             </h1>
             <p className="mt-10 text-lg sm:text-xl text-paper-2 leading-relaxed max-w-2xl">
-              Enten du vil vite mer om AutoSEO, Lead Generator som kommer, eller
+              Enten du vil vite mer om AutoSEO, LeadFORGE som kommer, eller
               ønsker å diskutere et skreddersydd AI-prosjekt – vi vil gjerne høre fra deg.
             </p>
           </Reveal>
@@ -77,7 +77,7 @@ export default function ContactPage() {
                   <p className="eyebrow mb-6">Hva du kan forvente</p>
                   <ul className="space-y-3 text-sm text-paper-2">
                     <li className="flex gap-3"><span className="text-paper-3 font-mono">01</span><span>Gratis samtale om ditt behov eller produktidé</span></li>
-                    <li className="flex gap-3"><span className="text-paper-3 font-mono">02</span><span>Presentasjon av AutoSEO eller innblikk i Lead Generator</span></li>
+                    <li className="flex gap-3"><span className="text-paper-3 font-mono">02</span><span>Presentasjon av AutoSEO eller innblikk i LeadFORGE</span></li>
                     <li className="flex gap-3"><span className="text-paper-3 font-mono">03</span><span>Konkrete innspill til et skreddersydd AI-prosjekt</span></li>
                     <li className="flex gap-3"><span className="text-paper-3 font-mono">04</span><span>Transparent prising uten skjulte kostnader</span></li>
                     <li className="flex gap-3"><span className="text-paper-3 font-mono">05</span><span>Profesjonell oppfølging gjennom hele prosessen</span></li>

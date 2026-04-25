@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Reveal } from "@/components/reveal"
 import { Spotlight } from "@/components/spotlight"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Våre produkter og tjenester – AI Labben",
   description:
-    "AI Labben bygger og drifter egne AI-drevne produkter som AutoSEO (autoseo.no) og Lead Generator, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
+    "AI Labben bygger og drifter egne AI-drevne produkter som AutoSEO (autoseo.no) og LeadFORGE, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
 }
 
 const ownProducts = [
@@ -26,13 +26,12 @@ const ownProducts = [
       "Rapportering og rangeringsoppfølging i egen portal",
     ],
     benefits: ["Organisk trafikk på autopilot", "Konsistent innholdsproduksjon", "Høyere Google-rangeringer"],
-    href: "https://www.autoseo.no",
-    external: true,
-    cta: "Gå til autoseo.no",
+    href: "/autoseo",
+    cta: "Les mer om AutoSEO",
   },
   {
     number: "02",
-    title: "Lead Generator",
+    title: "LeadFORGE",
     badge: "Kommer snart",
     description:
       "Under produksjon. Vi jobber med et verktøy for automatisert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov.",
@@ -43,8 +42,8 @@ const ownProducts = [
       "Holder seg innenfor norsk markedsføringslov",
     ],
     benefits: ["Mer kvalifiserte leads", "Mindre manuelt arbeid", "Kommer snart"],
-    href: "/b2b-leads-generator",
-    cta: "Les mer om Lead Generator",
+    href: "/leadforge",
+    cta: "Les mer om LeadFORGE",
   },
 ]
 
@@ -175,17 +174,10 @@ export default function ServicesPage() {
                     </div>
 
                     <Button asChild variant="secondary" size="sm">
-                      {product.external ? (
-                        <a href={product.href} target="_blank" rel="noopener noreferrer">
-                          {product.cta}
-                          <ArrowUpRight className="ml-2 w-4 h-4" />
-                        </a>
-                      ) : (
-                        <Link href={product.href}>
-                          {product.cta}
-                          <ArrowRight className="ml-2 w-4 h-4" />
-                        </Link>
-                      )}
+                      <Link href={product.href}>
+                        {product.cta}
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
                     </Button>
                   </div>
                 </article>
@@ -320,7 +312,7 @@ export default function ServicesPage() {
                 <span className="shimmer-text">et av produktene?</span>
               </h2>
               <p className="mt-8 text-xl text-paper-2 max-w-2xl leading-relaxed">
-                Enten du vil prøve AutoSEO, høre om Lead Generator som kommer,
+                Enten du vil prøve AutoSEO, høre om LeadFORGE som kommer,
                 eller snakke om et skreddersydd prosjekt – vi er klare for en samtale.
               </p>
               <div className="mt-12">

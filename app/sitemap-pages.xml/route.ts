@@ -37,27 +37,15 @@ export async function GET() {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
-    // Tjenestesider
+    // Produktsider
     {
-      url: `${baseUrl}/b2b-leads-generator`,
+      url: `${baseUrl}/autoseo`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/ai-blogg`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/rag-database`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/ai-some`,
+      url: `${baseUrl}/leadforge`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
@@ -70,12 +58,11 @@ export async function GET() {
     },
   ]
 
-  // Generate XML sitemap
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticPages.map(page => {
-    const lastMod = page.lastModified instanceof Date 
-      ? page.lastModified.toISOString() 
+    const lastMod = page.lastModified instanceof Date
+      ? page.lastModified.toISOString()
       : new Date(page.lastModified || Date.now()).toISOString()
     return `  <url>
     <loc>${page.url}</loc>
@@ -93,4 +80,3 @@ ${staticPages.map(page => {
     },
   })
 }
-

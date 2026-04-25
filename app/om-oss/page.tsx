@@ -7,7 +7,7 @@ import { Spotlight } from "@/components/spotlight"
 import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Om oss – Produktstudioet bak AutoSEO og Lead Generator",
+  title: "Om oss – Produktstudioet bak AutoSEO og LeadFORGE",
   description:
     "AI Labben er et produktstudio grunnlagt av seriegründere. Vi bygger og lanserer AI-drevne verktøy og skreddersydde løsninger – med kvalitet, brukerfokus og EU-hosting.",
 }
@@ -89,7 +89,7 @@ export default function AboutPage() {
               <span className="shimmer-text">kombinerer AI med håndverk.</span>
             </h1>
             <p className="mt-10 text-lg sm:text-xl text-paper-2 leading-relaxed max-w-2xl">
-              AI Labben er produktstudioet bak AutoSEO, Lead Generator og
+              AI Labben er produktstudioet bak AutoSEO, LeadFORGE og
               fremtidige AI-drevne verktøy. Vi eksperimenterer, validerer og
               lanserer produkter som gjør arbeidshverdagen bedre.
             </p>
@@ -135,7 +135,7 @@ export default function AboutPage() {
                     produkter.
                   </p>
                   <p className="text-paper-2">
-                    Vi tilbyr to spor: egne produkter som AutoSEO og Lead Generator
+                    Vi tilbyr to spor: egne produkter som AutoSEO og LeadFORGE
                     som du kan ta i bruk i dag, og skreddersydde løsninger for
                     bedrifter som ønsker et spesialbygd AI-drevet produkt.
                   </p>
@@ -233,7 +233,7 @@ export default function AboutPage() {
                 <span className="shimmer-text">kan bygge sammen?</span>
               </h2>
               <p className="mt-8 text-xl text-paper-2 max-w-2xl leading-relaxed">
-                Kontakt AI Labben – produktstudioet bak AutoSEO, Lead Generator
+                Kontakt AI Labben – produktstudioet bak AutoSEO, LeadFORGE
                 og dine fremtidige verktøy.
               </p>
               <div className="mt-12">

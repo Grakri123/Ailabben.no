@@ -49,21 +49,20 @@ export function Footer() {
           <div className="md:col-span-4">
             <h3 className="eyebrow mb-5">Produkter</h3>
             <ul className="space-y-3 text-sm">
+              <FooterLink href="/autoseo">AutoSEO</FooterLink>
               <li>
                 <a
                   href="https://www.autoseo.no"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-paper-2 hover:text-paper-0 transition-colors group"
+                  className="inline-flex items-center gap-1.5 text-paper-3 hover:text-paper-0 transition-colors group"
                 >
-                  AutoSEO
+                  autoseo.no
                   <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                 </a>
               </li>
-              <FooterLink href="/b2b-leads-generator">Lead Generator</FooterLink>
-              <FooterLink href="/rag-database">RAG-database</FooterLink>
+              <FooterLink href="/leadforge">LeadFORGE</FooterLink>
               <FooterLink href="/skreddersydd-utvikling">Skreddersydd utvikling</FooterLink>
-              <FooterLink href="/ai-blogg">AI-blogg</FooterLink>
             </ul>
           </div>
         </div>

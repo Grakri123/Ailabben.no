@@ -24,6 +24,26 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      // Gamle ruter -> nye / fjernede sider
+      {
+        source: '/b2b-leads-generator',
+        destination: '/leadforge',
+        permanent: true,
+      },
+      {
+        source: '/ai-blogg',
+        destination: '/autoseo',
+        permanent: true,
+      },
+      {
+        source: '/rag-database',
+        destination: '/hva-vi-gjor',
+        permanent: true,
+      },
+    ]
+  },
 }
 
-export default nextConfig 
+export default nextConfig

@@ -6,7 +6,6 @@ export const revalidate = 3600
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ailabben.no'
 
-  // Static pages
   const staticPages = [
     {
       url: baseUrl,
@@ -38,21 +37,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'weekly' as const,
       priority: 0.9,
     },
-    // Tjenestesider
+    // Produktsider
     {
-      url: `${baseUrl}/b2b-leads-generator`,
+      url: `${baseUrl}/autoseo`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/ai-blogg`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/rag-database`,
+      url: `${baseUrl}/leadforge`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
@@ -65,14 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // Try to get blog posts from Supabase, but handle gracefully if env vars are missing
   let blogPages: MetadataRoute.Sitemap = []
-  
+
   try {
-    // Only try to connect to Supabase if env vars are available
     if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
       const { createClient } = await import('@supabase/supabase-js')
-      
+
       const supabase = createClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
@@ -92,9 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   } catch (error) {
     console.warn('Could not fetch blog posts for sitemap:', error)
-    // Continue with empty blog pages array
   }
 
   return [...staticPages, ...blogPages]
 }
-
