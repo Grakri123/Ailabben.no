@@ -13,13 +13,12 @@ export function BackButton() {
   }
 
   return (
-    <Button 
-      size="lg" 
-      variant="outline"
-      className="text-lg px-8"
+    <Button
+      size="lg"
+      variant="secondary"
       onClick={handleBack}
     >
-      <ArrowLeft className="mr-2" size={20} />
+      <ArrowLeft className="mr-2" size={18} />
       Gå tilbake
     </Button>
   )

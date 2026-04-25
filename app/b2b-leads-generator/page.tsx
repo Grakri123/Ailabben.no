@@ -1,34 +1,15 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { 
-  Users, 
-  Search, 
-  Mail, 
-  Target,
-  ArrowRight,
-  CheckCircle,
-  Zap,
-  FileSearch,
-  Building2,
-  UserSearch,
-  MessageSquare,
-  Clock,
-  Sparkles,
-  Database,
-  Settings,
-  Shield,
-  Filter,
-  Send,
-  TrendingUp,
-  Briefcase
-} from "lucide-react"
+import { Reveal } from "@/components/reveal"
+import { Spotlight } from "@/components/spotlight"
+import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Lead Generator | Under produksjon – AI Labben",
-  description: "Lead Generator er under produksjon. Vi bygger et verktøy for automatisiert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
+  description:
+    "Lead Generator er under produksjon. Vi bygger et verktøy for automatisert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
   keywords: [
     "Lead Generator",
     "B2B leads generator AI",
@@ -40,364 +21,269 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Lead Generator | Under produksjon – AI Labben",
-    description: "Vi bygger Lead Generator – automatisiert B2B-leadsgenerering. Kontakt oss for å høre mer om hva som kommer.",
+    description: "Vi bygger Lead Generator – automatisert B2B-leadsgenerering. Kontakt oss for å høre mer om hva som kommer.",
   },
 }
 
 const problems = [
-  {
-    icon: Building2,
-    text: "Finne riktige selskaper"
-  },
-  {
-    icon: FileSearch,
-    text: "Hente nøkkelinfo"
-  },
-  {
-    icon: UserSearch,
-    text: "Finne riktig kontaktperson"
-  },
-  {
-    icon: Mail,
-    text: "Skrive e-poster"
-  },
-  {
-    icon: MessageSquare,
-    text: "Følge opp"
-  }
+  "Finne riktige selskaper",
+  "Hente nøkkelinfo",
+  "Finne riktig kontaktperson",
+  "Skrive e-poster",
+  "Følge opp",
 ]
 
 const features = [
-  {
-    icon: Database,
-    title: "Skraper Brreg + nettsider",
-    description: "Automatisk innhenting av bedriftsdata fra offentlige kilder"
-  },
-  {
-    icon: Search,
-    title: "Analyserer kontekst",
-    description: "Forstår bedriftens behov og potensial basert på data"
-  },
-  {
-    icon: Target,
-    title: "Identifiserer produkt-fit",
-    description: "Matcher din løsning med bedrifter som faktisk trenger den"
-  },
-  {
-    icon: Mail,
-    title: "Lager relevante e-poster",
-    description: "Genererer svært personlige og kontekstuelle meldinger"
-  },
-  {
-    icon: MessageSquare,
-    title: "Genererer dialog",
-    description: "Håndterer kommunikasjon på dine vegne"
-  },
-  {
-    icon: Shield,
-    title: "GDPR-kompatibel",
-    description: "Holder seg innenfor norsk markedsføringslov"
-  }
+  { number: "01", title: "Skraper Brreg + nettsider", description: "Automatisk innhenting av bedriftsdata fra offentlige kilder" },
+  { number: "02", title: "Analyserer kontekst", description: "Forstår bedriftens behov og potensial basert på data" },
+  { number: "03", title: "Identifiserer produkt-fit", description: "Matcher din løsning med bedrifter som faktisk trenger den" },
+  { number: "04", title: "Lager relevante e-poster", description: "Genererer svært personlige og kontekstuelle meldinger" },
+  { number: "05", title: "Genererer dialog", description: "Håndterer kommunikasjon på dine vegne" },
+  { number: "06", title: "GDPR-kompatibel", description: "Holder seg innenfor norsk markedsføringslov" },
 ]
 
-const integrations = [
-  { name: "Outlook", icon: Mail },
-  { name: "Gmail", icon: Mail },
-  { name: "Supabase", icon: Database },
-  { name: "CRM-systemer", icon: Briefcase },
-  { name: "Automatiseringsverktøy", icon: Zap },
-]
+const integrations = ["Outlook", "Gmail", "Supabase", "CRM-systemer", "Automatiseringsverktøy"]
 
 const steps = [
-  {
-    number: "1",
-    title: "Legg inn kriterier",
-    description: "Definer bransje, størrelse og behov for målbedrifter.",
-    icon: Filter
-  },
-  {
-    number: "2",
-    title: "AI finner og kvalifiserer",
-    description: "Systemet skraper data og identifiserer de beste bedriftene.",
-    icon: Search
-  },
-  {
-    number: "3",
-    title: "Genererer personlige e-poster",
-    description: "AI skriver skreddersydde meldinger for hver bedrift.",
-    icon: Mail
-  },
-  {
-    number: "4",
-    title: "Du godkjenner utsending",
-    description: "Full kontroll før noe sendes — du bestemmer.",
-    icon: CheckCircle
-  },
-  {
-    number: "5",
-    title: "Leads kommer i innboksen",
-    description: "Motta svar og følg opp kvalifiserte leads.",
-    icon: TrendingUp
-  }
+  { number: "01", title: "Legg inn kriterier", description: "Definer bransje, størrelse og behov for målbedrifter." },
+  { number: "02", title: "AI finner og kvalifiserer", description: "Systemet skraper data og identifiserer de beste bedriftene." },
+  { number: "03", title: "Genererer personlige e-poster", description: "AI skriver skreddersydde meldinger for hver bedrift." },
+  { number: "04", title: "Du godkjenner utsending", description: "Full kontroll før noe sendes — du bestemmer." },
+  { number: "05", title: "Leads kommer i innboksen", description: "Motta svar og følg opp kvalifiserte leads." },
 ]
 
 export default function B2BLeadsGeneratorPage() {
   return (
-    <div className="flex flex-col">
+    <>
       <Breadcrumbs />
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-blue-50 via-purple-50 to-white py-20 sm:py-32 overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/30 rounded-full blur-3xl" />
-        
+
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div className="absolute inset-0 hero-grid" aria-hidden="true" />
+        <Spotlight />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-ink-0 pointer-events-none" aria-hidden="true" />
+
         <div className="container relative">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
-              <Clock className="w-4 h-4" />
+          <Reveal>
+            <p className="eyebrow eyebrow-line mb-6">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-paper-0 mr-2 animate-pulse" />
               Under produksjon
-            </div>
-            
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6 animate-fade-in">
-              <span className="gradient-text">Lead Generator</span>
+            </p>
+            <h1 className="font-display text-display-xl text-paper-0 leading-[0.95] tracking-[-0.04em] max-w-5xl">
+              Lead Generator
               <br />
-              <span className="text-gray-900">— kommer snart</span>
+              <span className="shimmer-text">— kommer snart.</span>
             </h1>
-            
-            <p className="text-lg sm:text-xl leading-8 text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up">
-              Vi jobber med et verktøy for automatisiert B2B-leadsgenerering: skraper Brønnøysund og nettsider, 
-              analyserer produkt-fit og sender personlige e-poster – GDPR-vennlig og tilpasset norsk markedsføringslov. 
-              Kontakt oss for å høre mer om hva som kommer.
+            <p className="mt-10 text-lg sm:text-xl text-paper-2 leading-relaxed max-w-2xl">
+              Vi jobber med et verktøy for automatisert B2B-leadsgenerering: skraper
+              Brønnøysund og nettsider, analyserer produkt-fit og sender personlige
+              e-poster – GDPR-vennlig og tilpasset norsk markedsføringslov.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
-              <Button asChild size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg">
                 <Link href="/kontakt">
-                  Kontakt oss – få beskjed om lansering
-                  <ArrowRight className="ml-2" size={20} />
+                  Få beskjed om lansering
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">
-                <Link href="#slik-fungerer-det">
-                  Se hvordan det fungerer
-                </Link>
+              <Button asChild variant="secondary" size="lg">
+                <Link href="#slik-fungerer-det">Se hvordan det fungerer</Link>
               </Button>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Problem */}
+      <section className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Problem</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Salgsteam drukner
+                  <br />
+                  <span className="text-paper-3">i research.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-ink-3 border border-ink-3">
+            {problems.map((p, i) => (
+              <Reveal key={i} delay={i * 0.05}>
+                <div className="bg-ink-0 p-8 h-full flex flex-col justify-between min-h-[140px]">
+                  <span className="font-mono text-xs text-paper-3">{String(i + 1).padStart(2, '0')}</span>
+                  <p className="text-paper-1 font-medium mt-4">{p}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="mt-12 border-l border-paper-0 pl-6 max-w-2xl">
+              <p className="text-lg text-paper-1">
+                <span className="text-paper-0 font-medium">Dette tar timer.</span>{' '}
+                <span className="text-paper-2">AI bruker sekunder.</span>
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Løsning */}
+      <section className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Løsning</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  AI-drevet
+                  <br />
+                  <span className="text-paper-3">prospektering.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-3 border border-ink-3">
+            {features.map((f, i) => (
+              <Reveal key={i} delay={i * 0.05}>
+                <div className="bg-ink-0 p-8 h-full">
+                  <span className="font-mono text-xs text-paper-3">{f.number}</span>
+                  <h3 className="mt-4 font-display text-xl text-paper-0 leading-tight">
+                    {f.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-paper-2 leading-relaxed">
+                    {f.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-px bg-ink-3 border border-ink-3">
+            <Reveal>
+              <div className="bg-ink-0 p-8 h-full">
+                <p className="eyebrow mb-3">Modus 01</p>
+                <h3 className="font-display text-xl text-paper-0 leading-tight">Fullautomatisk</h3>
+                <p className="mt-3 text-sm text-paper-2">AI sender alt på autopilot innenfor dine rammer.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <div className="bg-ink-0 p-8 h-full">
+                <p className="eyebrow mb-3">Modus 02</p>
+                <h3 className="font-display text-xl text-paper-0 leading-tight">Semi-automatisk</h3>
+                <p className="mt-3 text-sm text-paper-2">Du godkjenner hver sending før den går ut.</p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Integrasjoner */}
+      <section className="py-32 border-t border-ink-3">
         <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Problemet – salgsteam drukner i research
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Manuelt arbeid er tungt:
-              </p>
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Integrasjoner</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-md text-paper-0 leading-[1.05]">
+                  Kobles sømløst
+                  <br />
+                  <span className="text-paper-3">til verktøyene dine.</span>
+                </h2>
+              </div>
             </div>
+          </Reveal>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-              {problems.map((problem, index) => (
-                <div 
-                  key={index}
-                  className="flex items-center gap-4 bg-white p-5 rounded-xl border border-red-100 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <problem.icon className="w-6 h-6 text-red-600" />
-                  </div>
-                  <p className="text-gray-700 font-medium">{problem.text}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-2xl border border-red-100">
-              <p className="text-gray-700 text-center flex items-center justify-center gap-2 flex-wrap">
-                <span className="font-semibold text-red-700">Dette tar timer</span>
-                <span>—</span>
-                <span className="font-semibold text-green-700 flex items-center gap-2">
-                  <Zap className="w-5 h-5" />
-                  AI bruker sekunder
+          <div className="flex flex-wrap gap-2">
+            {integrations.map((name, i) => (
+              <Reveal key={i} delay={i * 0.04}>
+                <span className="inline-flex items-center px-4 py-2 border border-ink-3 text-sm text-paper-1 hover:border-paper-0 hover:bg-paper-0/[0.04] transition-all">
+                  {name}
                 </span>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Steps */}
+      <section id="slik-fungerer-det" className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Slik fungerer det</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Fra tomme hender
+                  <br />
+                  <span className="text-paper-3">til full pipeline.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="border-t border-ink-3">
+            {steps.map((step, idx) => (
+              <Reveal key={idx} delay={idx * 0.06}>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 py-10 border-b border-ink-3">
+                  <div className="lg:col-span-2">
+                    <span className="font-mono text-sm text-paper-3">{step.number}</span>
+                  </div>
+                  <div className="lg:col-span-4">
+                    <h3 className="font-display text-2xl text-paper-0 leading-tight">
+                      {step.title}
+                    </h3>
+                  </div>
+                  <div className="lg:col-span-6">
+                    <p className="text-paper-2 leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-40 border-t border-ink-3 relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-50" aria-hidden="true" />
+        <div className="container relative">
+          <Reveal>
+            <div className="max-w-4xl">
+              <p className="eyebrow eyebrow-line mb-8">Neste steg</p>
+              <h2 className="font-display text-display-xl text-paper-0 leading-[0.95]">
+                Vil du høre
+                <br />
+                <span className="shimmer-text">når det er klart?</span>
+              </h2>
+              <p className="mt-8 text-xl text-paper-2 max-w-2xl leading-relaxed">
+                Vi jobber med lansering. Kontakt oss for å få beskjed om hva som
+                kommer og når det er klart.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section */}
-      <section className="py-20">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <Sparkles className="w-4 h-4" />
-              Løsningen
-            </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              AI-drevet prospektering
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Systemet gjør dette automatisk eller semi-automatisk
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {features.map((feature, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-none shadow-md bg-white"
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Additional feature: Automation modes */}
-          <div className="max-w-3xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-2xl border border-blue-100">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Zap className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Fullautomatisk</h3>
-                    <p className="text-sm text-gray-600">
-                      AI sender alt på autopilot innenfor dine rammer
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-2xl border border-purple-100">
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-purple-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Semi-automatisk</h3>
-                    <p className="text-sm text-gray-600">
-                      Du godkjenner hver sending før den går ut
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-12">
+                <Button asChild size="lg">
+                  <Link href="/kontakt">
+                    Kontakt oss
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
               </div>
             </div>
-          </div>
-
-          {/* Result highlight */}
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl shadow-lg">
-              <p className="text-xl font-semibold flex items-center gap-2">
-                <CheckCircle className="w-6 h-6" />
-                Resultatet: Mer kvalifiserte leads, mindre manuelt arbeid
-              </p>
-            </div>
-          </div>
+          </Reveal>
         </div>
       </section>
-
-      {/* Integrations Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Integrasjoner
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Kobles sømløst til dine eksisterende verktøy
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-3xl mx-auto">
-            {integrations.map((integration, index) => (
-              <div 
-                key={index}
-                className="bg-white p-4 rounded-xl border border-gray-200 text-center hover:shadow-md hover:border-blue-200 transition-all group"
-              >
-                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
-                  <integration.icon className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors" />
-                </div>
-                <p className="text-sm font-medium text-gray-700">{integration.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How it works Section */}
-      <section className="py-20" id="slik-fungerer-det">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Slik fungerer det
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Fra tomme hender til full pipeline på timer
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
-            {steps.map((step, index) => (
-              <div key={index} className="relative">
-                {/* Connector line */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-[60%] w-full h-0.5 bg-gradient-to-r from-blue-300 to-purple-300" />
-                )}
-                
-                <Card className="text-center border-none shadow-lg hover:shadow-xl transition-shadow relative bg-white h-full">
-                  <CardHeader>
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
-                      <span className="text-xl font-bold text-white">{step.number}</span>
-                    </div>
-                    <CardTitle className="text-lg">{step.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600">{step.description}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500 to-purple-600">
-        <div className="container text-center">
-          <div className="mx-auto max-w-3xl text-white">
-            <Users className="w-16 h-16 mx-auto mb-6 opacity-90" />
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Vil du høre mer om Lead Generator?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Vi jobber med lansering. Kontakt oss for å få beskjed om hva som kommer og når det er klart.
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary"
-              className="text-lg px-8 py-6"
-            >
-              <Link href="/kontakt">
-                Kontakt oss
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
+    </>
   )
 }
-

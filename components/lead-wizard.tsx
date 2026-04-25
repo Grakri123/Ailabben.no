@@ -1,19 +1,14 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { supabase } from '@/lib/supabase'
 import { trackMetaEvent } from '@/lib/metaTrack'
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Users, 
-  Mail, 
-  Settings, 
-  Headphones, 
-  HelpCircle,
+import {
+  ChevronLeft,
+  ChevronRight,
   CheckCircle,
   ArrowRight,
   X
@@ -21,10 +16,8 @@ import {
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
+import { cn } from '@/lib/utils'
 
-/**
- * Generate UUID v4
- */
 function generateUUID(): string {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     const r = (Math.random() * 16) | 0
@@ -33,9 +26,6 @@ function generateUUID(): string {
   })
 }
 
-/**
- * Split full name into first and last name
- */
 function splitFullName(fullName: string): { first_name: string; last_name: string } {
   const parts = fullName.trim().split(/\s+/)
   const first_name = parts[0] || ''
@@ -43,7 +33,6 @@ function splitFullName(fullName: string): { first_name: string; last_name: strin
   return { first_name, last_name }
 }
 
-// Types
 interface WizardAnswer {
   questionId: string
   answer: string | string[]
@@ -66,7 +55,6 @@ interface WizardState {
   showThanks: boolean
 }
 
-// Form schema
 const contactSchema = z.object({
   navn: z.string().min(2, 'Navn må være minst 2 tegn'),
   epost: z.string().email('Ugyldig e-postadresse'),
@@ -76,218 +64,41 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>
 
-// Question definitions
 const MAIN_CHOICES = [
-  {
-    id: 'leads',
-    title: 'Få flere leads',
-    description: 'Fylle opp kalenderen med møter',
-    icon: Users,
-    color: 'from-blue-500 to-blue-600'
-  },
-  {
-    id: 'email',
-    title: 'Automatisere e-post/oppfølging',
-    description: 'Spare tid på manuell oppfølging',
-    icon: Mail,
-    color: 'from-green-500 to-green-600'
-  },
-  {
-    id: 'systems',
-    title: 'Koble systemer sammen',
-    description: 'Få systemene til å snakke sammen',
-    icon: Settings,
-    color: 'from-purple-500 to-purple-600'
-  },
-  {
-    id: 'support',
-    title: 'Avlaste support/resepsjon',
-    description: 'Automatisere kundeservice',
-    icon: Headphones,
-    color: 'from-orange-500 to-orange-600'
-  },
-  {
-    id: 'curious',
-    title: 'Bare nysgjerrig',
-    description: 'Vil vite mer om mulighetene',
-    icon: HelpCircle,
-    color: 'from-pink-500 to-pink-600'
-  }
+  { id: 'leads', title: 'Få flere leads', description: 'Fylle opp kalenderen med møter' },
+  { id: 'email', title: 'Automatisere e-post / oppfølging', description: 'Spare tid på manuell oppfølging' },
+  { id: 'systems', title: 'Koble systemer sammen', description: 'Få systemene til å snakke sammen' },
+  { id: 'support', title: 'Avlaste support / resepsjon', description: 'Automatisere kundeservice' },
+  { id: 'curious', title: 'Bare nysgjerrig', description: 'Vil vite mer om mulighetene' }
 ]
 
 const QUESTIONS: Record<string, WizardQuestion[]> = {
   leads: [
-    {
-      id: 'leads-source',
-      text: 'Hvordan får dere leads i dag?',
-      options: [
-        'Ingen struktur / manuell innsats',
-        'Annonser (Google/Facebook)',
-        'SEO/innhold',
-        'Kjøpte lister / cold email'
-      ]
-    },
-    {
-      id: 'leads-bottleneck',
-      text: 'Hvor er flaskehalsen?',
-      options: [
-        'Treffer ikke riktig målgruppe',
-        'Lav svarrate på e-post',
-        'Dårlig kvalifisering',
-        'Mangler verktøy/automatisering'
-      ]
-    },
-    {
-      id: 'leads-goal',
-      text: 'Hva ønsker du mest?',
-      options: [
-        'Fylle kalenderen med møter',
-        'Bygge pipeline jevnt',
-        'Færre, men varmere leads'
-      ]
-    },
-    {
-      id: 'leads-tech',
-      text: 'Teknologi i dag (kan velge flere):',
-      options: [
-        'HubSpot / Pipedrive / xSale / annet CRM',
-        'Ingen CRM',
-        'Egen liste i Excel/Sheets'
-      ],
-      multiple: true
-    }
+    { id: 'leads-source', text: 'Hvordan får dere leads i dag?', options: ['Ingen struktur / manuell innsats', 'Annonser (Google/Facebook)', 'SEO/innhold', 'Kjøpte lister / cold email'] },
+    { id: 'leads-bottleneck', text: 'Hvor er flaskehalsen?', options: ['Treffer ikke riktig målgruppe', 'Lav svarrate på e-post', 'Dårlig kvalifisering', 'Mangler verktøy/automatisering'] },
+    { id: 'leads-goal', text: 'Hva ønsker du mest?', options: ['Fylle kalenderen med møter', 'Bygge pipeline jevnt', 'Færre, men varmere leads'] },
+    { id: 'leads-tech', text: 'Teknologi i dag (kan velge flere):', options: ['HubSpot / Pipedrive / xSale / annet CRM', 'Ingen CRM', 'Egen liste i Excel/Sheets'], multiple: true }
   ],
   email: [
-    {
-      id: 'email-type',
-      text: 'Hva vil du automatisere?',
-      options: [
-        'Første outreach',
-        'Oppfølging på innsendte skjema',
-        'Purringer/oppfølging tilbud',
-        'Kundedialog etter kjøp'
-      ]
-    },
-    {
-      id: 'email-source',
-      text: 'Datakilde for e-poster?',
-      options: [
-        'Egen liste (CSV/CRM)',
-        'Hentes fra nettside/innhold',
-        'Usikker'
-      ]
-    },
-    {
-      id: 'email-control',
-      text: 'Tone og kontroll:',
-      options: [
-        'Fullt automatisert',
-        'Semi (menneske godkjenner utkast)',
-        'Bare forslag – jeg sender selv'
-      ]
-    },
-    {
-      id: 'email-goal',
-      text: 'Mål:',
-      options: [
-        'Booke møter',
-        'Svartid < 5 min',
-        'Øke konvertering fra demo → kjøp'
-      ]
-    }
+    { id: 'email-type', text: 'Hva vil du automatisere?', options: ['Første outreach', 'Oppfølging på innsendte skjema', 'Purringer/oppfølging tilbud', 'Kundedialog etter kjøp'] },
+    { id: 'email-source', text: 'Datakilde for e-poster?', options: ['Egen liste (CSV/CRM)', 'Hentes fra nettside/innhold', 'Usikker'] },
+    { id: 'email-control', text: 'Tone og kontroll:', options: ['Fullt automatisert', 'Semi (menneske godkjenner utkast)', 'Bare forslag – jeg sender selv'] },
+    { id: 'email-goal', text: 'Mål:', options: ['Booke møter', 'Svartid < 5 min', 'Øke konvertering fra demo → kjøp'] }
   ],
   systems: [
-    {
-      id: 'systems-which',
-      text: 'Hvilke systemer ønsker du å koble? (kan velge flere)',
-      options: [
-        'Tripletex/Fiken',
-        'Webflow/WordPress/Shopify',
-        'Supabase/Databaser',
-        'Gmail/Outlook',
-        'Annet'
-      ],
-      multiple: true
-    },
-    {
-      id: 'systems-flow',
-      text: 'Hva skal flyte?',
-      options: [
-        'Leads → CRM',
-        'Ordre → Økonomi',
-        'Skjema → Automatisert e-post',
-        'Support → Slack/Teams'
-      ]
-    },
-    {
-      id: 'systems-requirements',
-      text: 'Kritisk krav:',
-      options: [
-        'GDPR/EU-lagring',
-        'Driftssikkerhet',
-        'Lav kost',
-        'Skalerbarhet'
-      ]
-    }
+    { id: 'systems-which', text: 'Hvilke systemer ønsker du å koble? (kan velge flere)', options: ['Tripletex/Fiken', 'Webflow/WordPress/Shopify', 'Supabase/Databaser', 'Gmail/Outlook', 'Annet'], multiple: true },
+    { id: 'systems-flow', text: 'Hva skal flyte?', options: ['Leads → CRM', 'Ordre → Økonomi', 'Skjema → Automatisert e-post', 'Support → Slack/Teams'] },
+    { id: 'systems-requirements', text: 'Kritisk krav:', options: ['GDPR/EU-lagring', 'Driftssikkerhet', 'Lav kost', 'Skalerbarhet'] }
   ],
   support: [
-    {
-      id: 'support-where',
-      text: 'Hvor trenger du hjelp?',
-      options: [
-        'Telefon/henvendelser (virtuell resepsjonist)',
-        'Chat på nettside',
-        'FAQ/ordrestatus'
-      ]
-    },
-    {
-      id: 'support-hours',
-      text: 'Åpningstider/krav:',
-      options: [
-        '24/7',
-        'Vanlig arbeidstid',
-        'Høy nøyaktighet (heller sakte)'
-      ]
-    },
-    {
-      id: 'support-integrations',
-      text: 'Integrasjoner:',
-      options: [
-        'Kalenderbooking',
-        'CRM-oppslag',
-        'Ordresystem'
-      ]
-    }
+    { id: 'support-where', text: 'Hvor trenger du hjelp?', options: ['Telefon/henvendelser (virtuell resepsjonist)', 'Chat på nettside', 'FAQ/ordrestatus'] },
+    { id: 'support-hours', text: 'Åpningstider/krav:', options: ['24/7', 'Vanlig arbeidstid', 'Høy nøyaktighet (heller sakte)'] },
+    { id: 'support-integrations', text: 'Integrasjoner:', options: ['Kalenderbooking', 'CRM-oppslag', 'Ordresystem'] }
   ],
   curious: [
-    {
-      id: 'curious-industry',
-      text: 'Bransje:',
-      options: [
-        'Håndverk/bygg',
-        'Konsulent/rådgivning',
-        'Netthandel',
-        'Annet'
-      ]
-    },
-    {
-      id: 'curious-interest',
-      text: 'Hva er du mest nysgjerrig på?',
-      options: [
-        'Hva AI-agenter faktisk kan gjøre',
-        'Kost/ROI',
-        'Sikkerhet/GDPR'
-      ]
-    },
-    {
-      id: 'curious-timeline',
-      text: 'Når ser du for deg å teste?',
-      options: [
-        'Nå',
-        '1–3 mnd',
-        'Senere'
-      ]
-    }
+    { id: 'curious-industry', text: 'Bransje:', options: ['Håndverk/bygg', 'Konsulent/rådgivning', 'Netthandel', 'Annet'] },
+    { id: 'curious-interest', text: 'Hva er du mest nysgjerrig på?', options: ['Hva AI-agenter faktisk kan gjøre', 'Kost/ROI', 'Sikkerhet/GDPR'] },
+    { id: 'curious-timeline', text: 'Når ser du for deg å teste?', options: ['Nå', '1–3 mnd', 'Senere'] }
   ]
 }
 
@@ -313,7 +124,6 @@ export function LeadWizard() {
     resolver: zodResolver(contactSchema)
   })
 
-  // Get current questions based on main choice
   const getCurrentQuestions = () => {
     if (!wizardState.mainChoice) return []
     return QUESTIONS[wizardState.mainChoice as keyof typeof QUESTIONS] || []
@@ -321,18 +131,13 @@ export function LeadWizard() {
 
   const getCurrentQuestion = () => {
     const questions = getCurrentQuestions()
-    return questions[wizardState.currentStep - 1] // -1 because step 0 is main choice
+    return questions[wizardState.currentStep - 1]
   }
 
-  const getTotalSteps = () => {
-    return getCurrentQuestions().length // Just the questions, not including main choice
-  }
+  const getTotalSteps = () => getCurrentQuestions().length
 
-  const getProgressPercentage = () => {
-    return (wizardState.currentStep / getTotalSteps()) * 100
-  }
+  const getProgressPercentage = () => (wizardState.currentStep / getTotalSteps()) * 100
 
-  // Handle main choice selection
   const handleMainChoice = (choiceId: string) => {
     setWizardState(prev => ({
       ...prev,
@@ -341,7 +146,6 @@ export function LeadWizard() {
     }))
   }
 
-  // Handle answer selection
   const handleAnswer = (answer: string | string[], autoProgress: boolean = true) => {
     const currentQuestion = getCurrentQuestion()
     if (!currentQuestion) return
@@ -357,50 +161,31 @@ export function LeadWizard() {
       answers: [...prev.answers.filter(a => a.questionId !== currentQuestion.id), newAnswer]
     }))
 
-    // Auto-progress for single choice questions (not multiple choice)
     if (autoProgress && !currentQuestion.multiple) {
-      setTimeout(() => {
-        goNext()
-      }, 300) // Small delay for better UX
+      setTimeout(() => goNext(), 300)
     }
   }
 
-  // Navigation functions
   const goNext = () => {
     const questions = getCurrentQuestions()
     const totalQuestions = questions.length
-    
-    // If we're at the last question, show the contact form
+
     if (wizardState.currentStep >= totalQuestions) {
-      setWizardState(prev => ({
-        ...prev,
-        showForm: true
-      }))
+      setWizardState(prev => ({ ...prev, showForm: true }))
     } else {
-      // Otherwise, go to next question
-      setWizardState(prev => ({
-        ...prev,
-        currentStep: prev.currentStep + 1
-      }))
+      setWizardState(prev => ({ ...prev, currentStep: prev.currentStep + 1 }))
     }
   }
 
   const goBack = () => {
     if (wizardState.currentStep > 0) {
-      setWizardState(prev => ({
-        ...prev,
-        currentStep: prev.currentStep - 1
-      }))
+      setWizardState(prev => ({ ...prev, currentStep: prev.currentStep - 1 }))
     }
   }
 
-  const skipQuestion = () => {
-    goNext()
-  }
+  const skipQuestion = () => goNext()
 
-  // Form submission
   const onSubmit = async (data: ContactFormData) => {
-    // Re-entry guard: prevent double submission
     if (inFlightRef.current) {
       console.warn('[Lead Wizard] Submit already in progress, ignoring duplicate call')
       return
@@ -408,50 +193,36 @@ export function LeadWizard() {
 
     inFlightRef.current = true
     setIsSubmitting(true)
-
-    // Generate unique event ID for deduplication (once per submission)
     const eventId = generateUUID()
-    
-    // Debug log: eventId generated for this submission
     console.log('[Lead Wizard] Submitting with eventId:', eventId)
 
     try {
-      // Create summary message
       const mainChoiceData = MAIN_CHOICES.find(c => c.id === wizardState.mainChoice)
-      const summary = `Lead Wizard - ${mainChoiceData?.title}\n\nSvar:\n${wizardState.answers.map(a => 
+      const summary = `Lead Wizard - ${mainChoiceData?.title}\n\nSvar:\n${wizardState.answers.map(a =>
         `${a.questionText}\n→ ${Array.isArray(a.answer) ? a.answer.join(', ') : a.answer}`
       ).join('\n\n')}`
 
-      // Prepare wizard answers for JSON storage
       const wizardData = {
         mainChoice: wizardState.mainChoice,
         mainChoiceTitle: mainChoiceData?.title,
         answers: wizardState.answers
       }
 
-      // Save to Supabase
       const { data: insertedData, error } = await supabase
         .from('wizard_leads')
-        .insert([
-          {
-            navn: data.navn,
-            bedrift: data.bedrift || null,
-            epost: data.epost,
-            melding: summary,
-            wizard_svar: wizardData
-          }
-        ])
+        .insert([{
+          navn: data.navn,
+          bedrift: data.bedrift || null,
+          epost: data.epost,
+          melding: summary,
+          wizard_svar: wizardData
+        }])
         .select()
         .single()
 
       if (error) throw error
 
-      // Split name for Meta tracking
       const { first_name, last_name } = splitFullName(data.navn)
-
-      // Track Meta Pixel + CAPI event (non-blocking)
-      // Use CompleteRegistration for wizard completion
-      // Uses same eventId for both Pixel and CAPI to ensure deduplication
       trackMetaEvent({
         eventName: 'CompleteRegistration',
         eventId,
@@ -459,24 +230,20 @@ export function LeadWizard() {
           email: data.epost,
           first_name,
           last_name,
-          external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+          external_id: insertedData?.id?.toString(),
         },
       }).catch((error) => {
-        // Already logged in trackMetaEvent, just catch to prevent blocking
         console.error('[Meta Tracking] Failed:', error)
       })
 
-      // Show thanks screen
       setWizardState(prev => ({
         ...prev,
         showForm: false,
         showThanks: true
       }))
-
       reset()
     } catch (error) {
       console.error('Error submitting wizard:', error)
-      // Handle error - could add toast notification
     } finally {
       setIsSubmitting(false)
       inFlightRef.current = false
@@ -494,35 +261,33 @@ export function LeadWizard() {
     })
   }
 
-  // Render main choice step
   const renderMainChoice = () => (
-    <div className="space-y-6">
-      <div className="text-center mb-8">
-        <h2 className="text-xl font-bold text-gray-900 mb-3">
-          Lurer du på hvordan vi kan hjelpe deg?
-        </h2>
+    <div className="space-y-8">
+      <div>
+        <p className="eyebrow eyebrow-line mb-4">Steg 1</p>
+        <h3 className="font-display text-display-sm text-paper-0 leading-tight">
+          Hva trenger du hjelp med?
+        </h3>
       </div>
-      
-      <div className="space-y-3">
-        {MAIN_CHOICES.map((choice) => {
-          return (
-            <button
-              key={choice.id}
-              onClick={() => handleMainChoice(choice.id)}
-              className="w-full p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-left transition-all duration-200"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-medium text-gray-900">{choice.title}</span>
-                <ChevronRight className="w-5 h-5 text-gray-400" />
-              </div>
-            </button>
-          )
-        })}
+
+      <div className="space-y-2">
+        {MAIN_CHOICES.map((choice) => (
+          <button
+            key={choice.id}
+            onClick={() => handleMainChoice(choice.id)}
+            className="group w-full text-left flex items-center justify-between gap-4 p-5 border border-ink-3 hover:border-paper-0 hover:bg-paper-0/[0.03] transition-all duration-300"
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-paper-0 font-medium">{choice.title}</p>
+              <p className="text-sm text-paper-3 mt-0.5">{choice.description}</p>
+            </div>
+            <ChevronRight className="w-4 h-4 text-paper-3 group-hover:text-paper-0 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+          </button>
+        ))}
       </div>
     </div>
   )
 
-  // Render question step
   const renderQuestion = () => {
     const question = getCurrentQuestion()
     if (!question) return null
@@ -530,19 +295,22 @@ export function LeadWizard() {
     const currentAnswer = wizardState.answers.find(a => a.questionId === question.id)?.answer
 
     return (
-      <div className="space-y-6">
-        <div className="text-center mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-3">
+      <div className="space-y-8">
+        <div>
+          <p className="eyebrow eyebrow-line mb-4">
+            Steg {wizardState.currentStep + 1}
+          </p>
+          <h3 className="font-display text-display-sm text-paper-0 leading-tight">
             {question.text}
-          </h2>
+          </h3>
         </div>
-        
-        <div className="space-y-3">
+
+        <div className="space-y-2">
           {question.options.map((option, index) => {
-            const isSelected = question.multiple 
+            const isSelected = question.multiple
               ? Array.isArray(currentAnswer) && currentAnswer.includes(option)
               : currentAnswer === option
-              
+
             return (
               <button
                 key={index}
@@ -552,55 +320,44 @@ export function LeadWizard() {
                     const newAnswers = currentAnswers.includes(option)
                       ? currentAnswers.filter(a => a !== option)
                       : [...currentAnswers, option]
-                    handleAnswer(newAnswers, false) // No auto-progress for multiple choice
+                    handleAnswer(newAnswers, false)
                   } else {
-                    handleAnswer(option, true) // Auto-progress for single choice
+                    handleAnswer(option, true)
                   }
                 }}
-                className={`w-full p-4 rounded-lg border-2 text-left transition-all duration-200 ${
+                className={cn(
+                  'group w-full p-5 border text-left transition-all duration-300 flex items-center justify-between gap-4',
                   isSelected
-                    ? 'border-orange-500 bg-orange-50 text-orange-700'
-                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                }`}
+                    ? 'border-paper-0 bg-paper-0/[0.05] text-paper-0'
+                    : 'border-ink-3 text-paper-1 hover:border-paper-0 hover:bg-paper-0/[0.03]'
+                )}
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-medium">{option}</span>
-                  {isSelected && <CheckCircle className="w-5 h-5 text-orange-500" />}
-                </div>
+                <span className="font-medium">{option}</span>
+                {isSelected ? (
+                  <CheckCircle className="w-4 h-4 text-paper-0 flex-shrink-0" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-paper-3 group-hover:text-paper-0 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                )}
               </button>
             )
           })}
         </div>
 
-        {/* Navigation */}
-        <div className="flex justify-between pt-6">
-          <Button
-            variant="outline"
-            onClick={goBack}
-            className="flex items-center space-x-2"
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Tilbake</span>
+        <div className="flex justify-between items-center pt-4">
+          <Button variant="ghost" onClick={goBack} size="sm">
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Tilbake
           </Button>
 
-          <div className="flex space-x-3">
-            <Button
-              variant="ghost"
-              onClick={skipQuestion}
-              className="text-gray-500"
-            >
+          <div className="flex items-center gap-2">
+            <Button variant="ghost" onClick={skipQuestion} size="sm">
               Hopp over
             </Button>
-            
-            {/* Show Next button only for multiple choice questions */}
+
             {question.multiple && (
-              <Button
-                onClick={goNext}
-                disabled={!currentAnswer}
-                className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700"
-              >
-                <span>Neste</span>
-                <ChevronRight className="w-4 h-4" />
+              <Button onClick={goNext} disabled={!currentAnswer} size="sm">
+                Neste
+                <ChevronRight className="w-4 h-4 ml-1" />
               </Button>
             )}
           </div>
@@ -609,139 +366,116 @@ export function LeadWizard() {
     )
   }
 
-  // Render contact form
   const renderContactForm = () => (
-    <div className="space-y-6">
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-3">
-          Nesten ferdig!
-        </h2>
-        <p className="text-gray-600">
-          La oss ta kontakt og finne den beste løsningen for deg
+    <div className="space-y-8">
+      <div>
+        <p className="eyebrow eyebrow-line mb-4">Siste steg</p>
+        <h3 className="font-display text-display-sm text-paper-0 leading-tight">
+          Nesten ferdig.
+        </h3>
+        <p className="mt-3 text-paper-2">
+          La oss ta kontakt og finne den beste retningen for deg.
         </p>
       </div>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="text-left">
-          <Label htmlFor="navn" className="text-left">Navn *</Label>
-          <Input
-            id="navn"
-            {...register('navn')}
-            className="mt-1"
-            placeholder="Ditt fulle navn"
-          />
-          {errors.navn && (
-            <p className="text-red-500 text-sm mt-1 text-left">{errors.navn.message}</p>
-          )}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <div className="space-y-2">
+          <Label htmlFor="wiz-navn">Navn *</Label>
+          <Input id="wiz-navn" {...register('navn')} placeholder="Ditt fulle navn" />
+          {errors.navn && <p className="text-xs text-destructive">{errors.navn.message}</p>}
         </div>
 
-        <div className="text-left">
-          <Label htmlFor="epost" className="text-left">E-post *</Label>
-          <Input
-            id="epost"
-            type="email"
-            {...register('epost')}
-            className="mt-1"
-            placeholder="din@epost.no"
-          />
-          {errors.epost && (
-            <p className="text-red-500 text-sm mt-1 text-left">{errors.epost.message}</p>
-          )}
+        <div className="space-y-2">
+          <Label htmlFor="wiz-epost">E-post *</Label>
+          <Input id="wiz-epost" type="email" {...register('epost')} placeholder="din@epost.no" />
+          {errors.epost && <p className="text-xs text-destructive">{errors.epost.message}</p>}
         </div>
 
-        <div className="text-left">
-          <Label htmlFor="bedrift" className="text-left">Bedrift (valgfritt)</Label>
-          <Input
-            id="bedrift"
-            {...register('bedrift')}
-            className="mt-1"
-            placeholder="Din bedrift"
-          />
+        <div className="space-y-2">
+          <Label htmlFor="wiz-bedrift">Bedrift</Label>
+          <Input id="wiz-bedrift" {...register('bedrift')} placeholder="Din bedrift (valgfritt)" />
         </div>
 
-        <div className="pt-4">
-          <div className="flex items-start space-x-3">
+        <div className="pt-2">
+          <label className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
-              id="samtykke"
               {...register('samtykke')}
-              className="mt-1 flex-shrink-0"
+              className="mt-1 flex-shrink-0 accent-paper-0"
             />
-            <Label htmlFor="samtykke" className="text-sm text-gray-600 leading-relaxed text-left">
+            <span className="text-sm text-paper-2 leading-relaxed">
               Jeg samtykker til at AI Labben kontakter meg angående mine behov og lagrer informasjonen i henhold til personvernreglene.
-            </Label>
-          </div>
-          {errors.samtykke && (
-            <p className="text-red-500 text-sm mt-2 ml-6">{errors.samtykke.message}</p>
-          )}
+            </span>
+          </label>
+          {errors.samtykke && <p className="text-xs text-destructive mt-2">{errors.samtykke.message}</p>}
         </div>
 
-        <div className="flex justify-between pt-6">
+        <div className="flex justify-between items-center pt-4">
           <Button
             type="button"
-            variant="outline"
-            onClick={() => setWizardState(prev => ({ 
-              ...prev, 
+            variant="ghost"
+            size="sm"
+            onClick={() => setWizardState(prev => ({
+              ...prev,
               showForm: false,
-              currentStep: getCurrentQuestions().length // Go back to last question
+              currentStep: getCurrentQuestions().length
             }))}
-            className="flex items-center space-x-2"
           >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Tilbake</span>
+            <ChevronLeft className="w-4 h-4 mr-1" />
+            Tilbake
           </Button>
 
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700"
-          >
+          <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Sender...' : 'Send inn'}
+            {!isSubmitting && <ArrowRight className="ml-2 w-4 h-4" />}
           </Button>
         </div>
       </form>
     </div>
   )
 
-  // Render thanks screen
   const renderThanksScreen = () => {
     const mainChoiceData = MAIN_CHOICES.find(c => c.id === wizardState.mainChoice)
-    
+
     return (
-      <div className="text-center space-y-6">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
-          <CheckCircle className="w-8 h-8 text-green-600" />
+      <div className="space-y-6">
+        <div className="w-12 h-12 rounded-full bg-paper-0 flex items-center justify-center">
+          <CheckCircle className="w-6 h-6 text-ink-0" />
         </div>
-        
+
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">
-            Takk for at du delte dine behov!
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Vi har mottatt din henvendelse om <strong>{mainChoiceData?.title.toLowerCase()}</strong> og vil ta kontakt innen 24 timer.
+          <p className="eyebrow eyebrow-line mb-4">Mottatt</p>
+          <h3 className="font-display text-display-sm text-paper-0 leading-tight">
+            Takk for at du delte dine behov.
+          </h3>
+          <p className="mt-4 text-paper-2 leading-relaxed">
+            Vi har mottatt din henvendelse om <span className="text-paper-0 font-medium">{mainChoiceData?.title.toLowerCase()}</span> og tar kontakt innen 24 timer.
           </p>
         </div>
 
-        <div className="bg-orange-50 p-6 rounded-lg">
-          <h3 className="font-semibold text-gray-900 mb-2">Hva skjer nå?</h3>
-          <ul className="text-sm text-gray-600 space-y-1 text-left">
-            <li>✓ Vi analyserer dine svar og behov</li>
-            <li>✓ Forbereder en tilpasset demo/forslag</li>
-            <li>✓ Tar kontakt for å booke et kort møte</li>
+        <div className="border-t border-ink-3 pt-6">
+          <h4 className="eyebrow mb-4">Hva skjer nå</h4>
+          <ul className="space-y-2 text-sm text-paper-2">
+            <li className="flex items-start gap-3">
+              <span className="text-paper-3 mt-0.5">01</span>
+              <span>Vi analyserer dine svar og behov</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-paper-3 mt-0.5">02</span>
+              <span>Forbereder en tilpasset demo eller forslag</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="text-paper-3 mt-0.5">03</span>
+              <span>Tar kontakt for å booke et kort møte</span>
+            </li>
           </ul>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            onClick={resetWizard}
-            variant="outline"
-          >
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <Button onClick={resetWizard} variant="secondary" size="sm">
             Lukk
           </Button>
-          <Button
-            asChild
-            className="bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700"
-          >
+          <Button asChild size="sm">
             <a href="mailto:kristian@ailabben.no?subject=Ønsker rask kontakt">
               Book møte nå
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -753,35 +487,32 @@ export function LeadWizard() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      {/* Inline Wizard Container */}
-      <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden backdrop-blur-sm bg-white/95">
+    <div className="w-full max-w-4xl">
+      <div className="border border-ink-3 bg-ink-1 overflow-hidden">
         {/* Progress bar */}
         {!wizardState.showForm && !wizardState.showThanks && wizardState.currentStep > 0 && (
-          <div className="px-8 pt-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sm font-medium text-gray-600">
-                Steg {wizardState.currentStep} av {getTotalSteps()}
+          <div className="px-8 pt-6 pb-2 border-b border-ink-3">
+            <div className="flex items-center justify-between mb-3">
+              <span className="eyebrow">
+                {wizardState.currentStep} av {getTotalSteps()}
               </span>
-              <Button
-                variant="ghost"
-                size="sm"
+              <button
                 onClick={resetWizard}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-paper-3 hover:text-paper-0 transition-colors"
+                aria-label="Lukk"
               >
                 <X className="w-4 h-4" />
-              </Button>
+              </button>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-1.5">
-              <div 
-                className="bg-gradient-to-r from-orange-500 to-purple-600 h-1.5 rounded-full transition-all duration-500 ease-out"
+            <div className="w-full h-px bg-ink-3 relative overflow-hidden">
+              <div
+                className="absolute inset-y-0 left-0 bg-paper-0 transition-all duration-500 ease-out"
                 style={{ width: `${getProgressPercentage()}%` }}
               />
             </div>
           </div>
         )}
 
-        {/* Content */}
         <div className="p-8">
           {wizardState.showThanks && renderThanksScreen()}
           {wizardState.showForm && renderContactForm()}

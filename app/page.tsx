@@ -1,16 +1,12 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { LeadWizard } from "@/components/lead-wizard"
-import { 
-  Users, 
-  Search,
-  Settings,
-  ArrowRight,
-  CheckCircle,
-  Sparkles
-} from "lucide-react"
+import { TypewriterHero } from "@/components/typewriter-hero"
+import { Spotlight } from "@/components/spotlight"
+import { Reveal } from "@/components/reveal"
+import { StatCounter, StatStatic } from "@/components/stat-counter"
+import { ArrowUpRight, ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "AI-drevne produkter og skreddersydde løsninger for bedrifter",
@@ -39,187 +35,291 @@ export const metadata: Metadata = {
 
 const products = [
   {
-    icon: Search,
+    number: "01",
     title: "AutoSEO",
-    description: "Fullautomatisert SEO-blogg som bygger organisk trafikk – pilar- og cluster-artikler på autopilot. Lanseret av AI Labben.",
+    description:
+      "Fullautomatisert SEO-blogg som bygger organisk trafikk – pilar- og cluster-artikler på autopilot.",
+    badge: "Eget produkt",
     href: "https://www.autoseo.no",
     external: true,
-    badge: "Eget produkt",
   },
   {
-    icon: Users,
+    number: "02",
     title: "Lead Generator",
-    description: "Automatisert B2B-leadsgenerering med AI – under produksjon. Vi jobber med lansering; kontakt oss for å høre mer om hva som kommer.",
-    href: "/b2b-leads-generator",
+    description:
+      "Automatisert B2B-leadsgenerering med AI – under produksjon. GDPR-vennlig og tilpasset norsk lov.",
     badge: "Kommer snart",
+    href: "/b2b-leads-generator",
   },
   {
-    icon: Settings,
+    number: "03",
     title: "Skreddersydde løsninger",
-    description: "Vi bygger spesialtilpassede AI-drevne produkter for din bedrift – fra idé til lansering og drift",
-    href: "/skreddersydd-utvikling",
+    description:
+      "Spesialtilpassede AI-drevne produkter for din bedrift – fra idé og krav til lansering og drift.",
     badge: "På bestilling",
+    href: "/skreddersydd-utvikling",
   },
-]
-
-const benefits = [
-  "Profesjonelt utviklede produkter med AI i kjernen",
-  "Hostet sikkert i EU – fullt GDPR-kompatibelt",
-  "Ingen langtidskontrakter eller skjulte kostnader",
-  "Rask implementering og tett oppfølging",
-  "24/7 overvåkning og kontinuerlig videreutvikling",
 ]
 
 export default function HomePage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-orange-50 to-purple-50 py-20 sm:py-32">
-        <div className="container">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-semibold text-orange-600 uppercase tracking-widest mb-4">
-              Produktstudio
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              Vi bygger{" "}
-              <span className="gradient-text">AI-drevne verktøy</span>
-              <br />
-              som former fremtiden for arbeid
-            </h1>
-            <p className="text-lg leading-8 text-gray-600 mb-4 max-w-3xl mx-auto">
-              Vi utvikler og lanserer digitale produkter med kunstig intelligens – 
-              våre egne og dine. Fra AutoSEO på <a href="https://www.autoseo.no" className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">autoseo.no</a> og Lead Generator (under produksjon) til skreddersydde 
-              løsninger for din bedrift.
-            </p>
-            <p className="text-sm text-gray-500 mb-8">
-              Utviklet av oss: <strong><a href="https://www.autoseo.no" className="text-orange-600 hover:underline" target="_blank" rel="noopener noreferrer">AutoSEO</a></strong>, <strong>Lead Generator</strong> (kommer snart) og flere i emning
-            </p>
-            <LeadWizard />
-          </div>
-        </div>
-      </section>
+      {/* ---------- Hero ---------- */}
+      <section className="relative overflow-hidden min-h-[88vh] flex items-center pt-16 pb-24">
+        {/* Bakgrunns-grid + spotlight */}
+        <div className="absolute inset-0 hero-grid" aria-hidden="true" />
+        <div className="absolute inset-0 hero-noise opacity-50" aria-hidden="true" />
+        <Spotlight />
 
-      {/* Products Section */}
-      <section className="py-20" id="produkter">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Våre produkter og tjenester
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Gjennomtenkte AI-verktøy vi har bygget fra grunnen av – og skreddersydde 
-              løsninger for bedrifter som ønsker sitt eget AI-drevne produkt.
+        {/* Vignett nederst – fader inn i seksjonen under */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink-0 pointer-events-none"
+          aria-hidden="true"
+        />
+
+        <div className="container relative z-10">
+          <div className="max-w-5xl">
+            <p className="eyebrow eyebrow-line mb-8 animate-fade-in">
+              Oslo · Produktstudio · Est. 2024
             </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {products.map((product, index) => {
-              const cardContent = (
-                <Card 
-                  className={`hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full ${product.href ? 'cursor-pointer hover:border-orange-200' : ''}`}
-                >
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <product.icon className="w-6 h-6 text-orange-600" />
-                      </div>
-                      {product.badge && (
-                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-orange-700">
-                          {product.badge}
-                        </span>
-                      )}
-                    </div>
-                    <CardTitle className="text-xl">{product.title}</CardTitle>
-                    <CardDescription className="text-base">
-                      {product.description}
-                    </CardDescription>
-                    {product.href && (
-                      <span className="text-orange-600 text-sm font-medium mt-2 inline-flex items-center">
-                        Les mer <ArrowRight className="ml-1 w-4 h-4" />
-                      </span>
-                    )}
-                  </CardHeader>
-                </Card>
-              )
-              
-              return product.href ? (
-                product.external ? (
-                  <a key={index} href={product.href} target="_blank" rel="noopener noreferrer" className="block">
-                    {cardContent}
-                  </a>
-                ) : (
-                  <Link key={index} href={product.href} className="block">
-                    {cardContent}
-                  </Link>
-                )
-              ) : (
-                <div key={index}>{cardContent}</div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
+            <TypewriterHero
+              prefix="Vi bygger"
+              highlight="AI-drevne verktøy"
+              startDelay={500}
+              speed={70}
+            />
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-                Hvorfor velge AI Labben?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Vi er seriegründere som har bygget produkter fra idé til lansering og drift. 
-                Vår erfaring med hele produktreisen gjør at vi vet hva som trengs for at et 
-                AI-drevet verktøy faktisk skaper verdi.
+            <div className="mt-12 max-w-2xl space-y-2 animate-fade-in-up" style={{ animationDelay: '2.6s' }}>
+              <p className="text-lg sm:text-xl text-paper-1 leading-relaxed">
+                Vi utvikler AI-drevne digitale produkter.
               </p>
-              <ul className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-lg sm:text-xl text-paper-2 leading-relaxed">
+                Egne. Skreddersydde. Hostet i EU.
+              </p>
             </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-orange-200 to-purple-200 rounded-2xl flex items-center justify-center">
-                <div className="text-center">
-                  <Sparkles size={80} className="text-orange-600 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Produktstudio</h3>
-                  <p className="text-gray-600">Bygget i Norge, for verden</p>
-                </div>
+
+            <div
+              className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in-up"
+              style={{ animationDelay: '2.9s' }}
+            >
+              <Button asChild size="lg">
+                <Link href="#produkter">
+                  Se hva vi bygger
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg">
+                <Link href="/kontakt">La oss snakke</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Lead wizard ---------- */}
+      <section className="py-24 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="max-w-3xl mb-12">
+              <p className="eyebrow eyebrow-line mb-6">Start her</p>
+              <h2 className="font-display text-display-lg text-paper-0 leading-[1.0] tracking-[-0.035em]">
+                Hva trenger du hjelp med?
+              </h2>
+              <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                Svar på noen korte spørsmål, så foreslår vi en retning og tar
+                kontakt med en konkret idé.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <LeadWizard />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- Produkter (editorial-rader, ikke kort) ---------- */}
+      <section className="py-32 border-t border-ink-3" id="produkter">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Hva vi har bygget</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0] tracking-[-0.035em]">
+                  Tre spor.
+                  <br />
+                  <span className="text-paper-3">Samme håndverk.</span>
+                </h2>
+                <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                  Egne produkter du kan ta i bruk i dag, og skreddersydde
+                  løsninger for bedrifter som vil ha sitt eget AI-drevne verktøy.
+                </p>
               </div>
             </div>
+          </Reveal>
+
+          <div className="border-t border-ink-3">
+            {products.map((product, idx) => (
+              <ProductRow
+                key={idx}
+                number={product.number}
+                title={product.title}
+                description={product.description}
+                badge={product.badge}
+                href={product.href}
+                external={product.external}
+                index={idx}
+              />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-purple-600" id="kontakt">
-        <div className="container text-center">
-          <div className="mx-auto max-w-3xl text-white">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              La oss bygge noe sammen
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Enten du vil ta i bruk ett av våre produkter eller ønsker et 
-              skreddersydd AI-drevet verktøy – vi vil gjerne høre om prosjektet ditt.
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary"
-              className="text-lg px-8 py-4"
-            >
-              <Link href="/kontakt">
-                Kontakt oss for å lære mer
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
+      {/* ---------- Stats / hvorfor oss ---------- */}
+      <section className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Hvorfor oss</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0] tracking-[-0.035em]">
+                  Vi er seriegründere.
+                  <br />
+                  <span className="text-paper-3">Vi bygger ikke for å imponere.</span>
+                </h2>
+                <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                  Vi har levert produkter fra idé til drift. Vi vet hva som
+                  faktisk skaper verdi – og hva som bare ser bra ut på en demo.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+            <StatStatic
+              eyebrow="Hosting"
+              value="EU"
+              label="All data behandles og lagres innenfor EU/EØS."
+            />
+            <StatStatic
+              eyebrow="Compliance"
+              value="GDPR"
+              label="Fullt kompatibel og tilpasset norsk lov."
+            />
+            <StatCounter
+              eyebrow="Overvåkning"
+              value={24}
+              suffix="/7"
+              label="Kontinuerlig drift og videreutvikling etter lansering."
+            />
+            <StatStatic
+              eyebrow="Bygget i"
+              value="Norge"
+              label="Lite team. Tett oppfølging. Ingen langtidskontrakter."
+            />
           </div>
+        </div>
+      </section>
+
+      {/* ---------- CTA – full-bleed ---------- */}
+      <section className="py-40 border-t border-ink-3 relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-50" aria-hidden="true" />
+        <div className="container relative">
+          <Reveal>
+            <div className="max-w-4xl">
+              <p className="eyebrow eyebrow-line mb-8">Neste steg</p>
+              <h2 className="font-display text-display-xl text-paper-0 leading-[0.95] tracking-[-0.04em]">
+                La oss bygge
+                <br />
+                <span className="shimmer-text">noe sammen.</span>
+              </h2>
+              <p className="mt-8 text-xl text-paper-2 max-w-2xl leading-relaxed">
+                Enten du vil ta i bruk ett av våre produkter eller ønsker et
+                skreddersydd AI-drevet verktøy – vi vil gjerne høre om prosjektet
+                ditt.
+              </p>
+              <div className="mt-12 flex flex-col sm:flex-row gap-4">
+                <Button asChild size="lg">
+                  <Link href="/kontakt">
+                    Kontakt oss
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="secondary" size="lg">
+                  <a href="mailto:kristian@ailabben.no">kristian@ailabben.no</a>
+                </Button>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>
   )
-} 
+}
+
+interface ProductRowProps {
+  number: string
+  title: string
+  description: string
+  badge: string
+  href: string
+  external?: boolean
+  index: number
+}
+
+function ProductRow({ number, title, description, badge, href, external, index }: ProductRowProps) {
+  const content = (
+    <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-6 py-10 border-b border-ink-3 transition-colors hover:bg-ink-1/40 -mx-6 px-6">
+      <div className="lg:col-span-2 flex items-center">
+        <span className="text-paper-3 font-mono text-sm tracking-tight">{number}</span>
+      </div>
+
+      <div className="lg:col-span-4 flex flex-col justify-center">
+        <h3 className="font-display text-display-sm text-paper-0 leading-tight">
+          {title}
+        </h3>
+        <span className="mt-2 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-paper-3 font-medium">
+          <span className="w-1 h-1 rounded-full bg-paper-3" />
+          {badge}
+        </span>
+      </div>
+
+      <div className="lg:col-span-5 flex items-center">
+        <p className="text-paper-2 text-base leading-relaxed">{description}</p>
+      </div>
+
+      <div className="lg:col-span-1 flex items-center justify-end">
+        <span className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-ink-3 text-paper-2 group-hover:border-paper-0 group-hover:text-paper-0 group-hover:bg-paper-0/[0.04] transition-all duration-300">
+          {external ? (
+            <ArrowUpRight className="w-4 h-4" />
+          ) : (
+            <ArrowRight className="w-4 h-4" />
+          )}
+        </span>
+      </div>
+    </div>
+  )
+
+  if (external) {
+    return (
+      <Reveal delay={index * 0.08}>
+        <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+          {content}
+        </a>
+      </Reveal>
+    )
+  }
+
+  return (
+    <Reveal delay={index * 0.08}>
+      <Link href={href} className="block">
+        {content}
+      </Link>
+    </Reveal>
+  )
+}

@@ -1,29 +1,24 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { 
-  Users, 
-  Search,
-  Settings,
-  ArrowRight,
-  CheckCircle,
-  Shield,
-  Zap,
-  Sparkles
-} from "lucide-react"
+import { Reveal } from "@/components/reveal"
+import { Spotlight } from "@/components/spotlight"
+import { ArrowRight, ArrowUpRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Våre produkter og tjenester – AI Labben",
-  description: "AI Labben bygger og drifter egne AI-drevne produkter som AutoSEO (autoseo.no) og Lead Generator, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
+  description:
+    "AI Labben bygger og drifter egne AI-drevne produkter som AutoSEO (autoseo.no) og Lead Generator, og utvikler skreddersydde løsninger for bedrifter. Hostet sikkert i EU.",
 }
 
 const ownProducts = [
   {
-    icon: Search,
+    number: "01",
     title: "AutoSEO",
-    description: "Fullautomatisert SEO-innhold som bygger organisk trafikk over tid. Lanseret av AI Labben – les mer på www.autoseo.no.",
+    badge: "Eget produkt",
+    description:
+      "Fullautomatisert SEO-innhold som bygger organisk trafikk over tid. Lansert av AI Labben.",
     details: [
       "Keyword-research og topic clusters",
       "Pilar- og cluster-artikler med automatisk internlinking",
@@ -33,11 +28,14 @@ const ownProducts = [
     benefits: ["Organisk trafikk på autopilot", "Konsistent innholdsproduksjon", "Høyere Google-rangeringer"],
     href: "https://www.autoseo.no",
     external: true,
+    cta: "Gå til autoseo.no",
   },
   {
-    icon: Users,
+    number: "02",
     title: "Lead Generator",
-    description: "Under produksjon. Vi jobber med et verktøy for automatisiert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov. Kontakt oss for å høre mer om hva som kommer.",
+    badge: "Kommer snart",
+    description:
+      "Under produksjon. Vi jobber med et verktøy for automatisert B2B-leadsgenerering – GDPR-vennlig og tilpasset norsk lov.",
     details: [
       "Skraper Brønnøysund, nettsider og bedriftsdata",
       "Analyserer kontekst og identifiserer produkt-fit",
@@ -46,13 +44,16 @@ const ownProducts = [
     ],
     benefits: ["Mer kvalifiserte leads", "Mindre manuelt arbeid", "Kommer snart"],
     href: "/b2b-leads-generator",
+    cta: "Les mer om Lead Generator",
   },
 ]
 
 const customProduct = {
-  icon: Settings,
+  number: "03",
   title: "Skreddersydde løsninger",
-  description: "Vi bygger spesialtilpassede AI-drevne produkter for din bedrift – fra idé og krav til lansering og drift",
+  badge: "På bestilling",
+  description:
+    "Vi bygger spesialtilpassede AI-drevne produkter for din bedrift – fra idé og krav til lansering og drift.",
   details: [
     "API-integrasjoner og interne dashboards",
     "Automatisering og dokumentgenerering",
@@ -60,270 +61,280 @@ const customProduct = {
     "Komplette applikasjoner med moderne teknologi",
   ],
   benefits: ["Effektiv drift", "Skalerbar vekst", "Produkter som faktisk løser problemet"],
-  href: "/skreddersydd-utvikling"
+  href: "/skreddersydd-utvikling",
+  cta: "Les mer om skreddersydde løsninger",
 }
 
 const process = [
-  {
-    step: "1",
-    title: "Idé og krav",
-    description: "Vi kartlegger behov og muligheter – og definerer hva produktet skal løse.",
-    icon: Users,
-  },
-  {
-    step: "2",
-    title: "Design og prototype",
-    description: "Vi designer brukeropplevelsen og bygger en prototype for tidlig validering.",
-    icon: Sparkles,
-  },
-  {
-    step: "3",
-    title: "Utvikling og lansering",
-    description: "Vi bygger og lanserer produktet – smidig, trygt og med fokus på kvalitet.",
-    icon: Zap,
-  },
-  {
-    step: "4",
-    title: "Drift og videreutvikling",
-    description: "Kontinuerlig overvåkning, optimalisering og videreutvikling etter lansering.",
-    icon: Shield,
-  },
+  { number: "01", title: "Idé og krav", description: "Vi kartlegger behov og muligheter – og definerer hva produktet skal løse." },
+  { number: "02", title: "Design og prototype", description: "Vi designer brukeropplevelsen og bygger en prototype for tidlig validering." },
+  { number: "03", title: "Utvikling og lansering", description: "Vi bygger og lanserer produktet – smidig, trygt og med fokus på kvalitet." },
+  { number: "04", title: "Drift og videreutvikling", description: "Kontinuerlig overvåkning, optimalisering og videreutvikling etter lansering." },
 ]
 
 export default function ServicesPage() {
   return (
-    <div className="flex flex-col">
+    <>
       <Breadcrumbs />
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-purple-50 to-orange-50 py-20 sm:py-32">
-        <div className="container">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-semibold text-orange-600 uppercase tracking-widest mb-4">
-              Produktstudio
-            </p>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-6">
-              Våre produkter
-              <span className="gradient-text"> og tjenester</span>
+
+      {/* Hero */}
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div className="absolute inset-0 hero-grid" aria-hidden="true" />
+        <Spotlight />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-ink-0 pointer-events-none" aria-hidden="true" />
+
+        <div className="container relative">
+          <Reveal>
+            <p className="eyebrow eyebrow-line mb-6">Hva vi gjør</p>
+            <h1 className="font-display text-display-xl text-paper-0 leading-[0.95] tracking-[-0.04em] max-w-5xl">
+              Produkter
+              <br />
+              <span className="shimmer-text">og tjenester.</span>
             </h1>
-            <p className="text-lg leading-8 text-gray-600 mb-8 max-w-3xl mx-auto">
-              Vi bygger og drifter egne AI-drevne verktøy, og utvikler skreddersydde 
-              løsninger for bedrifter som ønsker sitt eget AI-drevne produkt.
+            <p className="mt-10 text-lg sm:text-xl text-paper-2 leading-relaxed max-w-2xl">
+              Vi bygger og drifter egne AI-drevne verktøy, og utvikler
+              skreddersydde løsninger for bedrifter som ønsker sitt eget
+              AI-drevne produkt.
             </p>
-            <Button asChild size="lg" className="text-lg px-8 py-4">
-              <Link href="/kontakt">
-                La oss bygge noe sammen
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
-          </div>
+            <div className="mt-10">
+              <Button asChild size="lg">
+                <Link href="/kontakt">
+                  La oss bygge noe sammen
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Own Products Section */}
-      <section className="py-20">
+      {/* Egne produkter */}
+      <section className="py-32 border-t border-ink-3">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Egne produkter
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Verktøy vi har bygget fra grunnen av – AI i kjernen, brukerfokusert design 
-              og profesjonell drift hostet i EU.
-            </p>
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Egne produkter</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Verktøy bygget
+                  <br />
+                  <span className="text-paper-3">fra grunnen av.</span>
+                </h2>
+                <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                  AI i kjernen, brukerfokusert design og profesjonell drift hostet i EU.
+                </p>
+              </div>
+            </div>
+          </Reveal>
 
-          <div className="space-y-12">
-            {ownProducts.map((product, index) => (
-              <Card key={index} className="overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-orange-50 to-purple-50">
-                  <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                      <product.icon className="w-8 h-8 text-orange-600" />
-                    </div>
-                      <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-1">
-                        <CardTitle className="text-2xl">{product.title}</CardTitle>
-                        <span className="text-xs font-semibold px-2 py-1 rounded-full bg-orange-100 text-orange-700">
-                          {product.title === "Lead Generator" ? "Kommer snart" : "Eget produkt"}
-                        </span>
+          <div className="space-y-px bg-ink-3 border-y border-ink-3">
+            {ownProducts.map((product, idx) => (
+              <Reveal key={idx} delay={idx * 0.08}>
+                <article className="bg-ink-0 p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  <div className="lg:col-span-3">
+                    <span className="font-mono text-sm text-paper-3">{product.number}</span>
+                    <h3 className="mt-3 font-display text-display-sm text-paper-0 leading-tight">
+                      {product.title}
+                    </h3>
+                    <span className="mt-3 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-paper-3 font-medium">
+                      <span className="w-1 h-1 rounded-full bg-paper-3" />
+                      {product.badge}
+                    </span>
+                  </div>
+
+                  <div className="lg:col-span-9">
+                    <p className="text-lg text-paper-1 leading-relaxed mb-8">
+                      {product.description}
+                    </p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                      <div>
+                        <p className="eyebrow mb-4">Hva produktet gjør</p>
+                        <ul className="space-y-2 text-sm text-paper-2">
+                          {product.details.map((d, i) => (
+                            <li key={i} className="flex gap-3">
+                              <span className="text-paper-3 font-mono">·</span>
+                              <span>{d}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <p className="text-gray-600 text-lg">{product.description}</p>
+                      <div>
+                        <p className="eyebrow mb-4">Fordeler</p>
+                        <ul className="space-y-2 text-sm text-paper-2">
+                          {product.benefits.map((b, i) => (
+                            <li key={i} className="flex gap-3">
+                              <span className="text-paper-3 font-mono">·</span>
+                              <span>{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="font-semibold mb-4 text-gray-900">Hva produktet gjør:</h4>
-                      <ul className="space-y-2">
-                        {product.details.map((detail, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-700">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-4 text-gray-900">Fordeler for din bedrift:</h4>
-                      <ul className="space-y-2">
-                        {product.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <ArrowRight className="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-700">{benefit}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="mt-6 pt-6 border-t">
-                    {product.external ? (
-                      <Button asChild>
+
+                    <Button asChild variant="secondary" size="sm">
+                      {product.external ? (
                         <a href={product.href} target="_blank" rel="noopener noreferrer">
-                          Gå til autoseo.no
-                          <ArrowRight className="ml-2 w-4 h-4" />
+                          {product.cta}
+                          <ArrowUpRight className="ml-2 w-4 h-4" />
                         </a>
-                      </Button>
-                    ) : (
-                      <Button asChild>
+                      ) : (
                         <Link href={product.href}>
-                          Les mer om {product.title}
+                          {product.cta}
                           <ArrowRight className="ml-2 w-4 h-4" />
                         </Link>
-                      </Button>
-                    )}
+                      )}
+                    </Button>
                   </div>
-                </CardContent>
-              </Card>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Custom Solutions Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Skreddersydde */}
+      <section className="py-32 border-t border-ink-3">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Skreddersydde løsninger
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              For bedrifter som ønsker et AI-drevet produkt spesialbygd for sine behov. 
-              Vi tar deg fra idé til ferdig produkt i produksjon.
-            </p>
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Skreddersydde løsninger</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  For deg som
+                  <br />
+                  <span className="text-paper-3">vil ha noe eget.</span>
+                </h2>
+                <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                  For bedrifter som ønsker et AI-drevet produkt spesialbygd for sine behov. Vi tar deg fra idé til ferdig produkt i produksjon.
+                </p>
+              </div>
+            </div>
+          </Reveal>
 
-          <Card className="overflow-hidden max-w-4xl mx-auto">
-            <CardHeader className="bg-gradient-to-r from-orange-50 to-purple-50">
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center shadow-sm">
-                  <customProduct.icon className="w-8 h-8 text-orange-600" />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-1">
-                    <CardTitle className="text-2xl">{customProduct.title}</CardTitle>
-                    <span className="text-xs font-semibold px-2 py-1 rounded-full bg-purple-100 text-purple-700">
-                      På bestilling
-                    </span>
+          <Reveal>
+            <article className="border border-ink-3 bg-ink-1 p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div className="lg:col-span-3">
+                <span className="font-mono text-sm text-paper-3">{customProduct.number}</span>
+                <h3 className="mt-3 font-display text-display-sm text-paper-0 leading-tight">
+                  {customProduct.title}
+                </h3>
+                <span className="mt-3 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-paper-3 font-medium">
+                  <span className="w-1 h-1 rounded-full bg-paper-3" />
+                  {customProduct.badge}
+                </span>
+              </div>
+
+              <div className="lg:col-span-9">
+                <p className="text-lg text-paper-1 leading-relaxed mb-8">
+                  {customProduct.description}
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                  <div>
+                    <p className="eyebrow mb-4">Hva vi kan bygge</p>
+                    <ul className="space-y-2 text-sm text-paper-2">
+                      {customProduct.details.map((d, i) => (
+                        <li key={i} className="flex gap-3">
+                          <span className="text-paper-3 font-mono">·</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-gray-600 text-lg">{customProduct.description}</p>
+                  <div>
+                    <p className="eyebrow mb-4">Hva du får</p>
+                    <ul className="space-y-2 text-sm text-paper-2">
+                      {customProduct.benefits.map((b, i) => (
+                        <li key={i} className="flex gap-3">
+                          <span className="text-paper-3 font-mono">·</span>
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </CardHeader>
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold mb-4 text-gray-900">Hva vi kan bygge:</h4>
-                  <ul className="space-y-2">
-                    {customProduct.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-green-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-4 text-gray-900">Hva du får:</h4>
-                  <ul className="space-y-2">
-                    {customProduct.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <ArrowRight className="w-5 h-5 text-orange-600 mr-3 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className="mt-6 pt-6 border-t">
-                <Button asChild>
+
+                <Button asChild variant="secondary" size="sm">
                   <Link href={customProduct.href}>
-                    Les mer om skreddersydde løsninger
+                    {customProduct.cta}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
               </div>
-            </CardContent>
-          </Card>
+            </article>
+          </Reveal>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20">
+      {/* Prosess */}
+      <section className="py-32 border-t border-ink-3">
         <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Slik jobber vi
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Fra idé og krav til ferdig produkt i produksjon – en strukturert prosess 
-              som sikrer kvalitet og resultater.
-            </p>
-          </div>
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Slik jobber vi</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Fra idé
+                  <br />
+                  <span className="text-paper-3">til drift.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step, index) => (
-              <Card key={index} className="text-center border-none shadow-lg">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-bold text-white">{step.step}</span>
-                  </div>
-                  <CardTitle className="text-xl">{step.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{step.description}</p>
-                </CardContent>
-              </Card>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-3 border border-ink-3">
+            {process.map((step, idx) => (
+              <Reveal key={idx} delay={idx * 0.08}>
+                <div className="bg-ink-0 p-8 h-full">
+                  <span className="font-mono text-sm text-paper-3">{step.number}</span>
+                  <h3 className="mt-4 font-display text-xl text-paper-0 leading-tight">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-paper-2 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500 to-purple-600">
-        <div className="container text-center">
-          <div className="mx-auto max-w-3xl text-white">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Klar for å ta i bruk et av produktene?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Enten du vil prøve AutoSEO på autoseo.no, høre om Lead Generator som kommer, eller snakke om 
-              et skreddersydd prosjekt – vi er klare for en samtale.
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary"
-              className="text-lg px-8 py-4"
-            >
-              <Link href="/kontakt">
-                Kontakt oss for å lære mer
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
-          </div>
+      {/* CTA */}
+      <section className="py-40 border-t border-ink-3 relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-50" aria-hidden="true" />
+        <div className="container relative">
+          <Reveal>
+            <div className="max-w-4xl">
+              <p className="eyebrow eyebrow-line mb-8">Neste steg</p>
+              <h2 className="font-display text-display-xl text-paper-0 leading-[0.95]">
+                Klar for å ta i bruk
+                <br />
+                <span className="shimmer-text">et av produktene?</span>
+              </h2>
+              <p className="mt-8 text-xl text-paper-2 max-w-2xl leading-relaxed">
+                Enten du vil prøve AutoSEO, høre om Lead Generator som kommer,
+                eller snakke om et skreddersydd prosjekt – vi er klare for en samtale.
+              </p>
+              <div className="mt-12">
+                <Button asChild size="lg">
+                  <Link href="/kontakt">
+                    Kontakt oss
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
-    </div>
+    </>
   )
-} 
+}

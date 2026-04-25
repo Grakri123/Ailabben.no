@@ -4,10 +4,12 @@ import Script from "next/script"
 import "./globals.css"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { CommandPalette } from "@/components/command-palette"
+import { PageTransition } from "@/components/page-transition"
 import { Analytics } from "@vercel/analytics/react"
 // import { Chatbot } from "@/components/chatbot" // Midlertidig deaktivert
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
 export const metadata: Metadata = {
   title: {
@@ -70,10 +72,13 @@ export default function RootLayout({
         <meta name="msvalidate.01" content="E7042FBE451AEE1FB30467A8B5C1E804" />
         <link rel="stylesheet" href="https://use.typekit.net/ofa8sxj.css" />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${inter.className} bg-ink-0 text-paper-0`}>
+        <CommandPalette />
         <div className="flex min-h-screen flex-col">
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
           <Footer />
         </div>
         {/* <Chatbot /> Midlertidig deaktivert */}

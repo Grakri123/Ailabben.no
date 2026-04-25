@@ -1,33 +1,10 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Breadcrumbs } from "@/components/breadcrumbs"
-import { 
-  Code, 
-  Workflow, 
-  Database, 
-  Sparkles,
-  ArrowRight,
-  CheckCircle,
-  Settings,
-  FileText,
-  BarChart3,
-  Link2,
-  Zap,
-  Copy,
-  HardDrive,
-  RefreshCw,
-  XCircle,
-  Users,
-  Layout,
-  Briefcase,
-  Cloud,
-  FileSearch,
-  ShoppingCart,
-  Mail,
-  Shield
-} from "lucide-react"
+import { Reveal } from "@/components/reveal"
+import { Spotlight } from "@/components/spotlight"
+import { ArrowRight } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Skreddersydd AI-utvikling | Tilpassede automasjonsløsninger",
@@ -47,421 +24,314 @@ export const metadata: Metadata = {
 }
 
 const problems = [
-  {
-    icon: RefreshCw,
-    text: "Manuelle prosesser"
-  },
-  {
-    icon: Copy,
-    text: "Duplikat-data"
-  },
-  {
-    icon: HardDrive,
-    text: "Gamle systemer"
-  },
-  {
-    icon: XCircle,
-    text: "Manglende API-koblinger"
-  },
-  {
-    icon: Workflow,
-    text: "Ineffektiv arbeidsflyt"
-  }
+  "Manuelle prosesser",
+  "Duplikat-data",
+  "Gamle systemer",
+  "Manglende API-koblinger",
+  "Ineffektiv arbeidsflyt",
 ]
 
 const solutions = [
-  {
-    icon: Link2,
-    title: "API-integrasjoner",
-    description: "Kobler systemer sømløst sammen"
-  },
-  {
-    icon: BarChart3,
-    title: "Interne dashboards",
-    description: "Visualiserer data og KPI-er i sanntid"
-  },
-  {
-    icon: Zap,
-    title: "Automatisering",
-    description: "Erstatter manuelle prosesser med automatikk"
-  },
-  {
-    icon: FileText,
-    title: "Dokumentgenerering",
-    description: "Automatisk generering av rapporter og dokumenter"
-  },
-  {
-    icon: Database,
-    title: "RAG-systemer",
-    description: "Intern AI-kunnskap basert på dine data"
-  },
-  {
-    icon: Briefcase,
-    title: "Salgsverktøy",
-    description: "CRM-tilpasninger og salgsstøtte"
-  },
-  {
-    icon: Cloud,
-    title: "Egen AI-infrastruktur",
-    description: "Komplett AI-plattform for din bedrift"
-  },
-  {
-    icon: Layout,
-    title: "Komplette applikasjoner",
-    description: "Full-stack løsninger fra bunn av"
-  }
+  { number: "01", title: "API-integrasjoner", description: "Kobler systemer sømløst sammen" },
+  { number: "02", title: "Interne dashboards", description: "Visualiserer data og KPI-er i sanntid" },
+  { number: "03", title: "Automatisering", description: "Erstatter manuelle prosesser med automatikk" },
+  { number: "04", title: "Dokumentgenerering", description: "Automatisk generering av rapporter og dokumenter" },
+  { number: "05", title: "RAG-systemer", description: "Intern AI-kunnskap basert på dine data" },
+  { number: "06", title: "Salgsverktøy", description: "CRM-tilpasninger og salgsstøtte" },
+  { number: "07", title: "Egen AI-infrastruktur", description: "Komplett AI-plattform for din bedrift" },
+  { number: "08", title: "Komplette applikasjoner", description: "Full-stack løsninger fra bunn av" },
 ]
 
-const integrations = [
-  { name: "Tripletex", icon: Briefcase },
-  { name: "PowerOffice", icon: Settings },
-  { name: "Shopify", icon: ShoppingCart },
-  { name: "Outlook", icon: Mail },
-  { name: "Teams", icon: Users },
-  { name: "Supabase", icon: Database },
-  { name: "CRM-systemer", icon: Briefcase },
-  { name: "Interne databaser", icon: HardDrive },
-]
+const integrations = ["Tripletex", "PowerOffice", "Shopify", "Outlook", "Teams", "Supabase", "CRM-systemer", "Interne databaser"]
 
 const steps = [
+  { number: "01", title: "Vi kartlegger behov", description: "Grundig analyse av dine utfordringer og ønsker." },
+  { number: "02", title: "Lager prototype", description: "Rask utvikling av prototype for testing og godkjenning." },
+  { number: "03", title: "Utvikler løsning", description: "Full utvikling med moderne teknologi og beste praksis." },
+  { number: "04", title: "Setter opp drift", description: "Deployment, vedlikehold og overvåkning." },
+  { number: "05", title: "Fortløpende forbedringer", description: "Kontinuerlig optimalisering og nye funksjoner." },
+]
+
+const pricing = [
   {
-    number: "1",
-    title: "Vi kartlegger behov",
-    description: "Grundig analyse av dine utfordringer og ønsker.",
-    icon: FileSearch
+    title: "Prosjektbasert",
+    description: "Fast pris for definerte prosjekter",
+    points: ["Tilbud basert på omfang", "Klare milepæler", "Forutsigbare kostnader"],
   },
   {
-    number: "2",
-    title: "Lager prototype",
-    description: "Rask utvikling av prototype for testing og godkjenning.",
-    icon: Code
+    title: "Timepris",
+    description: "Fleksibel løsning for løpende behov",
+    points: ["Ad-hoc arbeid", "Vedlikehold", "Mindre tilpasninger"],
   },
-  {
-    number: "3",
-    title: "Utvikler løsning",
-    description: "Full utvikling med moderne teknologi og beste praksis.",
-    icon: Settings
-  },
-  {
-    number: "4",
-    title: "Setter opp drift",
-    description: "Deployment, vedlikehold og overvåkning.",
-    icon: Cloud
-  },
-  {
-    number: "5",
-    title: "Fortløpende forbedringer",
-    description: "Kontinuerlig optimalisering og nye funksjoner.",
-    icon: TrendingUp
-  }
 ]
 
 export default function SkreddersyddUtviklingPage() {
   return (
-    <div className="flex flex-col">
+    <>
       <Breadcrumbs />
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-cyan-50 via-blue-50 to-white py-20 sm:py-32 overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-200/30 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl" />
-        
+
+      {/* Hero */}
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div className="absolute inset-0 hero-grid" aria-hidden="true" />
+        <Spotlight />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-ink-0 pointer-events-none" aria-hidden="true" />
+
         <div className="container relative">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
-              <Code className="w-4 h-4" />
-              Skreddersydd Utvikling
-            </div>
-            
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6 animate-fade-in">
-              <span className="gradient-text">Skreddersydde AI- og automasjonsløsninger</span>
+          <Reveal>
+            <p className="eyebrow eyebrow-line mb-6">Skreddersydd utvikling</p>
+            <h1 className="font-display text-display-xl text-paper-0 leading-[0.95] tracking-[-0.04em] max-w-5xl">
+              Bygget for deg.
               <br />
-              <span className="text-gray-900">for SMB</span>
+              <span className="shimmer-text">Helt fra grunnen.</span>
             </h1>
-            
-            <p className="text-lg sm:text-xl leading-8 text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up">
-              For bedrifter som trenger noe helt eget. Vi bygger alt fra API-integrasjoner 
-              til full AI-infrastruktur — med et eget utviklingsteam.
+            <p className="mt-10 text-lg sm:text-xl text-paper-2 leading-relaxed max-w-2xl">
+              For bedrifter som trenger noe helt eget. Vi bygger alt fra
+              API-integrasjoner til full AI-infrastruktur — med et eget
+              utviklingsteam.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
-              <Button asChild size="lg" className="text-lg px-8 py-6 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg">
                 <Link href="/kontakt">
                   Kontakt oss
-                  <ArrowRight className="ml-2" size={20} />
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6">
-                <Link href="#slik-fungerer-det">
-                  Se hvordan det fungerer
-                </Link>
+              <Button asChild variant="secondary" size="lg">
+                <Link href="#slik-fungerer-det">Se hvordan det fungerer</Link>
               </Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Problem */}
+      <section className="py-32 border-t border-ink-3">
         <div className="container">
-          <div className="mx-auto max-w-4xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Problemet – systemer snakker ikke sammen
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Mange bedrifter sliter med:
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-              {problems.map((problem, index) => (
-                <div 
-                  key={index}
-                  className="flex flex-col items-center gap-3 bg-white p-5 rounded-xl border border-red-100 shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <problem.icon className="w-6 h-6 text-red-600" />
-                  </div>
-                  <p className="text-gray-700 font-medium text-sm text-center">{problem.text}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-2xl border border-red-100">
-              <p className="text-gray-700 text-center">
-                <span className="font-semibold text-red-700">Dette stopper vekst.</span>
-                <br />
-                Uten moderne integrasjoner og automatisering, bruker du tid på repeterende oppgaver i stedet for å bygge bedriften.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section */}
-      <section className="py-20">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <Sparkles className="w-4 h-4" />
-              Løsningen
-            </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Moderne og effektiv utvikling
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi bygger skreddersydde løsninger med moderne teknologi
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {solutions.map((solution, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-none shadow-md bg-white"
-              >
-                <CardHeader>
-                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-xl flex items-center justify-center mb-4">
-                    <solution.icon className="w-6 h-6 text-cyan-600" />
-                  </div>
-                  <CardTitle className="text-lg">{solution.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 text-sm">{solution.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* EU hosting highlight */}
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-gradient-to-r from-cyan-50 to-blue-50 p-6 rounded-2xl border border-cyan-100 flex items-start gap-4">
-              <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Shield className="w-6 h-6 text-cyan-600" />
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Problem</p>
               </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">All kode hostes i EU</h3>
-                <p className="text-gray-600">
-                  Med moderne teknologi, beste praksis og full GDPR-kompatibilitet.
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Systemer
+                  <br />
+                  <span className="text-paper-3">snakker ikke sammen.</span>
+                </h2>
+                <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                  Mange bedrifter sliter med fragmenterte systemer som stopper vekst.
                 </p>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Result highlight */}
-          <div className="mt-12 text-center">
-            <div className="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-2xl shadow-lg">
-              <p className="text-xl font-semibold flex items-center gap-2">
-                <CheckCircle className="w-6 h-6" />
-                Resultatet: Effektiv drift, skalerbar vekst, moderne systemer
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Integrasjoner
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vi integrerer med de systemene du bruker
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {integrations.map((integration, index) => (
-              <div 
-                key={index}
-                className="bg-white p-4 rounded-xl border border-gray-200 text-center hover:shadow-md hover:border-cyan-200 transition-all group"
-              >
-                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-cyan-100 transition-colors">
-                  <integration.icon className="w-5 h-5 text-gray-600 group-hover:text-cyan-600 transition-colors" />
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-ink-3 border border-ink-3">
+            {problems.map((p, i) => (
+              <Reveal key={i} delay={i * 0.05}>
+                <div className="bg-ink-0 p-8 h-full flex flex-col justify-between min-h-[140px]">
+                  <span className="font-mono text-xs text-paper-3">{String(i + 1).padStart(2, '0')}</span>
+                  <p className="text-paper-1 font-medium mt-4">{p}</p>
                 </div>
-                <p className="text-sm font-medium text-gray-700">{integration.name}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* How it works Section */}
-      <section className="py-20" id="slik-fungerer-det">
-        <div className="container">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-              Slik fungerer det
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Fra idé til ferdig løsning i produksjon
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
-            {steps.map((step, index) => (
-              <div key={index} className="relative">
-                {/* Connector line */}
-                {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-[60%] w-full h-0.5 bg-gradient-to-r from-cyan-300 to-blue-300" />
-                )}
-                
-                <Card className="text-center border-none shadow-lg hover:shadow-xl transition-shadow relative bg-white h-full">
-                  <CardHeader>
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
-                      <span className="text-xl font-bold text-white">{step.number}</span>
-                    </div>
-                    <CardTitle className="text-lg">{step.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-gray-600">{step.description}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container">
-          <div className="mx-auto max-w-3xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-                Pris og oppsett
-              </h2>
-              <p className="text-lg text-gray-600">
-                Fleksible priser tilpasset ditt prosjekt
+          <Reveal>
+            <div className="mt-12 border-l border-paper-0 pl-6 max-w-2xl">
+              <p className="text-lg text-paper-1">
+                <span className="text-paper-0 font-medium">Dette stopper vekst.</span>{' '}
+                Uten moderne integrasjoner og automatisering, bruker du tid på
+                repeterende oppgaver i stedet for å bygge bedriften.
               </p>
             </div>
+          </Reveal>
+        </div>
+      </section>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="border-2 border-cyan-200 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-cyan-50 to-blue-50">
-                  <CardTitle className="text-xl text-center">Prosjektbasert</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <p className="text-gray-700 mb-4">
-                    Fast pris for definerte prosjekter
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">Tilbud basert på omfang</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">Klare milepæler</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">Forutsigbare kostnader</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 border-blue-200 shadow-lg">
-                <CardHeader className="bg-gradient-to-r from-blue-50 to-cyan-50">
-                  <CardTitle className="text-xl text-center">Timepris</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <p className="text-gray-700 mb-4">
-                    Fleksibel løsning for løpende behov
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">Ad-hoc arbeid</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">Vedlikehold</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-600">Mindre tilpasninger</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
+      {/* Løsning */}
+      <section className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Løsning</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Moderne, modulært,
+                  <br />
+                  <span className="text-paper-3">tilpasset deg.</span>
+                </h2>
+              </div>
             </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-3 border border-ink-3">
+            {solutions.map((s, i) => (
+              <Reveal key={i} delay={i * 0.04}>
+                <div className="bg-ink-0 p-8 h-full">
+                  <span className="font-mono text-xs text-paper-3">{s.number}</span>
+                  <h3 className="mt-4 font-display text-xl text-paper-0 leading-tight">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm text-paper-2 leading-relaxed">
+                    {s.description}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <div className="mt-16 border border-ink-3 bg-ink-1 p-8 max-w-2xl">
+              <p className="eyebrow mb-3">EU-hosting</p>
+              <h3 className="font-display text-2xl text-paper-0 leading-tight">
+                All kode hostes i EU.
+              </h3>
+              <p className="mt-3 text-paper-2">
+                Med moderne teknologi, beste praksis og full GDPR-kompatibilitet.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Integrasjoner */}
+      <section className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Integrasjoner</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-md text-paper-0 leading-[1.05]">
+                  Kobler seg til der
+                  <br />
+                  <span className="text-paper-3">dataene dine bor.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="flex flex-wrap gap-2">
+            {integrations.map((name, i) => (
+              <Reveal key={i} delay={i * 0.03}>
+                <span className="inline-flex items-center px-4 py-2 border border-ink-3 text-sm text-paper-1 hover:border-paper-0 hover:bg-paper-0/[0.04] transition-all">
+                  {name}
+                </span>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-500 to-blue-600">
-        <div className="container text-center">
-          <div className="mx-auto max-w-3xl text-white">
-            <Code className="w-16 h-16 mx-auto mb-6 opacity-90" />
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
-              Klar for en skreddersydd løsning?
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              La oss bygge din løsning — akkurat slik du trenger den.
-            </p>
-            <Button 
-              asChild 
-              size="lg" 
-              variant="secondary"
-              className="text-lg px-8 py-6"
-            >
-              <Link href="/kontakt">
-                Kontakt oss
-                <ArrowRight className="ml-2" size={20} />
-              </Link>
-            </Button>
+      {/* Slik fungerer det */}
+      <section id="slik-fungerer-det" className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Slik fungerer det</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-lg text-paper-0 leading-[1.0]">
+                  Fra idé til drift.
+                  <br />
+                  <span className="text-paper-3">Fem steg.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="border-t border-ink-3">
+            {steps.map((step, idx) => (
+              <Reveal key={idx} delay={idx * 0.06}>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 py-10 border-b border-ink-3">
+                  <div className="lg:col-span-2">
+                    <span className="font-mono text-sm text-paper-3">{step.number}</span>
+                  </div>
+                  <div className="lg:col-span-4">
+                    <h3 className="font-display text-2xl text-paper-0 leading-tight">
+                      {step.title}
+                    </h3>
+                  </div>
+                  <div className="lg:col-span-6">
+                    <p className="text-paper-2 leading-relaxed">{step.description}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* Pris */}
+      <section className="py-32 border-t border-ink-3">
+        <div className="container">
+          <Reveal>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+              <div className="lg:col-span-4">
+                <p className="eyebrow eyebrow-line mb-6">Pris</p>
+              </div>
+              <div className="lg:col-span-8">
+                <h2 className="font-display text-display-md text-paper-0 leading-[1.05]">
+                  To prismodeller.
+                  <br />
+                  <span className="text-paper-3">Du velger.</span>
+                </h2>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-ink-3 border border-ink-3">
+            {pricing.map((p, i) => (
+              <Reveal key={i} delay={i * 0.08}>
+                <div className="bg-ink-0 p-8 lg:p-10 h-full">
+                  <h3 className="font-display text-2xl text-paper-0 leading-tight">{p.title}</h3>
+                  <p className="mt-2 text-paper-2">{p.description}</p>
+                  <ul className="mt-6 space-y-2 text-sm text-paper-2">
+                    {p.points.map((pt, j) => (
+                      <li key={j} className="flex gap-3">
+                        <span className="text-paper-3 font-mono">·</span>
+                        <span>{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-40 border-t border-ink-3 relative overflow-hidden">
+        <div className="absolute inset-0 hero-grid opacity-50" aria-hidden="true" />
+        <div className="container relative">
+          <Reveal>
+            <div className="max-w-4xl">
+              <p className="eyebrow eyebrow-line mb-8">Neste steg</p>
+              <h2 className="font-display text-display-xl text-paper-0 leading-[0.95]">
+                Klar for noe
+                <br />
+                <span className="shimmer-text">helt eget?</span>
+              </h2>
+              <p className="mt-8 text-xl text-paper-2 max-w-2xl leading-relaxed">
+                La oss bygge løsningen din – akkurat slik du trenger den.
+              </p>
+              <div className="mt-12">
+                <Button asChild size="lg">
+                  <Link href="/kontakt">
+                    Kontakt oss
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </>
   )
 }
-
-import { TrendingUp } from "lucide-react"
-

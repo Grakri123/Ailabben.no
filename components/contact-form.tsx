@@ -10,11 +10,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { supabase } from "@/lib/supabase"
 import { trackMetaEvent } from "@/lib/metaTrack"
-import { Send, CheckCircle, AlertCircle } from "lucide-react"
+import { Send, CheckCircle, AlertCircle, ArrowRight } from "lucide-react"
 
-/**
- * Generate UUID v4
- */
 function generateUUID(): string {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     const r = (Math.random() * 16) | 0
@@ -23,9 +20,6 @@ function generateUUID(): string {
   })
 }
 
-/**
- * Split full name into first and last name
- */
 function splitFullName(fullName: string): { first_name: string; last_name: string } {
   const parts = fullName.trim().split(/\s+/)
   const first_name = parts[0] || ''
@@ -57,7 +51,6 @@ export function ContactForm() {
   })
 
   const onSubmit = async (data: ContactFormData) => {
-    // Re-entry guard: prevent double submission
     if (inFlightRef.current) {
       console.warn('[Contact Form] Submit already in progress, ignoring duplicate call')
       return
@@ -67,36 +60,25 @@ export function ContactForm() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
-    // Generate unique event ID for deduplication (once per submission)
     const eventId = generateUUID()
-    
-    // Debug log: eventId generated for this submission
     console.log('[Contact Form] Submitting with eventId:', eventId)
 
     try {
-      // Save to Supabase
       const { data: insertedData, error } = await supabase
         .from('leads')
-        .insert([
-          {
-            navn: data.navn,
-            bedrift: data.bedrift || null,
-            epost: data.epost,
-            melding: data.melding,
-          },
-        ])
+        .insert([{
+          navn: data.navn,
+          bedrift: data.bedrift || null,
+          epost: data.epost,
+          melding: data.melding,
+        }])
         .select()
         .single()
 
-      if (error) {
-        throw error
-      }
+      if (error) throw error
 
-      // Split name for Meta tracking
       const { first_name, last_name } = splitFullName(data.navn)
 
-      // Track Meta Pixel + CAPI event (non-blocking)
-      // Uses same eventId for both Pixel and CAPI to ensure deduplication
       trackMetaEvent({
         eventName: 'Contact',
         eventId,
@@ -104,10 +86,9 @@ export function ContactForm() {
           email: data.epost,
           first_name,
           last_name,
-          external_id: insertedData?.id?.toString(), // Use Supabase ID as external_id if available
+          external_id: insertedData?.id?.toString(),
         },
       }).catch((error) => {
-        // Already logged in trackMetaEvent, just catch to prevent blocking
         console.error('[Meta Tracking] Failed:', error)
       })
 
@@ -124,128 +105,86 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Navn */}
-      <div>
-        <Label htmlFor="navn" className="text-sm font-medium">
-          Navn *
-        </Label>
-        <Input
-          id="navn"
-          {...register("navn")}
-          className="mt-1"
-          placeholder="Ditt fulle navn"
-        />
+      <div className="space-y-2">
+        <Label htmlFor="navn">Navn *</Label>
+        <Input id="navn" {...register("navn")} placeholder="Ditt fulle navn" />
         {errors.navn && (
-          <p className="text-sm text-red-600 mt-1">{errors.navn.message}</p>
+          <p className="text-xs text-destructive">{errors.navn.message}</p>
         )}
       </div>
 
-      {/* Bedrift */}
-      <div>
-        <Label htmlFor="bedrift" className="text-sm font-medium">
-          Bedrift
-        </Label>
-        <Input
-          id="bedrift"
-          {...register("bedrift")}
-          className="mt-1"
-          placeholder="Bedriftsnavn (valgfritt)"
-        />
+      <div className="space-y-2">
+        <Label htmlFor="bedrift">Bedrift</Label>
+        <Input id="bedrift" {...register("bedrift")} placeholder="Bedriftsnavn (valgfritt)" />
         {errors.bedrift && (
-          <p className="text-sm text-red-600 mt-1">{errors.bedrift.message}</p>
+          <p className="text-xs text-destructive">{errors.bedrift.message}</p>
         )}
       </div>
 
-      {/* E-post */}
-      <div>
-        <Label htmlFor="epost" className="text-sm font-medium">
-          E-post *
-        </Label>
-        <Input
-          id="epost"
-          type="email"
-          {...register("epost")}
-          className="mt-1"
-          placeholder="din@epost.no"
-        />
+      <div className="space-y-2">
+        <Label htmlFor="epost">E-post *</Label>
+        <Input id="epost" type="email" {...register("epost")} placeholder="din@epost.no" />
         {errors.epost && (
-          <p className="text-sm text-red-600 mt-1">{errors.epost.message}</p>
+          <p className="text-xs text-destructive">{errors.epost.message}</p>
         )}
       </div>
 
-      {/* Melding */}
-      <div>
-        <Label htmlFor="melding" className="text-sm font-medium">
-          Hva ønsker du hjelp med? *
-        </Label>
+      <div className="space-y-2">
+        <Label htmlFor="melding">Hva ønsker du hjelp med? *</Label>
         <Textarea
           id="melding"
           {...register("melding")}
-          className="mt-1"
           rows={5}
           placeholder="Beskriv dine utfordringer eller hvilke AI-løsninger du er interessert i..."
         />
         {errors.melding && (
-          <p className="text-sm text-red-600 mt-1">{errors.melding.message}</p>
+          <p className="text-xs text-destructive">{errors.melding.message}</p>
         )}
       </div>
 
-      {/* Submit Status Messages */}
       {submitStatus === 'success' && (
-        <div className="flex items-center space-x-2 text-green-600 bg-green-50 p-3 rounded-lg">
-          <CheckCircle size={20} />
-          <span>Takk for din henvendelse! Vi kontakter deg snart.</span>
+        <div className="flex items-start gap-3 border border-ink-3 bg-ink-1 p-4">
+          <CheckCircle size={18} className="text-paper-0 mt-0.5 flex-shrink-0" />
+          <p className="text-sm text-paper-1">
+            Takk for din henvendelse. Vi kontakter deg snart.
+          </p>
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="flex items-center space-x-2 text-red-600 bg-red-50 p-3 rounded-lg">
-          <AlertCircle size={20} />
-          <span>Noe gikk galt. Prøv igjen eller ring oss på 95 11 76 49.</span>
+        <div className="flex items-start gap-3 border border-destructive/50 bg-destructive/10 p-4">
+          <AlertCircle size={18} className="text-destructive mt-0.5 flex-shrink-0" />
+          <p className="text-sm text-paper-1">
+            Noe gikk galt. Prøv igjen eller ring oss på 95 11 76 49.
+          </p>
         </div>
       )}
 
-      {/* Submit Button */}
-      <Button 
-        type="submit" 
-        disabled={isSubmitting}
-        className="w-full"
-        size="lg"
-      >
+      <Button type="submit" disabled={isSubmitting} size="lg" className="w-full sm:w-auto">
         {isSubmitting ? (
           <>
-            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+            <span className="inline-block w-4 h-4 mr-2 border border-ink-0 border-t-transparent rounded-full animate-spin" />
             Sender...
           </>
         ) : (
           <>
-            <Send className="mr-2" size={18} />
             Send melding
+            <ArrowRight className="ml-2 w-4 h-4" />
           </>
         )}
       </Button>
 
-      <p className="text-sm text-gray-500 text-center">
-        Ved å sende inn dette skjemaet godtar du vår{" "}
-        <a 
-          href="/personvern" 
-          className="text-orange-600 hover:text-orange-700 underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      <p className="text-xs text-paper-3 leading-relaxed">
+        Ved å sende inn skjemaet godtar du vår{" "}
+        <a href="/personvern" className="text-paper-1 underline underline-offset-2 decoration-ink-5 hover:decoration-paper-0 transition-colors" target="_blank" rel="noopener noreferrer">
           personvernerklæring
-        </a>{" "}
-        og{" "}
-        <a 
-          href="/vilkaar" 
-          className="text-orange-600 hover:text-orange-700 underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        </a>
+        {" "}og{" "}
+        <a href="/vilkaar" className="text-paper-1 underline underline-offset-2 decoration-ink-5 hover:decoration-paper-0 transition-colors" target="_blank" rel="noopener noreferrer">
           vilkår og betingelser
         </a>
         . Vi kontakter deg angående våre AI-tjenester.
       </p>
     </form>
   )
-} 
+}

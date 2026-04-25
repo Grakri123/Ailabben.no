@@ -3,19 +3,17 @@ import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Calendar, ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 import { supabase } from "@/lib/supabase"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { Breadcrumbs } from "@/components/breadcrumbs"
+import { Reveal } from "@/components/reveal"
 
-// Revalidate individual blog posts every 2 minutes for faster updates
 export const revalidate = 120
 
 interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
+  params: { slug: string }
 }
 
 async function getBlogPost(slug: string) {
@@ -30,22 +28,18 @@ async function getBlogPost(slug: string) {
     console.error('Blog post fetch error:', error)
     return null
   }
-
   if (!data) {
     console.log('No blog post found for slug:', slug)
     return null
   }
-
   return data
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const post = await getBlogPost(params.slug)
-  
+
   if (!post) {
-    return {
-      title: "Blogginnlegg ikke funnet",
-    }
+    return { title: "Blogginnlegg ikke funnet" }
   }
 
   return {
@@ -85,11 +79,8 @@ function formatDate(dateString: string) {
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = await getBlogPost(params.slug)
 
-  if (!post) {
-    notFound()
-  }
+  if (!post) notFound()
 
-  // Generate JSON-LD structured data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -97,16 +88,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     description: post.ingress,
     datePublished: post.dato,
     dateModified: post.created_at,
-    author: {
-      '@type': 'Organization',
-      name: 'AI Labben',
-      url: 'https://ailabben.no'
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'AI Labben',
-      url: 'https://ailabben.no'
-    },
+    author: { '@type': 'Organization', name: 'AI Labben', url: 'https://ailabben.no' },
+    publisher: { '@type': 'Organization', name: 'AI Labben', url: 'https://ailabben.no' },
     ...(post.featured_image && {
       image: {
         '@type': 'ImageObject',
@@ -124,70 +107,80 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
-      <article className="py-20">
-        <div className="container">
-          <div className="mx-auto max-w-4xl">
-            {/* Back to blog */}
-            <div className="mb-8">
-              <Button variant="ghost" asChild>
-                <Link href="/blogg">
-                  <ArrowLeft className="mr-2" size={16} />
-                  Tilbake til bloggen
-                </Link>
-              </Button>
-            </div>
 
-            {/* Featured Image */}
-            {post.featured_image && (
-              <div className="relative w-full h-64 sm:h-80 lg:h-96 mb-12 rounded-2xl overflow-hidden bg-gray-100">
-                <Image
-                  src={post.featured_image}
-                  alt={post.tittel}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                  priority
-                />
+      <article className="py-16 sm:py-24">
+        <div className="container">
+          <div className="mx-auto max-w-3xl">
+            <Reveal>
+              <div className="mb-12">
+                <Link
+                  href="/blogg"
+                  className="inline-flex items-center gap-2 text-sm text-paper-3 hover:text-paper-0 transition-colors group"
+                >
+                  <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
+                  <span className="uppercase tracking-[0.18em] text-xs">Tilbake til journal</span>
+                </Link>
               </div>
+
+              <header className="mb-16">
+                <p className="eyebrow eyebrow-line mb-6">{formatDate(post.dato)}</p>
+                <h1 className="font-display text-display-lg text-paper-0 leading-[1.0] tracking-[-0.035em]">
+                  {post.tittel}
+                </h1>
+                {post.ingress && (
+                  <p className="mt-8 text-xl text-paper-2 leading-relaxed">
+                    {post.ingress}
+                  </p>
+                )}
+              </header>
+            </Reveal>
+
+            {post.featured_image && (
+              <Reveal delay={0.1}>
+                <div className="relative w-full aspect-[16/10] mb-16 overflow-hidden bg-ink-1 border border-ink-3">
+                  <Image
+                    src={post.featured_image}
+                    alt={post.tittel}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    priority
+                  />
+                </div>
+              </Reveal>
             )}
 
-            {/* Article header */}
-            <header className="mb-12">
-              <div className="flex items-center text-sm text-gray-500 mb-4">
-                <Calendar size={16} className="mr-2" />
-                {formatDate(post.dato)}
+            <Reveal delay={0.15}>
+              <div className="prose-editorial">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {post.innhold_md}
+                </ReactMarkdown>
               </div>
-              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6 leading-tight">
-                {post.tittel}
-              </h1>
-            </header>
+            </Reveal>
 
-            {/* Article content */}
-            <div className="prose prose-lg max-w-none prose-headings:font-bold prose-a:text-orange-600">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                {post.innhold_md}
-              </ReactMarkdown>
-            </div>
-
-            {/* Call to action */}
-            <div className="mt-16 border-t pt-12">
-              <div className="bg-gradient-to-r from-orange-50 to-purple-50 p-8 rounded-2xl text-center">
-                <h2 className="text-2xl font-bold mb-4">
-                  Klar for å implementere AI i din bedrift?
+            {/* CTA */}
+            <Reveal>
+              <div className="mt-24 pt-16 border-t border-ink-3">
+                <p className="eyebrow eyebrow-line mb-6">Neste steg</p>
+                <h2 className="font-display text-display-md text-paper-0 leading-[1.05] max-w-2xl">
+                  Klar for å implementere
+                  <br />
+                  <span className="text-paper-3">AI i din bedrift?</span>
                 </h2>
-                <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                  Vi hjelper bedrifter med å ta i bruk AI-teknologi på en 
-                  trygg og effektiv måte. Få en gratis konsultasjon i dag.
+                <p className="mt-6 text-lg text-paper-2 max-w-xl">
+                  Vi hjelper bedrifter med å ta i bruk AI-teknologi på en
+                  trygg og effektiv måte. Få en gratis konsultasjon.
                 </p>
-                <Button asChild size="lg">
-                  <Link href="/kontakt">
-                    Kontakt oss
-                    <ArrowRight className="ml-2" size={18} />
-                  </Link>
-                </Button>
+                <div className="mt-8">
+                  <Button asChild size="lg">
+                    <Link href="/kontakt">
+                      Kontakt oss
+                      <ArrowRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </article>
@@ -195,14 +188,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   )
 }
 
-// Optional: Generate static params for better performance
 export async function generateStaticParams() {
   const { data } = await supabase
     .from('blogginnlegg')
     .select('slug')
     .eq('publisert', true)
 
-  return data?.map(post => ({
-    slug: post.slug,
-  })) || []
-} 
+  return data?.map(post => ({ slug: post.slug })) || []
+}
